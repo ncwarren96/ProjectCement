@@ -1,0 +1,3 @@
+function showDialogue(targetDialogue){
+	
+}
