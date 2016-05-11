@@ -1,7 +1,4 @@
 
-document.onkeydown = handleKeyDown;
-document.onkeyup = handleKeyUp;
-
 var KEYCODE_UP = 38;		//useful keycode
 var KEYCODE_LEFT = 37;		//useful keycode
 var KEYCODE_RIGHT = 39;		//useful keycode

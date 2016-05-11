@@ -1,3 +1,6 @@
+document.onkeydown = handleKeyDown;
+document.onkeyup = handleKeyUp;
+
 function handleKeyDown(e){
 	if(!e){
 		var e = window.event;
