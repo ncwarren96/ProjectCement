@@ -10,7 +10,7 @@ var stage, circle, rect, bmp;
 function init() {
 	stage = new createjs.Stage("demoCanvas");
 	var image = new Image();
-	image.src = "./TestBackground.png";
+	image.src = "./assets/TestBackground.png";
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);
