@@ -24,7 +24,7 @@ function handleMouseDown(e){
 		var e = window.event;
 	}
 	if(e.button == 2){//right click
-		showDialogue("test", 1);
+		showDialogue("test", 0);
 	}
 
 	return;;
