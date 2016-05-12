@@ -2,10 +2,14 @@ function move(sprite){
 	var pt = sprite.localToGlobal(0, 0);
 	var gWidth = stage.canvas.width;
 	var gHeight = stage.canvas.height;
-	var sWidth = sprite.image.width;
-	var sHeight = sprite.image.height;
+	var sheet = sprite.spriteSheet;
+	var sWidth = sheet._frameWidth;
+	var sHeight = sheet._frameHeight;
 	
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
+		if(sprite.currentFrame != 1){
+			sprite.advance();
+		}
 		if(pt.x > 200 || bmp.x >= 0){
 			sprite.x -= 10;
 		}else{
@@ -14,6 +18,9 @@ function move(sprite){
 		}
 	}
 	if(keys[KEYCODE_D] === true && sprite.x < gWidth-sWidth){
+		if(sprite.currentFrame != 0){
+			sprite.advance();
+		}
 		if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
 			sprite.x += 10;
 		}else{
@@ -38,5 +45,5 @@ function move(sprite){
 		sprite.y = gHeight - sHeight;
 	}else if(sprite.y < 0){
 		sprite.y = 0;
-	}
+	}	
 }
