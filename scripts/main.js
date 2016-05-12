@@ -1,8 +1,3 @@
-var KEYCODE_W = 87;
-var KEYCODE_A = 65;
-var KEYCODE_S = 83;
-var KEYCODE_D = 68;
-
 var keys = new Array();
 
 var stage, circle, rect, bmp;
@@ -42,8 +37,7 @@ function game_loop(event) {
 
 
 function update(){
-	move(player);
-	//console.log("player x: "+player.x+", y: "+player.y);
+	move(player)
 }
 
 function draw(event){
