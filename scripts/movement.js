@@ -1,20 +1,26 @@
 function move(sprite){
+	var KEYCODE_W = 87;
+	var KEYCODE_A = 65;
+	var KEYCODE_S = 83;
+	var KEYCODE_D = 68;
+	
 	var pt = sprite.localToGlobal(0, 0);
 	var gWidth = stage.canvas.width;
 	var gHeight = stage.canvas.height;
 	var sheet = sprite.spriteSheet;
 	var sWidth = sheet._frameWidth;
 	var sHeight = sheet._frameHeight;
+	var moveAmount = 20;
 	
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
 		if(sprite.currentFrame != 1){
 			sprite.advance();
 		}
 		if(pt.x > 200 || bmp.x >= 0){
-			sprite.x -= 10;
+			sprite.x -= moveAmount;
 		}else{
 			sprite.x = 200;
-			bmp.x += 10;
+			bmp.x += moveAmount;
 		}
 	}
 	if(keys[KEYCODE_D] === true && sprite.x < gWidth-sWidth){
@@ -22,18 +28,18 @@ function move(sprite){
 			sprite.advance();
 		}
 		if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
-			sprite.x += 10;
+			sprite.x += moveAmount;
 		}else{
 			sprite.x = gWidth-200-sWidth;
-			bmp.x -= 10;
+			bmp.x -= moveAmount;
 		}
 	}
 	
 	if(keys[KEYCODE_W] === true && sprite.y>330-sHeight){
-		sprite.y -= 10;
+		sprite.y -= moveAmount;
 	}
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
-		sprite.y += 10;
+		sprite.y += moveAmount;
 	}
 	
 	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);	
