@@ -17,10 +17,13 @@ function init() {
 	bmp.x = -800;
 	bmp.y = 0;
 	
-	circle = stage.addChild(new createjs.Shape());
-	circle.graphics.beginFill("red").drawCircle(50,50,50);
-	circle.x = 350;
-	circle.y = 250;
+	var playerImage = new Image();
+	playerImage.src = "./assets/Character.png";
+	player = new createjs.Bitmap(playerImage);
+	player.x = 350;
+	player.y = 250;
+	stage.addChild(player);
+	console.log("player width: "+player.image.width+", height: "+player.image.height);
 	
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -32,7 +35,7 @@ function game_loop(event) {
 
 
 function update(){
-	move();
+	move(player);
 }
 
 function draw(event){
