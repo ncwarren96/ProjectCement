@@ -29,21 +29,25 @@ function move(sprite){
 		}
 	}
 	
-	if(keys[KEYCODE_W] === true && sprite.y>0){
+	if(keys[KEYCODE_W] === true && sprite.y>330-sHeight){
 		sprite.y -= 10;
 	}
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 		sprite.y += 10;
 	}
 	
-	if(sprite.x+sWidth > gWidth){
-		sprite.x = gWidth - sWidth;
+	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);	
+}
+
+function checkOnStage(sprite, stW, stH, pW, pH){
+	if(sprite.x+pW > stW){
+		sprite.x = stW - pW;
 	}else if(sprite.x < 0){
 		sprite.x = 0;
 	}
-	if(sprite.y+sHeight > gHeight){
-		sprite.y = gHeight - sHeight;
-	}else if(sprite.y < 0){
-		sprite.y = 0;
-	}	
+	if(sprite.y+pH > stH){
+		sprite.y = stH - pH;
+	}else if(sprite.y < 330-pH){
+		sprite.y = 330-pH;
+	}
 }
