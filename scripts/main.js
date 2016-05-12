@@ -23,7 +23,6 @@ function init() {
 	player.x = 350;
 	player.y = 250;
 	stage.addChild(player);
-	console.log("player width: "+player.image.width+", height: "+player.image.height);
 	
 	createjs.Ticker.on("tick", game_loop);
 }
