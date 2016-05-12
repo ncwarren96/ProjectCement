@@ -1,6 +1,6 @@
 var keys = new Array();
 
-var stage, circle, rect, bmp;
+var stage, circle, rect, bmp, cop;
 function init() {
 	stage = new createjs.Stage("demoCanvas");
 	var image = new Image();
@@ -20,12 +20,19 @@ function init() {
 			left: 1
 		}
 	});
-	
 	player = new createjs.Sprite(playerData);
 	player.x = 350;
 	player.y = 250;
-	
 	stage.addChild(player);
+	
+	var copData = new createjs.SpriteSheet({
+		images: ["./assets/Copper.png"],
+		frames: {width: 35, height: 135, count:1},
+	});
+	cop = new createjs.Sprite(copData);
+	cop.x = 382;
+	cop.y = 195;
+	stage.addChild(cop);
 	
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -37,7 +44,8 @@ function game_loop(event) {
 
 
 function update(){
-	move(player)
+	move(player);
+	moveCop(cop);
 }
 
 function draw(event){

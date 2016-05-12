@@ -10,7 +10,7 @@ function move(sprite){
 	var sheet = sprite.spriteSheet;
 	var sWidth = sheet._frameWidth;
 	var sHeight = sheet._frameHeight;
-	var moveAmount = 20;
+	var moveAmount = 10;
 	
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
 		if(sprite.currentFrame != 1){
@@ -57,3 +57,13 @@ function checkOnStage(sprite, stW, stH, pW, pH){
 		sprite.y = 330-pH;
 	}
 }
+
+function moveCop(sprite){
+	var pt = bmp.localToGlobal(1182, 195);
+	sprite.x = pt.x;
+	sprite.y = pt.y;
+}
+
+
+
+
