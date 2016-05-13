@@ -4,6 +4,7 @@ function move(sprite){
 	var KEYCODE_S = 83;
 	var KEYCODE_D = 68;
 	
+	
 	var pt = sprite.localToGlobal(0, 0);
 	var gWidth = stage.canvas.width;
 	var gHeight = stage.canvas.height;
