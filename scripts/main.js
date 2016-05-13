@@ -4,7 +4,11 @@ var stage, circle, rect, bmp, cop;
 function init() {
 	stage = new createjs.Stage("demoCanvas");
 	var image = new Image();
+<<<<<<< HEAD
 	image.src = "./assets/Background1.png";
+=======
+	image.src = "./assets/background.png";
+>>>>>>> origin/master
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);
