@@ -4,11 +4,7 @@ var stage, circle, rect, bmp, cop;
 function init() {
 	stage = new createjs.Stage("demoCanvas");
 	var image = new Image();
-<<<<<<< HEAD
-	image.src = "./assets/Background1.png";
-=======
 	image.src = "./assets/background.png";
->>>>>>> origin/master
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);
@@ -25,8 +21,8 @@ function init() {
 		}
 	});
 	player = new createjs.Sprite(playerData);
-	player.x = 350;
-	player.y = 250;
+	player.x = 400;
+	player.y = 235;
 	stage.addChild(player);
 	
 	var copData = new createjs.SpriteSheet({
@@ -34,8 +30,8 @@ function init() {
 		frames: {width: 35, height: 135, count:1},
 	});
 	cop = new createjs.Sprite(copData);
-	cop.x = 382;
-	cop.y = 195;
+	cop.x = 100;
+	cop.y = 235;
 	stage.addChild(cop);
 	
 	createjs.Ticker.on("tick", game_loop);

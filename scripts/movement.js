@@ -35,14 +35,14 @@ function move(sprite){
 		}
 	}
 	
-	if(keys[KEYCODE_W] === true && sprite.y>330-sHeight){
+	if(keys[KEYCODE_W] === true && sprite.y>370-sHeight){
 		sprite.y -= moveAmount;
 	}
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 		sprite.y += moveAmount;
 	}
 	
-	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);	
+	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);
 }
 
 function checkOnStage(sprite, stW, stH, pW, pH){
@@ -54,12 +54,12 @@ function checkOnStage(sprite, stW, stH, pW, pH){
 	if(sprite.y+pH > stH){
 		sprite.y = stH - pH;
 	}else if(sprite.y < 330-pH){
-		sprite.y = 330-pH;
+		sprite.y = 370-pH;
 	}
 }
 
 function moveCop(sprite){
-	var pt = bmp.localToGlobal(1182, 195);
+	var pt = bmp.localToGlobal(1182, 235);
 	sprite.x = pt.x;
 	sprite.y = pt.y;
 }
