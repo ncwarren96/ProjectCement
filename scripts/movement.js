@@ -4,7 +4,6 @@ function move(sprite){
 	var KEYCODE_S = 83;
 	var KEYCODE_D = 68;
 	
-	
 	var pt = sprite.localToGlobal(0, 0);
 	var gWidth = stage.canvas.width;
 	var gHeight = stage.canvas.height;
@@ -13,6 +12,8 @@ function move(sprite){
 	var sHeight = sheet._frameHeight;
 	var moveAmount = 10;
 	
+	//Directional Movement
+	//Left
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
 		if(sprite.currentFrame != 1){
 			sprite.advance();
@@ -24,6 +25,7 @@ function move(sprite){
 			bmp.x += moveAmount;
 		}
 	}
+	//Right
 	if(keys[KEYCODE_D] === true && sprite.x < gWidth-sWidth){
 		if(sprite.currentFrame != 0){
 			sprite.advance();
@@ -36,9 +38,11 @@ function move(sprite){
 		}
 	}
 	
+	//Up
 	if(keys[KEYCODE_W] === true && sprite.y>370-sHeight){
 		sprite.y -= moveAmount;
 	}
+	//Down
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 		sprite.y += moveAmount;
 	}
@@ -59,12 +63,28 @@ function checkOnStage(sprite, stW, stH, pW, pH){
 	}
 }
 
-function moveCop(sprite){
-	var pt = bmp.localToGlobal(1182, 235);
+//Run this in update() to attach new sprite/object to background
+function stickToBackground(sprite, x, y){
+	var pt = bmp.localToGlobal(x,y);
 	sprite.x = pt.x;
 	sprite.y = pt.y;
 }
 
+/*==THIS SHIT IS STILL IN PROGRESS==*/
+/*
+//Adds a circle around an object for measuring collision (currently BLUE for debug, also broken)
+function addCollisionCircle(object){
+	var graphics = new createjs.Graphics().beginStroke("Blue").drawCircle(0, 0, 50, 50);
+	var circle = new createjs.Shape(graphics);
+ 	stage.addChild(circle);
+ 	stickToBackground(circle, 1300, 500);
+}
+function clueCollision(object){
+	if(object.hitTest(stage.mouseX, stage.mouseY)){ 
+		console.log("mouse in") ;
+		}
+}
+*/	
 
 
 

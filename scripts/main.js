@@ -1,6 +1,6 @@
 var keys = new Array();
 
-var stage, circle, rect, bmp, cop;
+var stage, circle, rect, bmp, cop, clue;
 function init() {
 	stage = new createjs.Stage("demoCanvas");
 	var image = new Image();
@@ -12,6 +12,12 @@ function init() {
 	bmp.x = -800;
 	bmp.y = 0;
 	
+	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
+	clue = new createjs.Shape(graphics);
+	clue.x = 0;
+	clue.y = 0;
+ 	stage.addChild(clue);
+ 	
 	var playerData = new createjs.SpriteSheet({
 		images: ["./assets/Character.png"],
 		frames: {width: 40, height: 135, count: 2},
@@ -34,6 +40,8 @@ function init() {
 	cop.y = 235;
 	stage.addChild(cop);
 	
+
+	
 	createjs.Ticker.on("tick", game_loop);
 }
 
@@ -45,7 +53,13 @@ function game_loop(event) {
 
 function update(){
 	move(player);
-	moveCop(cop);
+	stickToBackground(cop, 1182, 235);
+	stickToBackground(clue, 1300, 500);
+	//clueCollision(clue);
+	//console.log("x: " + stage.mouseX + " y: " + stage.mouseY);
+	//var pt = player.localToLocal(bmp.x, bmp.y);
+	//console.log("px:"+ pt.x + " py:"+ pt.y);
+	//addCollisionCircle(clue);
 }
 
 function draw(event){
