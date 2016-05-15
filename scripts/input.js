@@ -3,6 +3,25 @@ document.onkeyup = handleKeyUp;
 document.onmousedown = handleMouseDown;
 
 
+	canvas.addEventListener("mousedown", select);
+	canvas.addEventListener("mouseup", deselect);
+		
+// this is the code i came up with for mouse select and deselect not sure how to make it work?	
+var x; 
+var y; 
+select = false; 
+				
+function select(e) {
+	x = e.clientX;
+	y = e.clientY;
+	select = true; 
+		}
+
+function deselect(e) {
+	select = false; 
+}
+////////////////////////
+
 function handleKeyDown(e){
 	if(!e){
 		var e = window.event;
