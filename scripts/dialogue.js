@@ -21,15 +21,16 @@ function showDialogue(targetDialogue, state){
 			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
+				textContainer.removeAllChildren();
 	            showDialogue(targetDialogue, 1);
 	        }
 		    
-
 			var mid_rect = new createjs.Shape();
 			mid_rect.graphics.beginFill("#FF0000").drawRect(220, 100, 50, 50);
 			textContainer.addChild(mid_rect);
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
+				textContainer.removeAllChildren();
 	            showDialogue(targetDialogue, 2);
 	        }
 
@@ -38,10 +39,11 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(right_rect);
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
+				textContainer.removeAllChildren();
 	            showDialogue(targetDialogue, 3);
 	        }
 		}else if(state == 1){
-			console.log("0!");
+			//console.log("1!");
 			//text to draw
 			var text = createText("You clicked 1", 20, 25);
 			textContainer.addChild(text);
@@ -52,7 +54,7 @@ function showDialogue(targetDialogue, state){
 			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
-	            showDialogue(targetDialogue, 1);
+	            textContainer.removeAllChildren();
 	        }
 		    
 
@@ -61,7 +63,7 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(mid_rect);
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
-	            showDialogue(targetDialogue, 2);
+				textContainer.removeAllChildren();
 	        }
 
 			var right_rect = new createjs.Shape();
@@ -69,10 +71,10 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(right_rect);
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
-	            showDialogue(targetDialogue, 3);
+				textContainer.removeAllChildren();
 	        }
 		}else if(state == 2){
-			console.log("0!");
+			//console.log("2!");
 			//text to draw
 			var text = createText("You clicked 2", 20, 25);
 			textContainer.addChild(text);
@@ -83,7 +85,7 @@ function showDialogue(targetDialogue, state){
 			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
-	            showDialogue(targetDialogue, 1);
+	            textContainer.removeAllChildren();
 	        }
 		    
 
@@ -92,7 +94,7 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(mid_rect);
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
-	            showDialogue(targetDialogue, 2);
+	            textContainer.removeAllChildren();
 	        }
 
 			var right_rect = new createjs.Shape();
@@ -100,10 +102,10 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(right_rect);
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
-	            showDialogue(targetDialogue, 3);
+	            textContainer.removeAllChildren();
 	        }
 		}else if(state == 3){
-			console.log("0!");
+			//console.log("3!");
 			//text to draw
 			var text = createText("You clicked 3", 20, 25);
 			textContainer.addChild(text);
@@ -114,7 +116,7 @@ function showDialogue(targetDialogue, state){
 			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
-	            showDialogue(targetDialogue, 1);
+	            textContainer.removeAllChildren();
 	        }
 		    
 
@@ -123,7 +125,7 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(mid_rect);
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
-	            showDialogue(targetDialogue, 2);
+	            textContainer.removeAllChildren();
 	        }
 
 			var right_rect = new createjs.Shape();
@@ -131,7 +133,7 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(right_rect);
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
-	            showDialogue(targetDialogue, 3);
+	            textContainer.removeAllChildren();
 	        }
 		}else if(state == 4){
 
@@ -139,9 +141,9 @@ function showDialogue(targetDialogue, state){
 
 		}else if (state == 6){
 
-		}
-		
+		}	
 	}
+
 	stage.addChild(textContainer);//adds textContainer to stage
 	return;
 }

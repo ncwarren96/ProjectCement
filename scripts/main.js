@@ -29,6 +29,10 @@ function init() {
 	player = new createjs.Sprite(playerData);	
 	player.x = 400;
 	player.y = 235;
+	player.addEventListener("click", handleClick_player);
+	 function handleClick_player(event) {
+	    console.log("player clicked.");
+	 }
 	stage.addChild(player);
 		
 	var copData = new createjs.SpriteSheet({	// cop sprite 
@@ -38,8 +42,16 @@ function init() {
 	cop = new createjs.Sprite(copData);
 	cop.x = 100;
 	cop.y = 235;
+	cop.addEventListener("click", handleClick_cop);
+	function handleClick_cop(event) {
+	    console.log("cop clicked.");
+	    if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
+	    	showDialogue("test", 0);
+	    }
+	 }
 	stage.addChild(cop);
 	
+	/*
 	// I'm trying to display petey's image, not sure why its not working?? 
 	var peteyData = new createjs.SpriteSheet({		//petey sprite
 		images: ["./assets/petey.png"],				// image 
@@ -49,6 +61,7 @@ function init() {
 	petey.x = 100;
 	petey.y = 235;
 	stage.addChild(petey);
+	*/
 	
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -64,7 +77,7 @@ function update(){
 	move(player);
 	stickToBackground(cop, 1182, 235);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
-	stickToBackground(petey, 1182, 350);
+	//stickToBackground(petey, 1182, 350);
 	//clueCollision(clue);
 	//console.log("x: " + stage.mouseX + " y: " + stage.mouseY);
 	//var pt = player.localToLocal(bmp.x, bmp.y);
@@ -77,6 +90,11 @@ function draw(event){
 }
 
 
+//*********************************Helper Functions*************************
+
+function getDistance(x, y, x2, y2){
+	return Math.sqrt(Math.pow((y2 - y), 2) + Math.pow((x2 - x), 2));
+}
 
 			
 
