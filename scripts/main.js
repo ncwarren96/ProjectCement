@@ -46,7 +46,7 @@ function init() {
 	function handleClick_cop(event) {
 	    console.log("cop clicked.");
 	    if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	    	showDialogue("test", 0);
+	    	showDialogue("cop_beach", 0);
 	    }
 	 }
 	stage.addChild(cop);
@@ -74,6 +74,7 @@ function game_loop(event) {
 
 
 function update(){
+	//inventory();
 	move(player);
 	stickToBackground(cop, 1182, 235);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
