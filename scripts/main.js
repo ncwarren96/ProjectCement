@@ -1,6 +1,6 @@
 var keys = new Array();
 
-var stage, circle, rect, bmp, cop, clue, petey;
+var stage, circle, rect, bmp, cop, clue, petey, inventory;
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
 	var image = new Image();				 // image object for background 
@@ -38,7 +38,7 @@ function init() {
 	function handleClick_cop(event) {
 	    console.log("cop clicked.");
 	    if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	    	showDialogue("test", 0);
+	    	showDialogue("cop_beach", 0);
 	    }
 	 }
 	
@@ -68,6 +68,7 @@ function game_loop(event) {
 
 
 function update(){
+	createInventory();
 	move(player);
 	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
