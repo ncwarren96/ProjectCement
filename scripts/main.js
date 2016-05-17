@@ -78,11 +78,10 @@ function update(){
 	stickToBackground(cop, 1182, 235);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
 	//stickToBackground(petey, 1182, 350);
-	//clueCollision(clue);
-	//console.log("x: " + stage.mouseX + " y: " + stage.mouseY);
-	//var pt = player.localToLocal(bmp.x, bmp.y);
-	//console.log("px:"+ pt.x + " py:"+ pt.y);
-	//addCollisionCircle(clue);
+	
+	//Display background mouse position in console
+	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);
+	console.log("x: " + mouse.x + " y: " + mouse.y);
 }
 
 function draw(event){
@@ -96,6 +95,15 @@ function getDistance(x, y, x2, y2){
 	return Math.sqrt(Math.pow((y2 - y), 2) + Math.pow((x2 - x), 2));
 }
 
+function getBackgroundPosition(x, y){
+	var backX = bmp.x*-1+x;
+	var backY = y;
+	var back = {
+		x: backX,
+		y: backY
+	};
+	return back;
+}
 			
 
 
