@@ -42,7 +42,7 @@ function init() {
 	    }
 	 }
 	
-	petey = new NPC(100, 235, 1, "./assers/pety.png", 213, 112);
+	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112);
 	
 	///*
 	// I'm trying to display petey's image, not sure why its not working?? 
