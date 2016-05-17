@@ -17,6 +17,7 @@ function init() {
 	clue.x = 0;
 	clue.y = 0;
  	stage.addChild(clue);
+ 	clue.addEventListener("click", handleClick_clue);
  	
 	var playerData = new createjs.SpriteSheet({		// investigator/player 
 		images: ["./assets/Character.png"],			// image source for inverstigator
@@ -29,19 +30,10 @@ function init() {
 	player = new createjs.Sprite(playerData);	
 	player.x = 400;
 	player.y = 235;
-	player.addEventListener("click", handleClick_player);
-	 function handleClick_player(event) {
-	    console.log("player clicked.");
-	 }
-	stage.addChild(player);
-		
-	var copData = new createjs.SpriteSheet({	// cop sprite 
-		images: ["./assets/Copper.png"],		// image source for cop 
-		frames: {width: 35, height: 135, count:1},
-	});
-	cop = new createjs.Sprite(copData);
-	cop.x = 100;
-	cop.y = 235;
+	
+	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135);
+	stage.addChild(cop);
+	
 	cop.addEventListener("click", handleClick_cop);
 	function handleClick_cop(event) {
 	    console.log("cop clicked.");
@@ -49,19 +41,21 @@ function init() {
 	    	showDialogue("test", 0);
 	    }
 	 }
-	stage.addChild(cop);
 	
-	/*
+	petey = new NPC(100, 235, 1, "./assers/pety.png", 213, 112);
+	
+	///*
 	// I'm trying to display petey's image, not sure why its not working?? 
 	var peteyData = new createjs.SpriteSheet({		//petey sprite
 		images: ["./assets/petey.png"],				// image 
-		frames: {width: 35, height: 135, count:1},
+		frames: {width: 213, height: 112, count:1},
 	});
 	petey = new createjs.Sprite(peteyData);		
 	petey.x = 100;
 	petey.y = 235;
+	//*/
 	stage.addChild(petey);
-	*/
+	stage.addChild(player);
 	
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -75,9 +69,9 @@ function game_loop(event) {
 
 function update(){
 	move(player);
-	stickToBackground(cop, 1182, 235);	// draw the sprites on the screen. 
+	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
-	//stickToBackground(petey, 1182, 350);
+	stickToBackground(petey, 1182, 350);
 	//clueCollision(clue);
 	//console.log("x: " + stage.mouseX + " y: " + stage.mouseY);
 	//var pt = player.localToLocal(bmp.x, bmp.y);
@@ -96,7 +90,22 @@ function getDistance(x, y, x2, y2){
 	return Math.sqrt(Math.pow((y2 - y), 2) + Math.pow((x2 - x), 2));
 }
 
-			
+function getBackgroundPosition(x, y){
+	var backX = bmp.x*(-1)+x;
+	var backY = y;
+	var back = {
+		x: backX,
+		y: backY
+	};
+	return back;
+}
+		
+function handleClick_clue(event){
+	var dist = getDistance(player.x, player.y, clue.x, clue.y);
+	if(dist < 135){
+		stage.removeChild(clue);
+	}
+}	
 
 
 			
