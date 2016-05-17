@@ -1,10 +1,27 @@
-function inventory(){
+function createInventory(){
 	inventory = new createjs.Container();
-	stage.addChild(inventory);
 	inventory.x = 10;
 	inventory.y = 10;
-	var image_1 = new Image();
-	image_1.src = "./assets/blue_square.png";
-	bmp_1 = new createjs.Bitmap(image_1);
-	inventory.addChild(bmp_1);
+	stage.addChild(inventory);
+}
+
+function hideShowInventory(){
+	console.log("hideShowInventory");
+	for(var iter = 0; iter < inventory.children.length;iter++){
+		var child_iter = inventory.getChildAt(iter);
+		if(child_iter.x > 0){
+			child_iter.x -= 100;
+		}else{
+			child_iter.x += 100;
+		}
+	}
+	
+}
+
+function addToInventory(item){
+	inventory.addChild(item);
+}
+
+function removeFromInventory(item){
+	inventory.removeChild(item);
 }
