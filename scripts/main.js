@@ -44,7 +44,7 @@ function init() {
 	
 	petey = new NPC(100, 235, 1, "./assers/pety.png", 213, 112);
 	
-	/*
+	
 	// I'm trying to display petey's image, not sure why its not working?? 
 	var peteyData = new createjs.SpriteSheet({		//petey sprite
 		images: ["./assets/petey.png"],				// image 
@@ -53,7 +53,7 @@ function init() {
 	petey = new createjs.Sprite(peteyData);		
 	petey.x = 100;
 	petey.y = 235;
-	*/
+	
 	stage.addChild(petey);
 	stage.addChild(player);
 	
@@ -73,7 +73,7 @@ function update(){
 	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
 	stickToBackground(clue, 1300, 500);
 
-	//stickToBackground(petey, 1182, 350);
+	stickToBackground(petey, 2000, 450);
 	
 	//Display background mouse position in console
 	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);
