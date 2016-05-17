@@ -150,7 +150,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
-	            //showDialogue(targetDialogue, 3);
+	            showDialogue(targetDialogue, 3);
 	        }
 		
 		}else if(state == 3){
