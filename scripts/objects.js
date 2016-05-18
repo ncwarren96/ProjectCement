@@ -53,6 +53,8 @@
 		this.x = x;
 		this.y = y;
 		
+		this.clueInfo = null;
+		
 		this.addEventListener("click", handleClick_clue);
 		this.back = getBackgroundPosition(x, y);
 	}
@@ -64,6 +66,11 @@
 			frames: {width: width, height: height, count: numframes}
 		});
 	};
+	
+	p.showInfo = function(clue){
+		
+	};
+	
 	
 	window.Clue = createjs.promote(Clue, "Sprite");
 }());
