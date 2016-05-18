@@ -1,9 +1,14 @@
 var keys = new Array();
-
-
 var stage, circle, rect, bmp, bmp_1, cop, clue, petey, inventory;
 var points;
+var map_array = [];
 inventory = new createjs.Container();
+
+var beachMap = new map("beach");
+var emptyMap = new map("empty");
+map_array.push(beachMap);
+map_array.push(emptyMap);
+var currentMapName = "";
 
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 

@@ -53,6 +53,12 @@ function handleMouseDown(e){
 			removeFromInventory(bmp_1);
         }
 	}
+	if(e.button == 1){//middle mouse button
+		//loadMap("beach", "empty");
+	}
+	if(e.button == 0){//left mouse button
+		//loadMap("empty", "beach");
+	}
 
 	return;;
 }
