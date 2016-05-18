@@ -24,6 +24,10 @@ function handleKeyDown(e){
 		var e = window.event;
 	}
 	keys[e.keyCode] = true;
+	if(e.keyCode == 9){
+		console.log("hideShowInventory()");
+		hideShowInventory();
+	}
 	return false;
 }
 
@@ -40,7 +44,14 @@ function handleMouseDown(e){
 		var e = window.event;
 	}
 	if(e.button == 2){//right click
-		showDialogue("test", 0);
+		var image_1 = new Image();
+		image_1.src = "./assets/blue_square.png";
+		bmp_1 = new createjs.Bitmap(image_1);
+		addToInventory(bmp_1);
+		bmp_1.on("click", blue_square, null, false);
+		function blue_square(evt) {
+			removeFromInventory(bmp_1);
+        }
 	}
 
 	return;;

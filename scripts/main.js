@@ -1,6 +1,7 @@
 var keys = new Array();
 
 var stage, circle, rect, bmp, cop, clue, petey, inventory;
+inventory = new createjs.Container();
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
 	var image = new Image();				 // image object for background 
