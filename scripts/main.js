@@ -24,7 +24,6 @@ function init() {
 
  	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
  	stage.addChild(clue1);
- 	clue1.addEventListener("click", handleClick_clue);
  	
  	clue2 = new Clue(300, 200, 1, "./assets/clue2.png", 24,24);
  	stage.addChild(clue2);
@@ -48,13 +47,6 @@ function init() {
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135);
 	stage.addChild(cop);
-	cop.addEventListener("click", handleClick_cop);
-	function handleClick_cop(event) {
-	    console.log("cop clicked.");
-	    if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	    	showDialogue("cop_beach", 0);
-	    }
-	 }
 	
 	//Adding Petey (NPC object instance)
 	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112);
@@ -117,5 +109,11 @@ function handleClick_clue(event){
 	}
 }	
 
+function handleClick_cop(event) {
+	console.log("cop clicked.");
+	if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
+	  	showDialogue("cop_beach", 0);
+	}
+}
 
 			

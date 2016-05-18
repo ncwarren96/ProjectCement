@@ -8,6 +8,7 @@
 		this.y = y;
 		
 		this.back = getBackgroundPosition(x, y);
+		this.addEventListener("click", handleClick_cop);
 	}
 	var p = createjs.extend(NPC, createjs.Sprite);
 	
@@ -30,6 +31,7 @@
 		this.x = x;
 		this.y = y;
 		
+		this.addEventListener("click", handleClick_clue);
 		this.back = getBackgroundPosition(x, y);
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);
