@@ -1,17 +1,24 @@
 var keys = new Array();
 
-var stage, circle, rect, bmp, cop, clue, petey, inventory;
+var stage, circle, rect, bmp, bmp_1, cop, clue, petey, inventory;
 var points;
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
 	var image = new Image();				 // image object for background 
 	image.src = "./assets/background.png";	  // image source 
-	bmp = new createjs.Bitmap(image);		
+	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);				// not sure waht addChild is ? 
 	container.addChild(bmp);
 	bmp.x = -800;
 	bmp.y = 0;
+	
+	var image_1 = new Image();
+	image_1.src = "./assets/background - Copy.png";
+	bmp_1 = new createjs.Bitmap(image_1);
+	container.addChild(bmp_1);
+	bmp_1.x = -800;
+	bmp_1.y = 0;
 	
 	//Adding Clue
 	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
@@ -24,25 +31,10 @@ function init() {
 
  	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
  	stage.addChild(clue1);
- 	
  	clue2 = new Clue(300, 200, 1, "./assets/clue2.png", 24,24);
  	stage.addChild(clue2);
  	clue3 = new Clue(400, 200, 1, "./assets/clue3.png", 24,24);
  	stage.addChild(clue3);
- 	
- 	//Adding Player
-	var playerData = new createjs.SpriteSheet({		// investigator/player 
-		images: ["./assets/Character.png"],			// image source for inverstigator
-		frames: {width: 40, height: 135, count: 2},
-		animations: {
-			right: 0,
-			left: 1
-		}
-	});
-	player = new createjs.Sprite(playerData);	
-	player.x = 400;
-	player.y = 235;
-	stage.addChild(player);
 	
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135);
@@ -51,6 +43,10 @@ function init() {
 	//Adding Petey (NPC object instance)
 	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112);
 	stage.addChild(petey);
+	
+ 	//Adding Player
+ 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135);
+	stage.addChild(player);
 	
 	//Create ticket (game loop)
 	createjs.Ticker.on("tick", game_loop);

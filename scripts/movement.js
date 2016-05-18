@@ -12,6 +12,9 @@ function move(sprite){
 	var sHeight = sheet._frameHeight;
 	var moveAmount = 10;
 	
+	var tempSpriteX = 0, tempSpriteY = 0;
+	var tempBackX = 0;
+	
 	//Directional Movement
 	//Left
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
@@ -19,10 +22,10 @@ function move(sprite){
 			sprite.advance();
 		}
 		if(pt.x > 200 || bmp.x >= 0){
-			sprite.x -= moveAmount;
+			tempSpriteX -= moveAmount;
 		}else{
 			sprite.x = 200;
-			bmp.x += moveAmount;
+			tempBackX = moveAmount;
 		}
 	}
 	//Right
@@ -31,21 +34,32 @@ function move(sprite){
 			sprite.advance();
 		}
 		if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
-			sprite.x += moveAmount;
+			tempSpriteX += moveAmount;
 		}else{
 			sprite.x = gWidth-200-sWidth;
-			bmp.x -= moveAmount;
+			tempBackX -= moveAmount;
 		}
 	}
 	
 	//Up
 	if(keys[KEYCODE_W] === true && sprite.y>370-sHeight){
-		sprite.y -= moveAmount;
+		tempSpriteY -= moveAmount;
 	}
 	//Down
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
-		sprite.y += moveAmount;
+		tempSpriteY += moveAmount;
 	}
+	
+	console.log(bmp_1.hitTest(sprite.x, sprite.y));
+	if(bmp_1.hitTest(sprite.x, sprite.y)){
+		tempSpriteX = 0;
+		tempBackX = 0;
+	}
+	
+	sprite.x += tempSpriteX;
+	sprite.y += tempSpriteY;
+	bmp.x += tempBackX;
+	bmp_1.x += tempBackX;
 	
 	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);
 }

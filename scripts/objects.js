@@ -1,3 +1,25 @@
+(function(){
+	function Player(x, y, numframes, url, width, height){
+		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		this.Sprite_constructor(this.spriteSheet);
+		
+		this.x = x;
+		this.y = y;
+	}
+	var p = createjs.extend(Player, createjs.Sprite);
+	
+	p.makeSheet = function(url, numframes, width, height){
+		return new createjs.SpriteSheet({
+			images: [url],
+			frames: {width: width, height: height, count: numframes}
+		});
+	};
+	
+	
+	
+	window.Player = createjs.promote(Player, "Sprite");
+}());
+
 //NPC Object definition
 (function(){
 	function NPC(x, y, numframes, url, width, height){
