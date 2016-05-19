@@ -1,6 +1,6 @@
 (function(){
 	function Player(x, y, numframes, url, width, height){
-		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		this.spriteSheet = makeSheet(url, numframes, width, height);
 		this.Sprite_constructor(this.spriteSheet);
 		
 		this.x = x;
@@ -9,13 +9,6 @@
 		this.back = getBackgroundPosition(x, y);
 	}
 	var p = createjs.extend(Player, createjs.Sprite);
-	
-	p.makeSheet = function(url, numframes, width, height){
-		return new createjs.SpriteSheet({
-			images: [url],
-			frames: {width: width, height: height, count: numframes}
-		});
-	};
 	
 	p.update = function(){
 		p.movePlayer(this);
@@ -123,7 +116,7 @@
 //NPC Object definition
 (function(){
 	function NPC(x, y, numframes, url, width, height, label){
-		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		this.spriteSheet = makeSheet(url, numframes, width, height);
 		this.Sprite_constructor(this.spriteSheet);
 		
 		this.label = label;
@@ -133,16 +126,8 @@
 		
 		this.back = getBackgroundPosition(x, y);
 		this.on("click", p.handleClick_NPC);
-		console.log(this.label);
 	}
 	var p = createjs.extend(NPC, createjs.Sprite);
-	
-	p.makeSheet = function(url, numframes, width, height){
-		return new createjs.SpriteSheet({
-			images: [url],
-			frames: {width: width, height: height, count: numframes}
-		});
-	};
 	
 	p.handleClick_NPC = function(event){
 		if(getDistance(this.x, this.y, player.x, player.y) < 100){
@@ -172,15 +157,8 @@
 		
 		this.back = getBackgroundPosition(x, y);
 		
-		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		this.spriteSheet = makeSheet(url, numframes, width, height);
 		
-	};
-	
-	p.makeSheet = function(url, numframes, width, height){
-		return new createjs.SpriteSheet({
-			images: [url],
-			frames: {width: width, height: height, count: numframes}
-		});
 	};
 
 	p.showInfo = function(clue){
@@ -198,3 +176,10 @@
 	
 	window.Clue = createjs.promote(Clue, "Sprite");
 }());
+
+function makeSheet(url, numframes, width, height){
+	return new createjs.SpriteSheet({
+		images: [url],
+		frames: {width: width, height: height, count: numframes}
+	});
+}
