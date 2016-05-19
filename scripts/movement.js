@@ -15,6 +15,8 @@ function move(sprite){
 	var tempSpriteX = 0, tempSpriteY = 0;
 	var tempBackX = 0;
 	
+	var backPoint = getBackgroundPosition(sprite.x, sprite.y);
+	
 	//Directional Movement
 	//Left
 	if(keys[KEYCODE_A] === true && sprite.x > 0){
@@ -23,9 +25,15 @@ function move(sprite){
 		}
 		if(pt.x > 200 || bmp.x >= 0){
 			tempSpriteX -= moveAmount;
+			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				tempSpriteX = 0;
+			}
 		}else{
 			sprite.x = 200;
 			tempBackX = moveAmount;
+			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				tempSpriteX = 0;
+			}
 		}
 	}
 	//Right
@@ -35,25 +43,40 @@ function move(sprite){
 		}
 		if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
 			tempSpriteX += moveAmount;
+			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				tempSpriteX = 0;
+			}else if(backPoint.y+135 === gHeight){
+				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+134+tempSpriteY)){
+					tempSpriteX = 0;
+				}
+			}
 		}else{
 			sprite.x = gWidth-200-sWidth;
 			tempBackX -= moveAmount;
+			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				tempBackX = 0;
+				console.log(tempBackX);
+			}else if(backPoint.y+135 === gHeight){
+				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+134+tempSpriteY)){
+					tempSpriteX = 0;
+				}
+			}
 		}
 	}
 	
 	//Up
-	if(keys[KEYCODE_W] === true && sprite.y>370-sHeight){
+	if(keys[KEYCODE_W] === true){
 		tempSpriteY -= moveAmount;
+		if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+			tempSpriteY = 0;
+		}
 	}
 	//Down
 	if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 		tempSpriteY += moveAmount;
-	}
-	
-	console.log(bmp_1.hitTest(sprite.x, sprite.y));
-	if(bmp_1.hitTest(sprite.x, sprite.y)){
-		tempSpriteX = 0;
-		tempBackX = 0;
+		if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				tempSpriteY = 0;
+			}
 	}
 	
 	sprite.x += tempSpriteX;
@@ -61,20 +84,6 @@ function move(sprite){
 	bmp.x += tempBackX;
 	bmp_1.x += tempBackX;
 	
-	checkOnStage(sprite, gWidth, gHeight, sWidth, sHeight);
-}
-
-function checkOnStage(sprite, stW, stH, pW, pH){
-	if(sprite.x+pW > stW){
-		sprite.x = stW - pW;
-	}else if(sprite.x < 0){
-		sprite.x = 0;
-	}
-	if(sprite.y+pH > stH){
-		sprite.y = stH - pH;
-	}else if(sprite.y < 330-pH){
-		sprite.y = 370-pH;
-	}
 }
 
 //Run this in update() to attach new sprite/object to background

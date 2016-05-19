@@ -5,6 +5,8 @@
 		
 		this.x = x;
 		this.y = y;
+		
+		this.back = getBackgroundPosition(x, y);
 	}
 	var p = createjs.extend(Player, createjs.Sprite);
 	
