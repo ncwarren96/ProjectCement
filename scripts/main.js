@@ -59,7 +59,7 @@ function init() {
 	stage.addChild(guy2);
 	
 	//Adding Petey (NPC object instance)
-	petey = new NPC(100, 235, 1, "./assets/petey.png", 170, 47, "petey");
+	petey = new NPC(1200, 450, 1, "./assets/petey.png", 170, 47, "petey");
 	stage.addChild(petey);
 	
 	stage.addChild(player);
@@ -88,7 +88,7 @@ function update(){
 	}
 	
 	stickToBackground(cop, cop.back.x, cop.back.y);
-	stickToBackground(petey, 2000, 450);
+	stickToBackground(petey, petey.back.x, petey.back.y);
 	stickToBackground(guy1, guy1.back.x, guy1.back.y);
 	stickToBackground(guy2, guy2.back.x, guy2.back.y);
 	
