@@ -194,6 +194,7 @@
 		this.y = y;									//y-position
 		this.width = width;							//width
 		this.height = height;						//height
+		
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.clueInfo = null;						//the information of the clue
