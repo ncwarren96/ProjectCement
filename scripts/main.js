@@ -17,7 +17,6 @@ function init() {
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);				// not sure waht addChild is ? 
-	container.addChild(bmp);
 	bmp.x = -800;
 	bmp.y = 0;
 	
@@ -27,6 +26,8 @@ function init() {
 	container.addChild(bmp_1);
 	bmp_1.x = -800;
 	bmp_1.y = 0;
+	
+	container.addChild(bmp);
 	
 	//Adding Clue
 	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
