@@ -5,14 +5,18 @@
 		
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		
 		this.back = getBackgroundPosition(x, y);
+		
+		this.objInFront = new Array();
 	}
 	var p = createjs.extend(Player, createjs.Sprite);
 	
 	p.update = function(){
 		p.movePlayer(this);
-		
+		p.checkInFront(this);
 	};
 	
 	p.movePlayer = function(sprite){
@@ -41,14 +45,14 @@
 			}
 			if(pt.x > 200 || bmp.x >= 0){
 				tempSpriteX -= moveAmount;
-				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
 					tempSpriteX = 0;
 				}
 			}else{
 				sprite.x = 200;
-				tempBackX = moveAmount;
-				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
-					tempSpriteX = 0;
+				tempBackX += moveAmount;
+				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					tempBackX = 0;
 				}
 			}
 		}
@@ -59,10 +63,10 @@
 			}
 			if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
 				tempSpriteX += moveAmount;
-				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+135+tempSpriteY)){
 					tempSpriteX = 0;
 				}else if(backPoint.y+135 === gHeight){
-					if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+134+tempSpriteY)){
+					if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+134+tempSpriteY)){
 						tempSpriteX = 0;
 					}
 				}
@@ -100,15 +104,27 @@
 		bmp_1.x += tempBackX;
 	};
 	
-	/*
-	p.checkInFront = function(){
-		for(var i = 0; i < stage.numChildren; i++){
-			if(this.y < getChildAt(i).x){
-				
+	p.checkInFront = function(sprite){
+		for(var i = 2; i < stage.numChildren; i++){
+			var playerIndex = stage.getChildIndex(sprite);
+			var child = stage.getChildAt(i);
+			if(child === sprite){
+				continue;
 			}
+			var index = sprite.objInFront.indexOf(child);
+			var spriteBottom = sprite.y+sprite.height;
+			var childBottom = child.y+child.height;
+			var above = (spriteBottom < childBottom);
+			if(index < 0 && above){
+				sprite.objInFront.push(child);
+				stage.setChildIndex(child, playerIndex);
+			}else if(index >= 0 && !above){
+				sprite.objInFront.splice(index, 1);
+				stage.setChildIndex(child, playerIndex);
+			}
+			
 		}
 	};
-	*/
 	
 	window.Player = createjs.promote(Player, "Sprite");
 }());
@@ -123,6 +139,8 @@
 		
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		
 		this.back = getBackgroundPosition(x, y);
 		this.on("click", p.handleClick_NPC);
@@ -140,25 +158,27 @@
 
 //Clue Object definition
 (function(){
-	function Clue(x, y, numframes, url, width, height){
-		this.setup(x, y, numframes, url, width, height);
+	function Clue(x, y, numframes, url, width, height, label){
+		this.spriteSheet = makeSheet(url, numframes, width, height);
 		this.Sprite_constructor(this.spriteSheet);
+		
+		this.setup(x, y, numframes, url, width, height, label);
 		clues.push(this);
 		this.on("click", p.handleClick);
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);
 	
-	p.setup = function(x, y, numframes, url, width, height){
+	p.setup = function(x, y, numframes, url, width, height, label){
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.label = label;
 		this.discovered = false;
 		this.clueInfo = null;
 		this.on("click", this.handleClick);
 		
 		this.back = getBackgroundPosition(x, y);
-		
-		this.spriteSheet = makeSheet(url, numframes, width, height);
-		
 	};
 
 	p.showInfo = function(clue){

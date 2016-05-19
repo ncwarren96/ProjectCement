@@ -38,11 +38,11 @@ function init() {
 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
 	
 	//Adding clues
- 	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24);
+ 	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24, "wallet");
  	stage.addChild(clue1);
- 	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24);
+ 	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24, "photo");
  	stage.addChild(clue2);
- 	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24);
+ 	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	stage.addChild(clue3);
 
 

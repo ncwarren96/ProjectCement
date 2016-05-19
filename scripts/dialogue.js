@@ -25,6 +25,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				showDialogue(targetDialogue, 1);
 	        }
 		    
@@ -35,6 +36,7 @@ function showDialogue(targetDialogue, state){
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            showDialogue(targetDialogue, 2);
 	        }
 
@@ -48,6 +50,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            showDialogue(targetDialogue, 3);
 	        }
 
@@ -71,6 +74,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				//showDialogue(targetDialogue, 1);
 	        }
 		    
@@ -86,6 +90,7 @@ function showDialogue(targetDialogue, state){
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 2);
 	        }
 
@@ -101,6 +106,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 3);
 	        }
 		}else if(state == 2){
@@ -120,6 +126,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				//showDialogue(targetDialogue, 1);
 	        }
 		    
@@ -135,6 +142,7 @@ function showDialogue(targetDialogue, state){
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 2);
 	        }
 
@@ -150,6 +158,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            showDialogue(targetDialogue, 3);
 	        }
 		
@@ -170,6 +179,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				//showDialogue(targetDialogue, 1);
 	        }
 		    
@@ -185,6 +195,7 @@ function showDialogue(targetDialogue, state){
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 2);
 	        }
 
@@ -200,6 +211,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 3);
 	        }
 			
@@ -229,6 +241,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				showDialogue(targetDialogue, 1);
 	        }		
 		}else if(state == 1){
@@ -248,6 +261,7 @@ function showDialogue(targetDialogue, state){
 			left_rect.on("click", handleClick_left, null, true);
 			function handleClick_left(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 				//showDialogue(targetDialogue, 1);
 	        }
 		   
@@ -262,6 +276,7 @@ function showDialogue(targetDialogue, state){
 			mid_rect.on("click", handleClick_mid, null, true);
 			function handleClick_mid(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 2);
 	        }
 
@@ -277,6 +292,7 @@ function showDialogue(targetDialogue, state){
 			right_rect.on("click", handleClick_right, null, true);
 			function handleClick_right(evt) {
 				textContainer.removeAllChildren();
+				stage.removeChild(textContainer);
 	            //showDialogue(targetDialogue, 3);
 	        }
 		}
