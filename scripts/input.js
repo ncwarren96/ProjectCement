@@ -46,11 +46,11 @@ function handleMouseDown(e){
 	if(e.button == 2){//right click
 		var image_1 = new Image();
 		image_1.src = "./assets/blue_square.png";
-		bmp_1 = new createjs.Bitmap(image_1);
-		addToInventory(bmp_1);
-		bmp_1.on("click", blue_square, null, false);
+		var bit = new createjs.Bitmap(image_1);
+		addToInventory(bit);
+		bit.on("click", blue_square, null, false);
 		function blue_square(evt) {
-			removeFromInventory(bmp_1);
+			removeFromInventory(bit);
         }
 	}
 	if(e.button == 1){//middle mouse button
