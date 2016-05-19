@@ -211,6 +211,17 @@ function showDialogue(targetDialogue, state){
 
 		}	
 	}
+	
+	if(targetDialogue == "guy2"){
+		if(state == 0){
+			//text to draw
+			var text = createText("Who the hell are you?", 20, 25, "20px Arial", "#FFFFFF");
+			textContainer.addChild(text);
+			
+		}
+	}
+	
+	
 	if(textContainer.children.length > 0){
 		stage.addChild(textContainer);//adds textContainer to stage if it has children
 	}
