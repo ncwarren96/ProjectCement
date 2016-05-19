@@ -1,6 +1,8 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy1, guy2, inventory; //
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy1, guy2, inventory;
 var points = 0;
+var clues = [];
+var found_clues = [];
 var map_array = [];
 inventory = new createjs.Container();
 
@@ -29,28 +31,23 @@ function init() {
 	
 	container.addChild(bmp);
 	
-	//Adding Clue
-	/*
-	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
-	clue = new createjs.Shape(graphics);
-	clue.x = 0;
-	clue.y = 0;
- 	stage.addChild(clue);
-<<<<<<< HEAD
- 	clue.addEventListener("click", handleClick_clue);
- 	*/
-=======
- 	
->>>>>>> origin/master
-
- 	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
- 	stage.addChild(clue1);
- 	clue2 = new Clue(300, 200, 1, "./assets/photo.png", 24,24);
- 	stage.addChild(clue2);
- 	clue3 = new Clue(400, 200, 1, "./assets/drugs.png", 24,24);
- 	stage.addChild(clue3);
- 	
+	//Show point counter [NOT WORKING, FIX]
+	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
+	stage.addChild(point_text);
+	
+	//Adding player	
 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
+	stage.addChild(player);
+	
+	//Adding clues
+ 	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24);
+ 	stage.addChild(clue1);
+ 	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24);
+ 	stage.addChild(clue2);
+ 	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24);
+ 	stage.addChild(clue3);
+
+
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	stage.addChild(cop);
@@ -67,11 +64,8 @@ function init() {
 	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112, "petey");
 	stage.addChild(petey);
 	
- 	//Adding Player
- 	//player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
-	stage.addChild(player);
 	
-	//Create ticket (game loop)
+	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
 }
 
@@ -85,10 +79,16 @@ function game_loop(event) {
 function update(){
 	createInventory();
 	player.update();
-	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
-	stickToBackground(clue1, 1900, 500);
-	stickToBackground(clue2, 1800, 550);
-	stickToBackground(clue3, 1860, 450);
+	
+	//Stick Clues, unstick once found
+	for(var i = 0; i<clues.length; i++){
+		the_clue = clues[i];
+		if(!the_clue.discovered){
+			stickToBackground(the_clue, the_clue.back.x, the_clue.back.y);
+		}
+	}
+	
+	stickToBackground(cop, cop.back.x, cop.back.y);
 	stickToBackground(petey, 2000, 450);
 	stickToBackground(guy1, guy1.back.x, guy1.back.y);
 	stickToBackground(guy2, guy2.back.x, guy2.back.y);

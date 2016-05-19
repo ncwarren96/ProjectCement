@@ -142,29 +142,23 @@
 //Clue Object definition
 (function(){
 	function Clue(x, y, numframes, url, width, height){
-		
 		this.Sprite_constructor(this.spriteSheet);
-		
 		this.setup(x, y, numframes, url, width, height);
-		
+		clues.push(this);
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);
 	
 	p.setup = function(x, y, numframes, url, width, height){
 		this.x = x;
 		this.y = y;
-		
+		this.discovered = false;
 		this.clueInfo = null;
+		this.on("click", this.handleClick);
 		
-
-		this.addEventListener("click", this.handleClick);
-		
-
-		this.on("click", p.handleClick_clue);
-
 		this.back = getBackgroundPosition(x, y);
 		
 		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		
 	};
 	
 	p.makeSheet = function(url, numframes, width, height){
@@ -174,21 +168,17 @@
 		});
 	};
 
-	p.handleClick_clue = function(event){
-		if(getDistance(player.x, player.y, this.x, this.y) < 135){
-			console.log("clue picked up");
-			stage.removeChild(this);
-			points++;
-		}
-	};
-
 	p.showInfo = function(clue){
 		
 	};
 	
 	p.handleClick = function (event) {
-		console.log(this.back.x);
-		//this.y +=100;
+		console.log("clicked");
+		if(!this.discovered){
+			this.discovered = true;
+			points++;
+			addToInventory(this);
+		}
 	} ;
 	
 	window.Clue = createjs.promote(Clue, "Sprite");

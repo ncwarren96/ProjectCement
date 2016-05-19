@@ -12,9 +12,18 @@ function hideShowInventory(){
 	}
 	
 }
-
+function drawClues(array){
+	for(var i = 0; i<array.length; i++){
+		console.log("draw clue " + i);
+		array[i].y = 0;
+		array[i].x = i*50;
+	}
+}
 function addToInventory(item){
+	console.log("added");
 	inventory.addChild(item);
+	found_clues.push(item);
+	drawClues(found_clues);
 }
 
 function removeFromInventory(item){
