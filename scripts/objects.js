@@ -133,6 +133,7 @@
 		
 		this.back = getBackgroundPosition(x, y);
 		this.on("click", p.handleClick_NPC);
+		console.log(this.label);
 	}
 	var p = createjs.extend(NPC, createjs.Sprite);
 	
@@ -146,7 +147,6 @@
 	p.handleClick_NPC = function(event){
 		if(getDistance(this.x, this.y, player.x, player.y) < 100){
 			showDialogue(this.label, 0);
-			console.log(this.label+" clicked");
 		}
 	};
 	
@@ -157,9 +157,9 @@
 (function(){
 	function Clue(x, y, numframes, url, width, height){
 		
+		this.setup(x, y, numframes, url, width, height);
 		this.Sprite_constructor(this.spriteSheet);
 		
-		this.setup(x, y, numframes, url, width, height);
 		
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);

@@ -28,20 +28,6 @@ function init() {
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
-	
-	//Adding Clue
-	/*
-	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
-	clue = new createjs.Shape(graphics);
-	clue.x = 0;
-	clue.y = 0;
- 	stage.addChild(clue);
-<<<<<<< HEAD
- 	clue.addEventListener("click", handleClick_clue);
- 	*/
-=======
- 	
->>>>>>> origin/master
 
  	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
  	stage.addChild(clue1);
@@ -56,7 +42,7 @@ function init() {
 	stage.addChild(cop);
 	
 	//Adding guy1
-	guy1 = new NPC(-530, 130, 1, "./assets/guy1.png", 300,300, "guy1"); 
+	guy1 = new NPC(-530, 200, 1, "./assets/guy1.png", 170, 169, "guy1"); 
 	stage.addChild (guy1);
 	
 	//Adding guy2
