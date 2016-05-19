@@ -77,6 +77,7 @@ function checkOnStage(sprite, stW, stH, pW, pH){
 	}
 }
 
+
 //Run this in update() to attach new sprite/object to background
 function stickToBackground(sprite, x, y){
 	var pt = bmp.localToGlobal(x,y);

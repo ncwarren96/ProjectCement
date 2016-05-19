@@ -1,6 +1,6 @@
 var keys = new Array();
-var stage, circle, rect, bmp, bmp_1, cop, clue, petey, inventory;
-var points;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy1, guy2, inventory; //
+var points = 0;
 var map_array = [];
 inventory = new createjs.Container();
 
@@ -17,7 +17,6 @@ function init() {
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	stage.addChild(container);				// not sure waht addChild is ? 
-	container.addChild(bmp);
 	bmp.x = -800;
 	bmp.y = 0;
 	
@@ -28,6 +27,8 @@ function init() {
 	bmp_1.x = -800;
 	bmp_1.y = 0;
 	
+	container.addChild(bmp);
+	
 	//Adding Clue
 	/*
 	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
@@ -35,26 +36,39 @@ function init() {
 	clue.x = 0;
 	clue.y = 0;
  	stage.addChild(clue);
+<<<<<<< HEAD
  	clue.addEventListener("click", handleClick_clue);
  	*/
+=======
+ 	
+>>>>>>> origin/master
 
- 	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
+ 	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
  	stage.addChild(clue1);
- 	clue2 = new Clue(300, 200, 1, "./assets/clue2.png", 24,24);
+ 	clue2 = new Clue(300, 200, 1, "./assets/photo.png", 24,24);
  	stage.addChild(clue2);
- 	clue3 = new Clue(400, 200, 1, "./assets/clue3.png", 24,24);
+ 	clue3 = new Clue(400, 200, 1, "./assets/drugs.png", 24,24);
  	stage.addChild(clue3);
-	
+ 	
+	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
 	//Adding Cop (NPC object instance)
-	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135);
+	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	stage.addChild(cop);
 	
+	//Adding guy1
+	guy1 = new NPC(-530, 130, 1, "./assets/guy1.png", 300,300, "guy1"); 
+	stage.addChild (guy1);
+	
+	//Adding guy2
+	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149, "guy2");
+	stage.addChild(guy2);
+	
 	//Adding Petey (NPC object instance)
-	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112);
+	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112, "petey");
 	stage.addChild(petey);
 	
  	//Adding Player
- 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135);
+ 	//player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
 	stage.addChild(player);
 	
 	//Create ticket (game loop)
@@ -70,12 +84,14 @@ function game_loop(event) {
 
 function update(){
 	createInventory();
-	move(player);
+	player.update();
 	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
-	stickToBackground(clue1, 1300, 500);
-	stickToBackground(clue2, 1400, 500);
-	stickToBackground(clue3, 1500, 500);
+	stickToBackground(clue1, 1900, 500);
+	stickToBackground(clue2, 1800, 550);
+	stickToBackground(clue3, 1860, 450);
 	stickToBackground(petey, 2000, 450);
+	stickToBackground(guy1, guy1.back.x, guy1.back.y);
+	stickToBackground(guy2, guy2.back.x, guy2.back.y);
 	
 	//Display background mouse position in console
 	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);
@@ -104,11 +120,5 @@ function getBackgroundPosition(x, y){
 	return back;
 }
 
-function handleClick_cop(event) {
-	console.log("cop clicked.");
-	if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	  	showDialogue("cop_beach", 0);
-	}
-}
 
 			
