@@ -30,8 +30,6 @@ function init() {
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
-<<<<<<< HEAD
-	
 	//Show point counter [NOT WORKING, FIX]
 	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
 	stage.addChild(point_text);
@@ -42,10 +40,6 @@ function init() {
 	
 	//Adding clues
  	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24);
-=======
-
- 	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
->>>>>>> origin/master
  	stage.addChild(clue1);
  	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24);
  	stage.addChild(clue2);
