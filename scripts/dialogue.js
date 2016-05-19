@@ -218,6 +218,67 @@ function showDialogue(targetDialogue, state){
 			var text = createText("Who the hell are you?", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
+			//left rect box, text, and onclick function
+			var left_rect = new createjs.Shape();
+			left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
+			textContainer.addChild(left_rect);
+
+			var left_rect_text = createText("Ok, bye.", 20, 120, "16px Arial", "#FFFFFF");
+			textContainer.addChild(left_rect_text);
+			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
+			left_rect.on("click", handleClick_left, null, true);
+			function handleClick_left(evt) {
+				textContainer.removeAllChildren();
+				showDialogue(targetDialogue, 1);
+	        }		
+		}else if(state == 1){
+			//text to draw
+			var text = createText("Bye.", 20, 25, "20px Arial", "#FFFFFF");
+			textContainer.addChild(text);
+
+
+			//left rect box, text, and onclick function
+			var left_rect = new createjs.Shape();
+			left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
+			textContainer.addChild(left_rect);
+
+			var left_rect_text = createText("*Leave*", 20, 120, "16px Arial", "#FFFFFF");
+			textContainer.addChild(left_rect_text);
+			//left_rect.addEventListener("click", showDialogue(targetDialogue, 2));
+			left_rect.on("click", handleClick_left, null, true);
+			function handleClick_left(evt) {
+				textContainer.removeAllChildren();
+				//showDialogue(targetDialogue, 1);
+	        }
+		   
+		    //middle rect box, text, and onclick function
+			var mid_rect = new createjs.Shape();
+			mid_rect.graphics.beginFill("#FF0000").drawRect(190, 100, 120, 50);
+			textContainer.addChild(mid_rect);
+
+			var mid_rect_text = createText("*Leave*", 200, 120, "16px Arial", "#FFFFFF");
+			textContainer.addChild(mid_rect_text);
+
+			mid_rect.on("click", handleClick_mid, null, true);
+			function handleClick_mid(evt) {
+				textContainer.removeAllChildren();
+	            //showDialogue(targetDialogue, 2);
+	        }
+
+
+			//right rect box, text, and onclick function
+			var right_rect = new createjs.Shape();
+			right_rect.graphics.beginFill("#FF0000").drawRect(370, 100, 120, 50);
+			textContainer.addChild(right_rect);
+
+			var right_rect_text = createText("*Leave*", 390, 120, "16px Arial", "#FFFFFF");
+			textContainer.addChild(right_rect_text);
+
+			right_rect.on("click", handleClick_right, null, true);
+			function handleClick_right(evt) {
+				textContainer.removeAllChildren();
+	            //showDialogue(targetDialogue, 3);
+	        }
 		}
 	}
 	
