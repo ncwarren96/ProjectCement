@@ -37,11 +37,11 @@ function init() {
  	stage.addChild(clue);
  	
 
- 	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
+ 	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
  	stage.addChild(clue1);
- 	clue2 = new Clue(300, 200, 1, "./assets/clue2.png", 24,24);
+ 	clue2 = new Clue(300, 200, 1, "./assets/photo.png", 24,24);
  	stage.addChild(clue2);
- 	clue3 = new Clue(400, 200, 1, "./assets/clue3.png", 24,24);
+ 	clue3 = new Clue(400, 200, 1, "./assets/drugs.png", 24,24);
  	stage.addChild(clue3);
  	
 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
@@ -76,9 +76,9 @@ function update(){
 	createInventory();
 	move(player);
 	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
-	stickToBackground(clue1, 1300, 500);
-	stickToBackground(clue2, 1400, 500);
-	stickToBackground(clue3, 1500, 500);
+	stickToBackground(clue1, 1900, 500);
+	stickToBackground(clue2, 1800, 550);
+	stickToBackground(clue3, 1860, 450);
 	stickToBackground(petey, 2000, 450);
 	stickToBackground(guy2, guy2.back.x, guy2.back.y);
 	
