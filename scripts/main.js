@@ -49,7 +49,7 @@ function init() {
 	stage.addChild(cop);
 	
 	//Adding guy2
-	guy2 = new NPC(200, 200, 1, "./assets/guy2.png",80,149);
+	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149);
 	stage.addChild(guy2);
 	
 	//Adding Petey (NPC object instance)
