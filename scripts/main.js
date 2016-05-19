@@ -30,7 +30,6 @@ function init() {
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
-<<<<<<< HEAD
 	
 	//Show point counter [NOT WORKING, FIX]
 	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
@@ -38,14 +37,9 @@ function init() {
 	
 	//Adding player	
 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
-	stage.addChild(player);
 	
 	//Adding clues
  	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24);
-=======
-
- 	clue1 = new Clue(200, 200, 1, "./assets/wallet.png", 24,24);
->>>>>>> origin/master
  	stage.addChild(clue1);
  	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24);
  	stage.addChild(clue2);
@@ -69,6 +63,7 @@ function init() {
 	petey = new NPC(100, 235, 1, "./assets/petey.png", 170, 47, "petey");
 	stage.addChild(petey);
 	
+	stage.addChild(player);
 	
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
