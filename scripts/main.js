@@ -1,6 +1,6 @@
 var keys = new Array();
-var stage, circle, rect, bmp, bmp_1, cop, clue, petey, guy2, inventory; //
-var points;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy2, inventory; //
+var points = 0;
 var map_array = [];
 inventory = new createjs.Container();
 
@@ -34,7 +34,6 @@ function init() {
 	clue.x = 0;
 	clue.y = 0;
  	stage.addChild(clue);
- 	clue.addEventListener("click", handleClick_clue);
  	
 
  	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
@@ -43,21 +42,22 @@ function init() {
  	stage.addChild(clue2);
  	clue3 = new Clue(400, 200, 1, "./assets/clue3.png", 24,24);
  	stage.addChild(clue3);
-	
+ 	
+	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
 	//Adding Cop (NPC object instance)
-	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135);
+	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	stage.addChild(cop);
 	
 	//Adding guy2
-	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149);
+	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149, "guy2");
 	stage.addChild(guy2);
 	
 	//Adding Petey (NPC object instance)
-	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112);
+	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112, "petey");
 	stage.addChild(petey);
 	
  	//Adding Player
- 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135);
+ 	//player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
 	stage.addChild(player);
 	
 	//Create ticket (game loop)

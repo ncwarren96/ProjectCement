@@ -24,15 +24,17 @@
 
 //NPC Object definition
 (function(){
-	function NPC(x, y, numframes, url, width, height){
+	function NPC(x, y, numframes, url, width, height, label){
 		this.spriteSheet = this.makeSheet(url, numframes, width, height);
 		this.Sprite_constructor(this.spriteSheet);
+		
+		this.label = label;
 		
 		this.x = x;
 		this.y = y;
 		
 		this.back = getBackgroundPosition(x, y);
-		this.addEventListener("click", handleClick_cop);
+		this.on("click", p.handleClick_NPC);
 	}
 	var p = createjs.extend(NPC, createjs.Sprite);
 	
@@ -41,6 +43,13 @@
 			images: [url],
 			frames: {width: width, height: height, count: numframes}
 		});
+	};
+	
+	p.handleClick_NPC = function(event){
+		if(getDistance(this.x, this.y, player.x, player.y) < 100){
+			showDialogue(this.label, 0);
+			console.log(this.label+" clicked");
+		}
 	};
 	
 	window.NPC = createjs.promote(NPC, "Sprite");
@@ -57,7 +66,7 @@
 		
 		this.clueInfo = null;
 		
-		this.addEventListener("click", handleClick_clue);
+		this.on("click", p.handleClick_clue);
 		this.back = getBackgroundPosition(x, y);
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);
@@ -68,7 +77,15 @@
 			frames: {width: width, height: height, count: numframes}
 		});
 	};
-	
+
+	p.handleClick_clue = function(event){
+		if(getDistance(player.x, player.y, this.x, this.y) < 135){
+			console.log("clue picked up");
+			stage.removeChild(this);
+			points++;
+		}
+	};
+
 	p.showInfo = function(clue){
 		
 	};
@@ -76,21 +93,4 @@
 	
 	window.Clue = createjs.promote(Clue, "Sprite");
 }());
-
-		
-function handleClick_clue(event){
-	console.log("clicked on clue");
-	var dist = getDistance(player.x, player.y, clue.x, clue.y);
-	if(dist < 135){
-		console.log("yes");
-		stage.removeChild(clue1);
-		points ++;
-	}
-}	
-
-function handleClick_cop(event) {
-	console.log("cop clicked.");
-	if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	  	showDialogue("cop_beach", 0);
-	}
-}
+*/
