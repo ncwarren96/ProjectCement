@@ -30,7 +30,6 @@ function init() {
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
-	
 	//Show point counter [NOT WORKING, FIX]
 	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
 	stage.addChild(point_text);

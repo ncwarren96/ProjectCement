@@ -156,10 +156,17 @@
 //Clue Object definition
 (function(){
 	function Clue(x, y, numframes, url, width, height){
+<<<<<<< HEAD
 		this.setup(x, y, numframes, url, width, height);
 		this.Sprite_constructor(this.spriteSheet);
 		clues.push(this);
 		this.on("click", p.handleClick);		
+=======
+		this.Sprite_constructor(this.spriteSheet);
+		this.setup(x, y, numframes, url, width, height);
+		clues.push(this);
+		
+>>>>>>> origin/master
 	}
 	var p = createjs.extend(Clue, createjs.Sprite);
 	
