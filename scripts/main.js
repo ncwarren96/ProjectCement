@@ -1,5 +1,5 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy2, inventory; //
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy1, guy2, inventory; //
 var points = 0;
 var map_array = [];
 inventory = new createjs.Container();
@@ -49,6 +49,10 @@ function init() {
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	stage.addChild(cop);
 	
+	//Adding guy1
+	guy1 = new NPC(-530, 130, 1, "./assets/guy1.png", 300,300, "guy1"); 
+	stage.addChild (guy1);
+	
 	//Adding guy2
 	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149, "guy2");
 	stage.addChild(guy2);
@@ -80,6 +84,7 @@ function update(){
 	stickToBackground(clue2, 1800, 550);
 	stickToBackground(clue3, 1860, 450);
 	stickToBackground(petey, 2000, 450);
+	stickToBackground(guy1, guy1.back.x, guy1.back.y);
 	stickToBackground(guy2, guy2.back.x, guy2.back.y);
 	
 	//Display background mouse position in console
