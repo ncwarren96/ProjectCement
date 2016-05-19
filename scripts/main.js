@@ -107,22 +107,6 @@ function getBackgroundPosition(x, y){
 	};
 	return back;
 }
-		
-function handleClick_clue(event){
-	console.log("clicked on clue");
-	var dist = getDistance(player.x, player.y, clue.x, clue.y);
-	if(dist < 135){
-		console.log("yes");
-		stage.removeChild(clue1);
-		points ++;
-	}
-}	
 
-function handleClick_cop(event) {
-	console.log("cop clicked.");
-	if(getDistance(cop.x, cop.y, player.x, player.y) < 100){
-	  	showDialogue("cop_beach", 0);
-	}
-}
 
 			
