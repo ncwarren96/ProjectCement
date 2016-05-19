@@ -62,11 +62,11 @@ function init() {
 	stage.addChild (guy1);
 	
 	//Adding guy2
-	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",80,149, "guy2");
+	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",56,141, "guy2");
 	stage.addChild(guy2);
 	
 	//Adding Petey (NPC object instance)
-	petey = new NPC(100, 235, 1, "./assets/petey.png", 213, 112, "petey");
+	petey = new NPC(100, 235, 1, "./assets/petey.png", 170, 47, "petey");
 	stage.addChild(petey);
 	
 	
