@@ -83,14 +83,14 @@ function update(){
 	for(var i = 0; i<clues.length; i++){
 		the_clue = clues[i];
 		if(!the_clue.discovered){
-			stickToBackground(the_clue, the_clue.back.x, the_clue.back.y);
+			the_clue.stickClueToBack();
 		}
 	}
 	
-	stickToBackground(cop, cop.back.x, cop.back.y);
-	stickToBackground(petey, petey.back.x, petey.back.y);
-	stickToBackground(guy1, guy1.back.x, guy1.back.y);
-	stickToBackground(guy2, guy2.back.x, guy2.back.y);
+	cop.stickNPCtoBack();
+	petey.stickNPCtoBack();
+	guy1.stickNPCtoBack();
+	guy2.stickNPCtoBack();
 	
 	//Display background mouse position in console
 	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);

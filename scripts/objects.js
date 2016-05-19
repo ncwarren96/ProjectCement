@@ -1,24 +1,30 @@
 (function(){
+	//constructor for new Player class
 	function Player(x, y, numframes, url, width, height){
-		this.spriteSheet = makeSheet(url, numframes, width, height);
-		this.Sprite_constructor(this.spriteSheet);
+		this.spriteSheet = makeSheet(url, numframes, width, height);	//create new spritesheet
+		this.Sprite_constructor(this.spriteSheet);						//existing sprite constructor
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		
-		this.back = getBackgroundPosition(x, y);
-		
-		this.objInFront = new Array();
+		this.setup(x, y, width, height);								//load all properties in the constructor
 	}
-	var p = createjs.extend(Player, createjs.Sprite);
+	var p = createjs.extend(Player, createjs.Sprite);					//Declare that Player extends Sprite
 	
+	//function for loading properties of the player
+	p.setup = function(x, y, width, height){
+		this.x = x;									//x-position
+		this.y = y;									//y-position
+		this.width = width;							//width
+		this.height = height;						//height
+		this.back = getBackgroundPosition(x, y);	//position on the background
+		this.objInFront = new Array();				//array of objects in front of the player
+	};
+	
+	//update for player
 	p.update = function(){
 		p.movePlayer(this);
 		p.checkInFront(this);
 	};
 	
+	//move function for player
 	p.movePlayer = function(sprite){
 		var KEYCODE_W = 87;
 		var KEYCODE_A = 65;
@@ -104,6 +110,7 @@
 		bmp_1.x += tempBackX;
 	};
 	
+	//function to move sprites in front of player
 	p.checkInFront = function(sprite){
 		for(var i = 2; i < stage.numChildren; i++){
 			var playerIndex = stage.getChildIndex(sprite);
@@ -126,77 +133,102 @@
 		}
 	};
 	
+	//gives all changed Sprite functions the prefix "Sprite_"
 	window.Player = createjs.promote(Player, "Sprite");
 }());
 
 //NPC Object definition
 (function(){
+	//Constructor for NPC
 	function NPC(x, y, numframes, url, width, height, label){
-		this.spriteSheet = makeSheet(url, numframes, width, height);
-		this.Sprite_constructor(this.spriteSheet);
+		this.spriteSheet = makeSheet(url, numframes, width, height);	//Create Spritesheet for NPC
+		this.Sprite_constructor(this.spriteSheet);						//existing Sprite Constructor
 		
-		this.label = label;
-		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		
-		this.back = getBackgroundPosition(x, y);
-		this.on("click", p.handleClick_NPC);
+		this.setup(x, y, width, height, label);							//load all properties of NPC
 	}
-	var p = createjs.extend(NPC, createjs.Sprite);
+	var p = createjs.extend(NPC, createjs.Sprite);						//Declare that NPC extends Sprite
 	
+	//Function for loading properties of the player
+	p.setup = function(x, y, width, height, label){
+		this.x = x;									//x-position
+		this.y = y;									//y-position
+		this.width = width;							//width
+		this.height = height;						//height
+		this.label = label;							//label for this instance
+		
+		this.back = getBackgroundPosition(x, y);	//position on the background
+		this.on("click", p.handleClick_NPC);   		//event handler for clicking NPC's
+	};
+	
+	//function for handling clicks
 	p.handleClick_NPC = function(event){
 		if(getDistance(this.x, this.y, player.x, player.y) < 100){
-			showDialogue(this.label, 0);
+			showDialogue(this.label, 0);			//run the dialouge script
 		}
 	};
 	
-	window.NPC = createjs.promote(NPC, "Sprite");
+	//function for sticking an NPC to the background
+	p.stickNPCtoBack = function(){
+		var pt = bmp.localToGlobal(this.back.x, this.back.y);
+		this.x = pt.x;
+		this.y = pt.y;
+	};
+	
+	window.NPC = createjs.promote(NPC, "Sprite");	//gives all changed Sprite functions the prefix "Sprite_"
 }());
 
 //Clue Object definition
 (function(){
+	//Clue constructor
 	function Clue(x, y, numframes, url, width, height, label){
-		this.spriteSheet = makeSheet(url, numframes, width, height);
-		this.Sprite_constructor(this.spriteSheet);
+		this.spriteSheet = makeSheet(url, numframes, width, height);	//create new spriteSheet for the clue
+		this.Sprite_constructor(this.spriteSheet);						//Existing sprite Constructor
 		
-		this.setup(x, y, numframes, url, width, height, label);
-		clues.push(this);
-		this.on("click", p.handleClick);
+		this.setup(x, y, width, height, label);							//Load all Clue Properties
 	}
-	var p = createjs.extend(Clue, createjs.Sprite);
+	var p = createjs.extend(Clue, createjs.Sprite);						//Declare that Clue extends Sprite class
 	
-	p.setup = function(x, y, numframes, url, width, height, label){
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.label = label;
-		this.discovered = false;
-		this.clueInfo = null;
-		this.on("click", this.handleClick);
+	//function for loading all proterties
+	p.setup = function(x, y, width, height, label){
+		this.x = x;									//x-position
+		this.y = y;									//y-position
+		this.width = width;							//width
+		this.height = height;						//height
+		this.label = label;							//label
+		this.discovered = false;					//has the clue been discovered
+		this.clueInfo = null;						//the information of the clue
+		this.on("click", this.handleClick);			//event handler for clicking
+		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
-		this.back = getBackgroundPosition(x, y);
+		clues.push(this);							//push the clue onto the array of clues
 	};
-
+	
+	//fucntion for displaying the information on the clue
 	p.showInfo = function(clue){
 		
 	};
 	
+	//event handler for clue
 	p.handleClick = function (event) {
-		console.log("clicked");
-		if(!this.discovered){
-			this.discovered = true;
-			points++;
-			addToInventory(this);
+		//console.log("clicked");
+		if(!this.discovered){			//if the clue has not been discovered
+			this.discovered = true;		//change it to discovered
+			points++;					//add points
+			addToInventory(this);		//add the clue to the inventory
 		}
-	} ;
+	};
 	
-	window.Clue = createjs.promote(Clue, "Sprite");
+	//function for sticking clue to the background
+	p.stickClueToBack = function(){
+		var pt = bmp.localToGlobal(this.back.x, this.back.y);
+		this.x = pt.x;
+		this.y = pt.y;
+	};
+	
+	window.Clue = createjs.promote(Clue, "Sprite");	//Declare that all changed Sprite functions get the prefix "Sprite_"
 }());
 
+//helper functoin for creating spritesheets
 function makeSheet(url, numframes, width, height){
 	return new createjs.SpriteSheet({
 		images: [url],
