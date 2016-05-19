@@ -74,7 +74,7 @@ function game_loop(event) {
 
 function update(){
 	createInventory();
-	move(player);
+	player.update();
 	stickToBackground(cop, cop.back.x, cop.back.y);	// draw the sprites on the screen. 
 	stickToBackground(clue1, 1900, 500);
 	stickToBackground(clue2, 1800, 550);

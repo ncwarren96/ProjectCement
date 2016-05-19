@@ -12,7 +12,7 @@ function select(e) {
 	x = e.clientX;
 	y = e.clientY;
 	select = true; 
-		}
+}
 
 function deselect(e) {
 	select = false; 
