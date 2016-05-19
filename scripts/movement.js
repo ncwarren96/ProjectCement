@@ -50,7 +50,7 @@ function move(sprite){
 		tempSpriteY += moveAmount;
 	}
 	
-	console.log(bmp_1.hitTest(sprite.x, sprite.y));
+	//console.log(bmp_1.hitTest(sprite.x, sprite.y));
 	if(bmp_1.hitTest(sprite.x, sprite.y)){
 		tempSpriteX = 0;
 		tempBackX = 0;

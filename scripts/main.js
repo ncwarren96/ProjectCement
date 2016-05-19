@@ -29,13 +29,14 @@ function init() {
 	bmp_1.y = 0;
 	
 	//Adding Clue
+	/*
 	var graphics = new createjs.Graphics().beginFill("Red").drawRect(0, 0, 10, 10);
 	clue = new createjs.Shape(graphics);
 	clue.x = 0;
 	clue.y = 0;
  	stage.addChild(clue);
  	clue.addEventListener("click", handleClick_clue);
- 	
+ 	*/
 
  	clue1 = new Clue(200, 200, 1, "./assets/clue1.png", 24,24);
  	stage.addChild(clue1);
@@ -102,16 +103,6 @@ function getBackgroundPosition(x, y){
 	};
 	return back;
 }
-		
-function handleClick_clue(event){
-	console.log("clicked on clue");
-	var dist = getDistance(player.x, player.y, clue.x, clue.y);
-	if(dist < 135){
-		console.log("yes");
-		stage.removeChild(clue1);
-		points ++;
-	}
-}	
 
 function handleClick_cop(event) {
 	console.log("cop clicked.");

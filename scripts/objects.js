@@ -47,18 +47,26 @@
 //Clue Object definition
 (function(){
 	function Clue(x, y, numframes, url, width, height){
-		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+		
 		this.Sprite_constructor(this.spriteSheet);
 		
+		this.setup(x, y, numframes, url, width, height);
+		
+	}
+	var p = createjs.extend(Clue, createjs.Sprite);
+	
+	p.setup = function(x, y, numframes, url, width, height){
 		this.x = x;
 		this.y = y;
 		
 		this.clueInfo = null;
 		
-		this.addEventListener("click", handleClick_clue);
+		this.addEventListener("click", this.handleClick);
+		
 		this.back = getBackgroundPosition(x, y);
-	}
-	var p = createjs.extend(Clue, createjs.Sprite);
+		
+		this.spriteSheet = this.makeSheet(url, numframes, width, height);
+	};
 	
 	p.makeSheet = function(url, numframes, width, height){
 		return new createjs.SpriteSheet({
@@ -66,11 +74,14 @@
 			frames: {width: width, height: height, count: numframes}
 		});
 	};
-	
 	p.showInfo = function(clue){
 		
 	};
 	
+	p.handleClick = function (event) {
+		console.log(this.back.x);
+		//this.y +=100;
+	} ;
 	
 	window.Clue = createjs.promote(Clue, "Sprite");
 }());
