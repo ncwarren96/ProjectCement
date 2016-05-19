@@ -93,4 +93,3 @@
 	
 	window.Clue = createjs.promote(Clue, "Sprite");
 }());
-*/
