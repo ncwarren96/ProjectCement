@@ -7,10 +7,12 @@ var map_array = [];
 inventory = new createjs.Container();
 
 var beachMap = new map("beach");
-var emptyMap = new map("empty");
+var startMap = new map("start");
 map_array.push(beachMap);
-map_array.push(emptyMap);
-var currentMapName = "";
+map_array.push(startMap);
+var currentMapName = "beach";
+var startMapCounter = 0;
+var startMapText;
 
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
@@ -18,7 +20,7 @@ function init() {
 	image.src = "./assets/background.png";	  // image source 
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
-	stage.addChild(container);				// not sure waht addChild is ? 
+	beachMap.map_Objects.push(container);
 	bmp.x = -800;
 	bmp.y = 0;
 	
@@ -32,7 +34,7 @@ function init() {
 	container.addChild(bmp);
 	//Show point counter [NOT WORKING, FIX]
 	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
-	stage.addChild(point_text);
+	beachMap.map_Objects.push(point_text);
 	
 	//Adding player	
 	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
@@ -40,40 +42,73 @@ function init() {
 	//Adding clues
  	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24, "wallet");
  	clue1.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png", 400, 300);
- 	stage.addChild(clue1);
+ 	beachMap.map_Objects.push(clue1);
+
  	
  	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24, "photo");
  	clue2.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png", 400, 300);
- 	stage.addChild(clue2);
+ 	beachMap.map_Objects.push(clue2);
  	
  	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	clue3.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png", 400, 300);
- 	stage.addChild(clue3);
+ 	beachMap.map_Objects.push(clue3);
+
  	
 
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
-	stage.addChild(cop);
+	beachMap.map_Objects.push(cop);
+
 	
 	//Adding guy1
-	guy1 = new NPC(-530, 200, 1, "./assets/guy1.png", 170, 169, "guy1"); 
-	stage.addChild (guy1);
+	guy1 = new NPC(-530, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
+	beachMap.map_Objects.push(guy1);
 	
 	//Adding guy2
 	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",56,141, "guy2");
-	stage.addChild(guy2);
+	beachMap.map_Objects.push(guy2);
 	
 	//Adding Petey (NPC object instance)
 	petey = new NPC(1200, 450, 1, "./assets/petey.png", 170, 47, "petey");
-	stage.addChild(petey);
-	
-	stage.addChild(player);
+	beachMap.map_Objects.push(petey);
+
+	beachMap.map_Objects.push(player);
+
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
-		stage.addChild(clues[i].clueInfo);
+		beachMap.map_Objects.push(clues[i].clueInfo);
 	}
+
+	//START MAP
+	var bg_rect = new createjs.Shape();
+	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
+	stage.addChild(bg_rect);
+
+	bg_rect.on("click", handleClick_bg, null,false);
+	function handleClick_bg(evt) {
+		startMapCounter++;
+		if(startMapCounter == 1){
+			startMapText.text = "Out of request for the survivors,\n the names have been changed.\nOut of request for the dead, \nthe rest has been told exactly as it occurred.";
+		}else if(startMapCounter == 2){
+			startMapText.text = "It was old school...we are treating it as a homicide\n- NYPD Chief of Detectives, Robert Boyce";
+		}else if(startMapCounter == 3){
+			loadMap("start", "beach");
+		}
+
+    }
+
 	
+
+	startMapText = new createjs.Text("On May 3rd , 2016, a body washed ashore in Sheepshead Bay,\n Brooklyn. The body was disposed with the feet set in a bucket\n of cement,and body taped in bags", "20px Courier", "#FFFFFF");
+	startMapText.x = 400;
+	startMapText.y = 250;
+	startMapText.textAlign = "center";
+	startMapText.lineHeight = 50;
+	startMapText.textBaseline = "alphabetic";
+	stage.addChild(startMapText);
+	
+
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -86,21 +121,28 @@ function game_loop(event) {
 
 
 function update(){
-	createInventory();
-	player.update();
-	
-	//Stick Clues, unstick once found
-	for(var i = 0; i<clues.length; i++){
-		the_clue = clues[i];
-		if(!the_clue.discovered){
-			the_clue.stickClueToBack();
+	if(currentMapName == "beach"){
+		createInventory();
+		player.update();
+		
+		//Stick Clues, unstick once found
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
 		}
+		
+		cop.stickNPCtoBack();
+		petey.stickNPCtoBack();
+		guy1.stickNPCtoBack();
+		guy2.stickNPCtoBack();
+	}
+
+	if(currentMapName == "start"){
+
 	}
 	
-	cop.stickNPCtoBack();
-	petey.stickNPCtoBack();
-	guy1.stickNPCtoBack();
-	guy2.stickNPCtoBack();
 	
 	//Display background mouse position in console
 	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);
