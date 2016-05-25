@@ -197,11 +197,19 @@
 		
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
-		this.clueInfo = null;						//the information of the clue
 		this.on("click", this.handleClick);			//event handler for clicking
 		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
 		clues.push(this);							//push the clue onto the array of clues
+		
+		var info_sheet = makeSheet("./assets/clue_info_sprite.png", 1, 400, 300);
+		this.clueInfo = new createjs.Sprite(info_sheet, 1);
+		this.clueInfo.x = 100;
+		this.clueInfo.y = 100;
+		this.clueInfo.visible = false;
+		stage.addChild(this.clueInfo);
+		
+		
 	};
 	
 	//fucntion for displaying the information on the clue
@@ -212,10 +220,12 @@
 	//event handler for clue
 	p.handleClick = function (event) {
 		//console.log("clicked");
+		this.clueInfo.visible = !this.clueInfo.visible;    //show/hide clue info
 		if(!this.discovered){			//if the clue has not been discovered
 			this.discovered = true;		//change it to discovered
 			points++;					//add points
 			addToInventory(this);		//add the clue to the inventory
+			
 		}
 	};
 	

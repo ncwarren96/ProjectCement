@@ -44,7 +44,7 @@ function init() {
  	stage.addChild(clue2);
  	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	stage.addChild(clue3);
-
+	//stage.addChild(clue1.clueInfo);
 
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
