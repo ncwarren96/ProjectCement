@@ -194,7 +194,7 @@
 		this.y = y;									//y-position
 		this.width = width;							//width
 		this.height = height;						//height
-		
+		this.clueInfo = null;
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.on("click", this.handleClick);			//event handler for clicking
@@ -202,12 +202,8 @@
 		
 		clues.push(this);							//push the clue onto the array of clues
 		
-		var info_sheet = makeSheet("./assets/clue_info_sprite.png", 1, 400, 300);
-		this.clueInfo = new createjs.Sprite(info_sheet, 1);
-		this.clueInfo.x = 200;
-		this.clueInfo.y = 200;
-		this.clueInfo.visible = false;
 		
+
 		
 		
 	};
@@ -245,4 +241,12 @@ function makeSheet(url, numframes, width, height){
 		images: [url],
 		frames: {width: width, height: height, count: numframes}
 	});
+}
+function makeInfoSprite(url, width, height){
+	var sheet = makeSheet(url, 1, width, height);
+	var sprite = new createjs.Sprite(sheet, 1);
+	sprite.x = 200;
+	sprite.y = 200;
+	sprite.visible = false;
+	return sprite;
 }
