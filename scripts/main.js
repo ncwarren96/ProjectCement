@@ -89,9 +89,11 @@ function init() {
 	function handleClick_bg(evt) {
 		startMapCounter++;
 		if(startMapCounter == 1){
+			startMapText.y = 225;
 			startMapText.text = "Out of request for the survivors,\n the names have been changed.\nOut of request for the dead, \nthe rest has been told exactly as it occurred.";
 		}else if(startMapCounter == 2){
-			startMapText.text = "It was old school...we are treating it as a homicide\n- NYPD Chief of Detectives, Robert Boyce";
+			startMapText.y = 275;
+			startMapText.text = "\"It was old school...we are treating it as a homicide\"\n- NYPD Chief of Detectives, Robert Boyce";
 		}else if(startMapCounter == 3){
 			loadMap("start", "beach");
 		}
