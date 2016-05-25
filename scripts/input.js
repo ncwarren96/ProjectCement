@@ -44,14 +44,7 @@ function handleMouseDown(e){
 		var e = window.event;
 	}
 	if(e.button == 2){//right click
-		var image_1 = new Image();
-		image_1.src = "./assets/blue_square.png";
-		var bit = new createjs.Bitmap(image_1);
-		addToInventory(bit);
-		bit.on("click", blue_square, null, false);
-		function blue_square(evt) {
-			removeFromInventory(bit);
-        }
+		
 	}
 	if(e.button == 1){//middle mouse button
 		//loadMap("beach", "empty");
