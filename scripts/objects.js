@@ -204,10 +204,10 @@
 		
 		var info_sheet = makeSheet("./assets/clue_info_sprite.png", 1, 400, 300);
 		this.clueInfo = new createjs.Sprite(info_sheet, 1);
-		this.clueInfo.x = 100;
-		this.clueInfo.y = 100;
+		this.clueInfo.x = 200;
+		this.clueInfo.y = 200;
 		this.clueInfo.visible = false;
-		stage.addChild(this.clueInfo);
+		
 		
 		
 	};

@@ -64,6 +64,11 @@ function init() {
 	
 	stage.addChild(player);
 	
+	//add clueInfos
+	for(var i = 0; i<clues.length; i++){
+		stage.addChild(clues[i].clueInfo);
+	}
+	
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
 }
