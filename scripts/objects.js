@@ -16,6 +16,7 @@
 		this.height = height;						//height
 		this.back = getBackgroundPosition(x, y);	//position on the background
 		this.objInFront = new Array();				//array of objects in front of the player
+		this.immobile = false;
 	};
 	
 	//update for player
@@ -26,6 +27,9 @@
 	
 	//move function for player
 	p.movePlayer = function(sprite){
+		if(sprite.immobile){
+			return;
+		}
 		var KEYCODE_W = 87;
 		var KEYCODE_A = 65;
 		var KEYCODE_S = 83;
@@ -235,6 +239,11 @@
 	p.handleClick = function (event) {
 		//console.log("clicked");
 		this.clueInfo.visible = !this.clueInfo.visible;    //show/hide clue info
+		if(this.clueInfo.visible){
+			player.immobile = true;
+		}else{
+			player.immobile = false;
+		}
 		if(!this.discovered){			//if the clue has not been discovered
 			this.discovered = true;		//change it to discovered
 			points++;					//add points
