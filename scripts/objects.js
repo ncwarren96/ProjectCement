@@ -51,17 +51,13 @@
 			console.log("left collision");
 			if(currentMapName == "beach"){
 				loadMap("beach", "city", "./assets/Background1.png");
+				bmp.x = -1600;
+				player.x = 750;
 			}
-			bmp.x = -1600;
-			player.x = 759;
-			//bmp_1.x = 1600;
 
 
 		}else if(sprite.x == 760){
 			console.log("right collision");
-			bmp.x = 0;
-			player.x = 1;
-			//bmp_1.x = 0;
 		}
 
 		
