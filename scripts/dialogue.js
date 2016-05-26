@@ -57,8 +57,8 @@ function showDialogue(targetDialogue, state){
 	//target3: target state taken to from text3
 	//text1-3: player responses to displayed NPC text
 	function createDialougeBox(container, text0, target1, target2, target3, text1, text2, text3){
-		var text0 = createText(text, 20, 25, "20px Arial", "#FFFFFF");
-		textContainer.addChild(text);
+		var text0 = createText(text0, 20, 25, "20px Arial", "#FFFFFF");
+		textContainer.addChild(text0);
 		
 		var left_rect = new createjs.Shape();
 		left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
