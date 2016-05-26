@@ -4,6 +4,11 @@ function createInventory(){
 	stage.addChild(inventory);
 }
 
+function moveInventory(){
+	inventory.x = 10;
+	inventory.y = 10;
+}
+
 function hideShowInventory(){
 	if(inventory.alpha == 1.0){
 		inventory.alpha = 0;

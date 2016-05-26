@@ -8,14 +8,49 @@ inventory = new createjs.Container();
 
 var beachMap = new map("beach");
 var startMap = new map("start");
+var cityMap = new map("city");
 map_array.push(beachMap);
 map_array.push(startMap);
-var currentMapName = "beach";
+map_array.push(cityMap);
+var currentMapName = "start";
 var startMapCounter = 0;
 var startMapText;
 
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
+	createInventory();
+	//****************************************************************************START MAP****************************************************************************
+	var bg_rect = new createjs.Shape();
+	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
+	stage.addChild(bg_rect);
+
+	bg_rect.on("click", handleClick_bg, null,false);
+	function handleClick_bg(evt) {
+		startMapCounter++;
+		if(startMapCounter == 1){
+			startMapText.y = 225;
+			startMapText.text = "Out of request for the survivors,\n the names have been changed.\nOut of request for the dead, \nthe rest has been told exactly as it occurred.";
+		}else if(startMapCounter == 2){
+			startMapText.y = 275;
+			startMapText.text = "\"It was old school...we are treating it as a homicide\"\n- NYPD Chief of Detectives, Robert Boyce";
+		}else if(startMapCounter == 3){
+			loadMap("start", "beach", "./assets/background.png");
+		}
+
+    }
+
+	
+
+	startMapText = new createjs.Text("On May 3rd , 2016, a body washed ashore in Sheepshead Bay,\n Brooklyn. The body was disposed with the feet set in a bucket\n of cement,and body taped in bags", "20px Courier", "#FFFFFF");
+	startMapText.x = 400;
+	startMapText.y = 250;
+	startMapText.textAlign = "center";
+	startMapText.lineHeight = 50;
+	startMapText.textBaseline = "alphabetic";
+	stage.addChild(startMapText);
+
+	//****************************************************************************BEACH MAP****************************************************************************
+
 	var image = new Image();				 // image object for background 
 	image.src = "./assets/background.png";	  // image source 
 	bmp = new createjs.Bitmap(image);
@@ -27,7 +62,7 @@ function init() {
 	var image_1 = new Image();
 	image_1.src = "./assets/background - Copy.png";
 	bmp_1 = new createjs.Bitmap(image_1);
-	container.addChild(bmp_1);
+	//container.addChild(bmp_1);
 	bmp_1.x = -800;
 	bmp_1.y = 0;
 	
@@ -72,6 +107,7 @@ function init() {
 	petey = new NPC(1200, 450, 1, "./assets/petey.png", 170, 47, "petey");
 	beachMap.map_Objects.push(petey);
 
+	beachMap.map_Objects.push(inventory);
 	beachMap.map_Objects.push(player);
 
 	
@@ -80,36 +116,11 @@ function init() {
 		beachMap.map_Objects.push(clues[i].clueInfo);
 	}
 
-	//START MAP
-	var bg_rect = new createjs.Shape();
-	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
-	stage.addChild(bg_rect);
+	//****************************************************************************CITY MAP****************************************************************************
+	cityMap.map_Objects.push(container);
+	cityMap.map_Objects.push(inventory);
+	cityMap.map_Objects.push(player);
 
-	bg_rect.on("click", handleClick_bg, null,false);
-	function handleClick_bg(evt) {
-		startMapCounter++;
-		if(startMapCounter == 1){
-			startMapText.y = 225;
-			startMapText.text = "Out of request for the survivors,\n the names have been changed.\nOut of request for the dead, \nthe rest has been told exactly as it occurred.";
-		}else if(startMapCounter == 2){
-			startMapText.y = 275;
-			startMapText.text = "\"It was old school...we are treating it as a homicide\"\n- NYPD Chief of Detectives, Robert Boyce";
-		}else if(startMapCounter == 3){
-			loadMap("start", "beach");
-		}
-
-    }
-
-	
-
-	startMapText = new createjs.Text("On May 3rd , 2016, a body washed ashore in Sheepshead Bay,\n Brooklyn. The body was disposed with the feet set in a bucket\n of cement,and body taped in bags", "20px Courier", "#FFFFFF");
-	startMapText.x = 400;
-	startMapText.y = 250;
-	startMapText.textAlign = "center";
-	startMapText.lineHeight = 50;
-	startMapText.textBaseline = "alphabetic";
-	stage.addChild(startMapText);
-	
 
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
@@ -124,7 +135,7 @@ function game_loop(event) {
 
 function update(){
 	if(currentMapName == "beach"){
-		createInventory();
+		moveInventory();
 		player.update();
 		
 		//Stick Clues, unstick once found
@@ -141,8 +152,9 @@ function update(){
 		guy2.stickNPCtoBack();
 	}
 
-	if(currentMapName == "start"){
-
+	if(currentMapName == "city"){
+		moveInventory();
+		player.update();
 	}
 	
 	
