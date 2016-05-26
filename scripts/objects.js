@@ -242,8 +242,8 @@ function makeSheet(url, numframes, width, height){
 		frames: {width: width, height: height, count: numframes}
 	});
 }
-function makeInfoSprite(url, width, height){
-	var sheet = makeSheet(url, 1, width, height);
+function makeInfoSprite(url){
+	var sheet = makeSheet(url, 1, 400, 300);
 	var sprite = new createjs.Sprite(sheet, 1);
 	sprite.x = 200;
 	sprite.y = 200;
