@@ -18,33 +18,29 @@ function showDialogue(targetDialogue, state){
 			textContainer.addChild(text);
 			
 			//create text boxes
-			var rects =	createDialougeBox(textContainer, 1, 2, 3);
-			createStateTexts(textContainer, "Ok, bye.", "Need help?", "I do what\nI want.");
+			var rects =	createDialougeBox(textContainer, 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
 			
 		}else if(state == 1){
 			//text to draw
 			var text = createText("Bye.", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null);
-			createStateTexts(textContainer, "*Leave*", "*Leave*", "*Leave*");
+			var rects =	createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");
 			
 		}else if(state == 2){
 			//text to draw
 			var text = createText("I already said we don't need help. Just go home.", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null);
-			createStateTexts(textContainer, "Okm bye.", "I'll help\n anyways.", "I do what\nI want.");
-			
+			var rects =	createDialougeBox(textContainer, null, null, null, "Ok, bye.", "I'll help\n anyways.", "I do what\nI want.");
+						
 		}else if(state == 3){
 			//text to draw
 			var text = createText("Just don't mess anything up and mind your own\nbusiness.", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null);
-			createStateTexts(textContainer, "*Leave*", "*Leave*", "*Leave*");
-			
+			var rects =	createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");		
+				
 		}
 	}
 	
@@ -54,17 +50,15 @@ function showDialogue(targetDialogue, state){
 			var text = createText("Who the hell are you?", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, 1, 1, 1);
-			createStateTexts(textContainer, "Ok, bye.", "Ok, bye.", "Ok, bye.");
-					
+			var rects =	createDialougeBox(textContainer, 1, 1, 1, "Ok, bye.", "Ok, bye.", "Ok, bye.");		
+						
 		}else if(state == 1){
 			//text to draw
 			var text = createText("Bye.", 20, 25, "20px Arial", "#FFFFFF");
 			textContainer.addChild(text);
 			
-			var rects = createDialougeBox(textContainer, null, null, null);
-			createStateTexts(textContainer, "*Leave*", "*Leave*", "*Leave*");
-			
+			var rects = createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");
+						
 		}
 	}
 	
@@ -91,18 +85,24 @@ function showDialogue(targetDialogue, state){
 	    showDialogue(targetDialogue, rects.right_rect.target);
 	}
 	
-	function createDialougeBox(container, target1, target2, target3){
+	function createDialougeBox(container, target1, target2, target3, text1, text2, text3){
 		var left_rect = new createjs.Shape();
 		left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
 		container.addChild(left_rect);
+		var left_rect_text = createText(text1, 20, 120, "16px Arial", "#FFFFFF");
+		container.addChild(left_rect_text);
 		
 		var mid_rect = new createjs.Shape();
 		mid_rect.graphics.beginFill("#FF0000").drawRect(190, 100, 120, 50);
 		container.addChild(mid_rect);
+	    var mid_rect_text = createText(text2, 200, 120, "16px Arial", "#FFFFFF");
+		container.addChild(mid_rect_text);
 		
 		var right_rect = new createjs.Shape();
 		right_rect.graphics.beginFill("#FF0000").drawRect(370, 100, 120, 50);
 		container.addChild(right_rect);
+	    var right_rect_text = createText(text3, 390, 120, "16px Arial", "#FFFFFF");
+		container.addChild(right_rect_text);
 		
 		var rects = {
 			left_rect: {rect: left_rect, target: target1},
@@ -113,17 +113,6 @@ function showDialogue(targetDialogue, state){
 		rects.mid_rect.rect.on("click", handleClick_mid, null, true);
 		rects.right_rect.rect.on("click", handleClick_right, null, true);
 		return rects;
-	}
-	
-	function createStateTexts(container, text1, text2, text3){
-		var left_rect_text = createText(text1, 20, 120, "16px Arial", "#FFFFFF");
-		textContainer.addChild(left_rect_text);
-		
-	    var mid_rect_text = createText(text2, 200, 120, "16px Arial", "#FFFFFF");
-		textContainer.addChild(mid_rect_text);
-		
-	    var right_rect_text = createText(text3, 390, 120, "16px Arial", "#FFFFFF");
-		textContainer.addChild(right_rect_text);
 	}
 	
 	return;
