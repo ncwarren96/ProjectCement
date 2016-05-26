@@ -16,6 +16,7 @@
 		this.height = height;						//height
 		this.back = getBackgroundPosition(x, y);	//position on the background
 		this.objInFront = new Array();				//array of objects in front of the player
+		this.immobile = false;
 	};
 	
 	//update for player
@@ -26,6 +27,9 @@
 	
 	//move function for player
 	p.movePlayer = function(sprite){
+		if(sprite.immobile){
+			return;
+		}
 		var KEYCODE_W = 87;
 		var KEYCODE_A = 65;
 		var KEYCODE_S = 83;
@@ -47,17 +51,15 @@
 			console.log("left collision");
 			if(currentMapName == "beach"){
 				loadMap("beach", "city", "./assets/Background1.png");
+				bmp.x = -1600;
+				player.x = 750;
+				bmp_1.x = -1600;
 			}
-			bmp.x = -1600;
-			player.x = 759;
-			//bmp_1.x = 1600;
-
-
+			return;
+		
 		}else if(sprite.x == 760){
 			console.log("right collision");
-			bmp.x = 0;
-			player.x = 1;
-			//bmp_1.x = 0;
+			
 		}
 
 		
@@ -70,12 +72,14 @@
 			if(pt.x > 200 || bmp.x >= 0){
 				tempSpriteX -= moveAmount;
 				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempSpriteX = 0;
 				}
 			}else{
 				sprite.x = 200;
 				tempBackX += moveAmount;
 				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempBackX = 0;
 				}
 			}
@@ -88,6 +92,7 @@
 			if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
 				tempSpriteX += moveAmount;
 				if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempSpriteX = 0;
 				}else if(backPoint.y+135 === gHeight){
 					if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+134+tempSpriteY)){
@@ -98,6 +103,7 @@
 				sprite.x = gWidth-200-sWidth;
 				tempBackX -= moveAmount;
 				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempBackX = 0;
 				}else if(backPoint.y+135 >= gHeight){
 					if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+134+tempSpriteY)){
@@ -235,6 +241,11 @@
 	p.handleClick = function (event) {
 		//console.log("clicked");
 		this.clueInfo.visible = !this.clueInfo.visible;    //show/hide clue info
+		if(this.clueInfo.visible){
+			player.immobile = true;
+		}else{
+			player.immobile = false;
+		}
 		if(!this.discovered){			//if the clue has not been discovered
 			this.discovered = true;		//change it to discovered
 			points++;					//add points

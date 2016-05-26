@@ -1,6 +1,8 @@
 
 function showDialogue(targetDialogue, state){
+	player.immobile = true;
 	if(state == null){
+		player.immobile = false;
 		return;
 	}
 	
@@ -13,52 +15,33 @@ function showDialogue(targetDialogue, state){
 	textContainer.addChild(bg_rect);
 	if(targetDialogue == "cop_beach"){
 		if(state == 0){
-			//text to draw
-			var text = createText("A private investigator huh? We have everything\n under control here, you can go home.", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			//create text boxes
-			var rects =	createDialougeBox(textContainer, 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
+			createDialougeBox(textContainer, "A private investigator huh? We have everything\n under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
 			
 		}else if(state == 1){
-			//text to draw
-			var text = createText("Bye.", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");
+			createDialougeBox(textContainer, "Bye.", null, null, null, "*Leave*", "*Leave*", "*Leave*");
 			
 		}else if(state == 2){
-			//text to draw
-			var text = createText("I already said we don't need help. Just go home.", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null, "Ok, bye.", "I'll help\n anyways.", "I do what\nI want.");
+			createDialougeBox(textContainer, "I already said we don't need help. Just go home.", null, null, null, "Ok, bye.", "I'll help\n anyways.", "I do what\nI want.");
 						
 		}else if(state == 3){
-			//text to draw
-			var text = createText("Just don't mess anything up and mind your own\nbusiness.", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");		
-				
+			createDialougeBox(textContainer, "Just don't mess anything up and mind your own\nbusiness.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
+			
 		}
 	}
 	
 	if(targetDialogue == "guy2"){
 		if(state == 0){
-			//text to draw
-			var text = createText("Who the hell are you?", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			var rects =	createDialougeBox(textContainer, 1, 1, 1, "Ok, bye.", "Ok, bye.", "Ok, bye.");		
+			createDialougeBox(textContainer, "Who the hell are you?", 1, 1, 1, "Ok, bye.", "Ok, bye.", "Ok, bye.");		
 						
 		}else if(state == 1){
-			//text to draw
-			var text = createText("Bye.", 20, 25, "20px Arial", "#FFFFFF");
-			textContainer.addChild(text);
 			
-			var rects = createDialougeBox(textContainer, null, null, null, "*Leave*", "*Leave*", "*Leave*");
-						
+			createDialougeBox(textContainer, "Bye.", null, null, null, "*Leave*", "*Leave*", "*Leave*");
+			
 		}
 	}
 	
@@ -67,25 +50,16 @@ function showDialogue(targetDialogue, state){
 		stage.addChild(textContainer);//adds textContainer to stage if it has children
 	}
 	
-	function handleClick_left(evt) {
-		textContainer.removeAllChildren();
-		stage.removeChild(textContainer);
-		showDialogue(targetDialogue, rects.left_rect.target);
-	}
-	      
-	function handleClick_mid(evt) {
-		textContainer.removeAllChildren();
-		stage.removeChild(textContainer);
-	    showDialogue(targetDialogue, rects.mid_rect.target);
-	}
-	        
-	function handleClick_right(evt) {
-		textContainer.removeAllChildren();
-		stage.removeChild(textContainer);
-	    showDialogue(targetDialogue, rects.right_rect.target);
-	}
-	
-	function createDialougeBox(container, target1, target2, target3, text1, text2, text3){
+	//container: container to add to
+	//text0: NPC text to display
+	//target1: target state taken to from text1
+	//target2: target state taken to from text2
+	//target3: target state taken to from text3
+	//text1-3: player responses to displayed NPC text
+	function createDialougeBox(container, text0, target1, target2, target3, text1, text2, text3){
+		var text0 = createText(text, 20, 25, "20px Arial", "#FFFFFF");
+		textContainer.addChild(text);
+		
 		var left_rect = new createjs.Shape();
 		left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
 		container.addChild(left_rect);
@@ -112,7 +86,24 @@ function showDialogue(targetDialogue, state){
 		rects.left_rect.rect.on("click", handleClick_left, null, true);
 		rects.mid_rect.rect.on("click", handleClick_mid, null, true);
 		rects.right_rect.rect.on("click", handleClick_right, null, true);
-		return rects;
+		
+		function handleClick_left(evt) {
+			textContainer.removeAllChildren();
+			stage.removeChild(textContainer);
+			showDialogue(targetDialogue, rects.left_rect.target);
+		}
+		      
+		function handleClick_mid(evt) {
+			textContainer.removeAllChildren();
+			stage.removeChild(textContainer);
+		    showDialogue(targetDialogue, rects.mid_rect.target);
+		}
+		        
+		function handleClick_right(evt) {
+			textContainer.removeAllChildren();
+			stage.removeChild(textContainer);
+		    showDialogue(targetDialogue, rects.right_rect.target);
+		}
 	}
 	
 	return;
