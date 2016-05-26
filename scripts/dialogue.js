@@ -8,7 +8,6 @@ function showDialogue(targetDialogue, state){
 	var textContainer = new createjs.Container();
 	textContainer.x = 200;
 	textContainer.y = 0;
-	//console.log("showDialogue");
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 500, 150);
 	textContainer.addChild(bg_rect);
@@ -46,13 +45,7 @@ function showDialogue(targetDialogue, state){
 			var rects =	createDialougeBox(textContainer, null, null, null);
 			createStateTexts(textContainer, "*Leave*", "*Leave*", "*Leave*");
 			
-		}else if(state == 4){
-
-		}else if (state == 5){
-
-		}else if (state == 6){
-
-		}	
+		}
 	}
 	
 	if(targetDialogue == "guy2"){
