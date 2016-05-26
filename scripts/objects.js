@@ -53,11 +53,13 @@
 				loadMap("beach", "city", "./assets/Background1.png");
 				bmp.x = -1600;
 				player.x = 750;
+				bmp_1.x = -1600;
 			}
-
-
+			return;
+		
 		}else if(sprite.x == 760){
 			console.log("right collision");
+			
 		}
 
 		
@@ -70,12 +72,14 @@
 			if(pt.x > 200 || bmp.x >= 0){
 				tempSpriteX -= moveAmount;
 				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempSpriteX = 0;
 				}
 			}else{
 				sprite.x = 200;
 				tempBackX += moveAmount;
 				if(bmp_1.hitTest(backPoint.x+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempBackX = 0;
 				}
 			}
@@ -88,6 +92,7 @@
 			if(pt.x < gWidth-200-sWidth || bmp.x+1600 <= 0){
 				tempSpriteX += moveAmount;
 				if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempSpriteX = 0;
 				}else if(backPoint.y+135 === gHeight){
 					if(bmp_1.hitTest(backPoint.x+sprite.width+tempSpriteX, backPoint.y+134+tempSpriteY)){
@@ -98,6 +103,7 @@
 				sprite.x = gWidth-200-sWidth;
 				tempBackX -= moveAmount;
 				if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+					console.log("bmp_1 hit test is true");
 					tempBackX = 0;
 				}else if(backPoint.y+135 >= gHeight){
 					if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+134+tempSpriteY)){
