@@ -75,6 +75,7 @@ function init() {
 	player = new Player(400, 335, 2, "./assets/Character.png", 40, 135, "player");
 	
 	//Adding clues
+
  	clue1 = new Clue(700, 500, 1, "./assets/wallet.png", 24,24, "wallet");
  	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
  	beachMap.map_Objects.push(clue1);
