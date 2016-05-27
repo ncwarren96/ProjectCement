@@ -45,6 +45,16 @@ function showDialogue(targetDialogue, state){
 		}
 	}
 	// guy 1 Dialogue
+	if(targetDialogue == "petey"){
+		if(state == 0){
+			createDialougeBox(textContainer, "Dead", 2, 1, 1, "inspect body", "Leave", "Leave");	
+		}else if(state == 1){
+			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(state == 2){
+			createDialougeBox(textContainer, "The subjects fingers have been removed", null, null, null, "Leave", "Leave", "Leave");
+		}
+	}
+	// guy 1 Dialogue
 	if(targetDialogue == "guy1"){
 		if(state == 0){
 			createDialougeBox(textContainer, "hey whats going on here? You work with the police ?", 2, 1, 1, "respond", "ignore", "Ok, bye.");	
