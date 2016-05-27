@@ -44,7 +44,22 @@ function showDialogue(targetDialogue, state){
 			
 		}
 	}
-	
+	// guy 1 Dialogue
+	if(targetDialogue == "guy1"){
+		if(state == 0){
+			createDialougeBox(textContainer, "hey whats going on here? You work with the police ?", 2, 1, 1, "respond", "ignore", "Ok, bye.");	
+		}else if(state == 1){
+			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(state == 2){
+			createDialougeBox(textContainer, "No, im not with the police, im a private investigator", 3, 1, 1, "ask question", "ignore", "Leave");
+		}else if(state == 3 ){
+			createDialougeBox(textContainer, "Do you know who petey gonzales is ? ", 4, 1, 1, "listen", "Leave", "Leave"); 
+		}else if(state == 4 ){
+			createDialougeBox(textContainer, "Know idea who that is?  ", 5, 5, 5, "Leave", "Leave", "Leave");				
+		}else if(state == 5 ){
+			createDialougeBox(textContainer, "Thank you for your time", null, null, null, "Leave", "Leave", "Leave");
+		}
+	}
 	
 	if(textContainer.children.length > 0){
 		stage.addChild(textContainer);//adds textContainer to stage if it has children
