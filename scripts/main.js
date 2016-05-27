@@ -72,19 +72,19 @@ function init() {
 	beachMap.map_Objects.push(point_text);
 	
 	//Adding player	
-	player = new Player(400, 235, 2, "./assets/Character.png", 40, 135, "player");
+	player = new Player(400, 335, 2, "./assets/Character.png", 40, 135, "player");
 	
 	//Adding clues
- 	clue1 = new Clue(500, 500, 1, "./assets/wallet.png", 24,24, "wallet");
- 	clue1.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png");
+ 	clue1 = new Clue(700, 500, 1, "./assets/wallet.png", 24,24, "wallet");
+ 	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
  	beachMap.map_Objects.push(clue1);
  	
- 	clue2 = new Clue(700, 500, 1, "./assets/photo.png", 24,24, "photo");
- 	clue2.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png");
+ 	clue2 = new Clue(800, 500, 1, "./assets/photo.png", 24,24, "photo");
+ 	clue2.clueInfo = makeInfoSprite("./assets/ID.png");
  	beachMap.map_Objects.push(clue2);
  	
- 	clue3 = new Clue(600, 500, 1, "./assets/drugs.png", 24,24, "drugs");
- 	clue3.clueInfo = makeInfoSprite("./assets/clue_info_sprite.png");
+ 	clue3 = new Clue(900, 500, 1, "./assets/drugs.png", 24,24, "drugs");
+ 	clue3.clueInfo = makeInfoSprite("./assets/Drugs&Medicine.png");
  	beachMap.map_Objects.push(clue3);
 
  	
