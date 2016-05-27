@@ -85,7 +85,7 @@ function init() {
  	beachMap.map_Objects.push(clue2);
  	
  	clue3 = new Clue(900, 500, 1, "./assets/drugs.png", 24,24, "drugs");
- 	clue3.clueInfo = makeInfoSprite("./assets/Drugs&Medicine.png");
+ 	clue3.clueInfo = makeInfoSprite("./assets/Drugs_image.png");
  	beachMap.map_Objects.push(clue3);
 
  	
