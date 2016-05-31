@@ -29,10 +29,17 @@ function init() {
 		startMapCounter++;
 		if(startMapCounter == 1){
 			startMapText.y = 225;
-			startMapText.text = "Out of request for the survivors,\n the names have been changed.\nOut of request for the dead, \nthe rest has been told exactly as it occurred.";
+			startMapText.text = "Out of request for the survivors,\n"+ 
+								"the names have been changed.\n \n"+
+								"Out of request for the dead,\n"+
+								"the rest has been told exactly\n"+
+								"as it occurred.";
 		}else if(startMapCounter == 2){
 			startMapText.y = 275;
-			startMapText.text = "\"It was old school...we are treating it as a homicide\"\n- NYPD Chief of Detectives, Robert Boyce";
+			startMapText.text = "\"It was old school...\n"+
+								" we are treating it as a homicide\"\n \n"+
+								"            - NYPD Chief of Detectives,\n"+
+								"              Robert Boyce";
 		}else if(startMapCounter == 3){
 			loadMap("start", "beach", "./assets/background.png");
 		}
@@ -41,11 +48,15 @@ function init() {
 
 	
 
-	startMapText = new createjs.Text("On May 3rd , 2016, a body washed ashore in Sheepshead Bay,\n Brooklyn. The body was disposed with the feet set in a bucket\n of cement,and body taped in bags", "20px Courier", "#FFFFFF");
-	startMapText.x = 400;
+	startMapText = new createjs.Text("On May 3rd, 2016, a body washed ashore\n"+
+							 		"in Sheepshead Bay, Brooklyn.\n \n"+
+							 		"The body was disposed with the feet set in\n"+ 
+							 		"a bucket of cement, and body taped in bags", 
+							 		"20px Courier", "#FFFFFF");
+	startMapText.x = 150;
 	startMapText.y = 250;
-	startMapText.textAlign = "center";
-	startMapText.lineHeight = 50;
+	startMapText.textAlign = "left";
+	startMapText.lineHeight = 25;
 	startMapText.textBaseline = "alphabetic";
 	stage.addChild(startMapText);
 
@@ -67,21 +78,25 @@ function init() {
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
-	//Show point counter [NOT WORKING, FIX]
-	var point_text = createText("Points: "+ points, 0, 700, "16px Arial", "#ff0000");
+	
+	//Show point counter
+	var point_text = new createjs.Text("Points: "+ points, "16px Arial", "#FF0000");
+	point_text.x = 720;
+	point_text.y = 10;
 	beachMap.map_Objects.push(point_text);
+	
 	
 	//Adding player	
 	player = new Player(400, 335, 2, "./assets/Character.png", 40, 135, "player");
 	
 	//Adding clues
-
  	clue1 = new Clue(700, 500, 1, "./assets/wallet.png", 24,24, "wallet");
  	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
  	beachMap.map_Objects.push(clue1);
+ 	beachMap.map_Objects.push(clue1.exit);
  	
  	clue2 = new Clue(800, 500, 1, "./assets/photo.png", 24,24, "photo");
- 	clue2.clueInfo = makeInfoSprite("./assets/ID.png");
+ 	clue2.clueInfo = makeInfoSprite("./assets/ID_sprite.png");
  	beachMap.map_Objects.push(clue2);
  	
  	clue3 = new Clue(900, 500, 1, "./assets/drugs.png", 24,24, "drugs");
@@ -114,6 +129,8 @@ function init() {
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
+		/**This should work but it doesnt help**/
+		//clues[i].clueInfo.on("click", function() {clues[i].clueInfo.visible = false;} );
 	}
 
 	//****************************************************************************CITY MAP****************************************************************************

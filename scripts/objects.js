@@ -17,6 +17,7 @@
 		this.back = getBackgroundPosition(x, y);	//position on the background
 		this.objInFront = new Array();				//array of objects in front of the player
 		this.immobile = false;
+		this.IPoints = 0;
 	};
 	
 	//update for player
@@ -219,15 +220,13 @@
 		this.width = width;							//width
 		this.height = height;						//height
 		this.clueInfo = null;
+
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.on("click", this.handleClick);			//event handler for clicking
 		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
 		clues.push(this);							//push the clue onto the array of clues
-		
-		
-
 		
 		
 	};
@@ -247,8 +246,9 @@
 			player.immobile = false;
 		}
 		if(!this.discovered){			//if the clue has not been discovered
-			this.discovered = true;		//change it to discovered
-			points++;					//add points
+			this.discovered = true; 	//change it to discovered
+			points+=1;
+			console.log(points);
 			addToInventory(this);		//add the clue to the inventory
 			
 		}
