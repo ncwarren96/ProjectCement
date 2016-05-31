@@ -1,5 +1,5 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, petey, guy1, guy2, inventory;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, inventory;
 var points = 0;
 var secretPoints = 0;
 var clues = [];
@@ -20,7 +20,8 @@ var startMapText;
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
 	createInventory();
-	//****************************************************************************START MAP****************************************************************************
+	
+	/************************************START MAP*******************************/
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
 	stage.addChild(bg_rect);
@@ -61,7 +62,7 @@ function init() {
 	startMapText.textBaseline = "alphabetic";
 	stage.addChild(startMapText);
 
-	//****************************************************************************BEACH MAP****************************************************************************
+	/**********************************BEACH MAP*******************************/
 
 	var image = new Image();				 // image object for background 
 	image.src = "./assets/background.png";	  // image source 
@@ -127,7 +128,11 @@ function init() {
 	//Adding Cop (NPC object instance)
 	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	beachMap.map_Objects.push(cop);
-
+	
+	/**how do I do it**/
+	//Robert Boyce
+	boyce = new NPC(1000, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
+	beachMap.map_Objects.push(boyce);
 	
 	//Adding guy1
 	guy1 = new NPC(-530, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
@@ -152,7 +157,7 @@ function init() {
 		//clues[i].clueInfo.on("click", function() {clues[i].clueInfo.visible = false;} );
 	}
 
-	//****************************************************************************CITY MAP****************************************************************************
+	/**************************************CITY MAP*********************************/
 	cityMap.map_Objects.push(container);
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
@@ -183,6 +188,7 @@ function update(){
 		}
 		
 		cop.stickNPCtoBack();
+		boyce.stickNPCtoBack();
 		petey.stickNPCtoBack();
 		guy1.stickNPCtoBack();
 		guy2.stickNPCtoBack();
