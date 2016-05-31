@@ -42,7 +42,7 @@ function init() {
 			startMapText.text = "\"It was old school...\n"+
 								" we are treating it as a homicide\"\n \n"+
 								"            - NYPD Chief of Detectives,\n"+
-								"              Robert Boyce";
+								"              Rodger Boyd";
 		}else if(startMapCounter == 3){
 			loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
 		}

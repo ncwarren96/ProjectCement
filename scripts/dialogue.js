@@ -16,7 +16,7 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "cop_beach"){
 		if(state == 0){
 			
-			createDialougeBox(textContainer, "A private investigator huh? We have everything\n under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
+			createDialougeBox(textContainer, "A private investigator huh? We have everything under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
 			
 		}else if(state == 1){
 			
@@ -24,11 +24,11 @@ function showDialogue(targetDialogue, state){
 			
 		}else if(state == 2){
 			
-			createDialougeBox(textContainer, "I already said we don't need help. Just go home.", null, null, null, "Ok, bye.", "I'll help\n anyways.", "I do what\nI want.");
+			createDialougeBox(textContainer, "I already said we don't need help. Just go home.", null, null, null, "Ok, bye.", "I'll help anyways.", "I do what I want.");
 						
 		}else if(state == 3){
 			
-			createDialougeBox(textContainer, "Just don't mess anything up and mind your own\nbusiness.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
+			createDialougeBox(textContainer, "Just don't mess anything up and mind your own business.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
 			
 		}
 	}
@@ -47,7 +47,7 @@ function showDialogue(targetDialogue, state){
 	// guy 1 Dialogue
 	if(targetDialogue == "petey"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Dead", 2, null, null, "inspect body", "Leave", "Leave");	
+			createDialougeBox(textContainer, "Dead", 2, null, null, "inspect body", "Leave", "Leave");
 		}else if(state == 1){
 		}else if(state == 2){
 			createDialougeBox(textContainer, "The subjects fingers have been removed", null, null, null, "Leave", "Leave", "Leave");
@@ -56,7 +56,7 @@ function showDialogue(targetDialogue, state){
 	// guy 1 Dialogue
 	if(targetDialogue == "guy1"){
 		if(state == 0){
-			createDialougeBox(textContainer, "hey whats going on here? You work with the police ?", 2, 1, 1, "respond", "ignore", "Ok, bye.");	
+			createDialougeBox(textContainer, "Hey whats going on here? You work with the police?", 2, 1, 1, "respond", "ignore", "Ok, bye.");	
 		}else if(state == 1){
 			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 2){
@@ -91,23 +91,23 @@ function showDialogue(targetDialogue, state){
 
 	if(targetDialogue == "boyce"){
 		if(state == 0){
-			createDialougeBox(textContainer, "We already have this case taken care of, classic mob murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Need help?", "I have a\nquestion.");	
+			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Sure you don't need anything else?", "I have a question.");	
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: Bye.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "Leave");
+			createDialougeBox(textContainer, "Boyd: Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "Leave");
 		}else if(state == 3 ){
-			createDialougeBox(textContainer, "Ask away.", 7, 8, 9, "Didn’t the mob stop dealing in drugs?", "What happened to the guys fingers?", "Did you know Petey?"); 
+			createDialougeBox(textContainer, "Boyd: What.", 7, 8, 9, "Didn’t the mob stop dealing in drugs?", "What happened to the guys fingers?", "Did you know Petey?"); 
 		}else if(state == 4 ){
-			createDialougeBox(textContainer, "That's stupid.", null, null, null, "Leave", "Leave", "Leave");				
+			createDialougeBox(textContainer, "Boyd: That's stupid.", null, null, null, "Leave", "Leave", "Leave");				
 		}else if(state == 5 ){
 		}else if(state == 6 ){
 		}else if(state == 7 ){
-			createDialougeBox(textContainer, "Well I guess they’re back at it.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: Well I guess they’re back at it.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 8 ){
-			createDialougeBox(textContainer, "Animal ate em.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 9 ){
-			createDialougeBox(textContainer, "All of NYPD knew Petey, he’s been doing gang and drug work for years. Looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he’s been doing gang and drug work for years. Looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}
 
 
@@ -128,21 +128,21 @@ function showDialogue(targetDialogue, state){
 		textContainer.addChild(text0);
 		
 		var left_rect = new createjs.Shape();
-		left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
+		left_rect.graphics.beginFill("#FF0000").drawRect(10, 85, 480, 18);
 		container.addChild(left_rect);
-		var left_rect_text = createText(text1, 20, 100, "16px Courier", "#FFFFFF");
+		var left_rect_text = createText(text1, 20, 98, "16px Courier", "#FFFFFF");
 		container.addChild(left_rect_text);
 		
 		var mid_rect = new createjs.Shape();
-		mid_rect.graphics.beginFill("#FF0000").drawRect(190, 100, 120, 50);
+		mid_rect.graphics.beginFill("#FF0000").drawRect(10, 105, 480, 18);
 		container.addChild(mid_rect);
-	    var mid_rect_text = createText(text2, 20, 120, "16px Courier", "#FFFFFF");
+	    var mid_rect_text = createText(text2, 20, 118, "16px Courier", "#FFFFFF");
 		container.addChild(mid_rect_text);
 		
 		var right_rect = new createjs.Shape();
-		right_rect.graphics.beginFill("#FF0000").drawRect(370, 100, 120, 50);
+		right_rect.graphics.beginFill("#FF0000").drawRect(10, 125, 480, 18);
 		container.addChild(right_rect);
-	    var right_rect_text = createText(text3, 20, 140, "16px Courier", "#FFFFFF");
+	    var right_rect_text = createText(text3, 20, 138, "16px Courier", "#FFFFFF");
 		container.addChild(right_rect_text);
 		
 		var rects = {
@@ -154,6 +154,8 @@ function showDialogue(targetDialogue, state){
 		rects.mid_rect.rect.on("click", handleClick_mid, null, true);
 		rects.right_rect.rect.on("click", handleClick_right, null, true);
 		
+		//rects.left_rect.rect.on("mouseover", function(event){ console.log("in"); });
+		//if (rects.left_rect.rect.on(stage.mouseX, stage.mouseY)) { console.log("in"); }
 		function handleClick_left(evt) {
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
