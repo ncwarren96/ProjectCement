@@ -34,7 +34,7 @@ function init() {
 			startMapText.y = 275;
 			startMapText.text = "\"It was old school...we are treating it as a homicide\"\n- NYPD Chief of Detectives, Robert Boyce";
 		}else if(startMapCounter == 3){
-			loadMap("start", "beach", "./assets/background.png");
+			loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
 		}
 
     }
@@ -120,6 +120,10 @@ function init() {
 	cityMap.map_Objects.push(container);
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
+	//add clueInfos
+	for(var i = 0; i<clues.length; i++){
+		cityMap.map_Objects.push(clues[i].clueInfo);
+	}
 
 
 	//Create ticker (game loop)

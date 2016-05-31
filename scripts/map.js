@@ -4,10 +4,11 @@ function map(name){
 	this.map_Objects = [];
 }
 
-function loadMap(currMapName, nextMapName, bg_url_nextMap){
+function loadMap(currMapName, nextMapName, bg_url_nextMap, bg_hitbox_nextMap){
 	saveMap(currMapName);
 	stage.removeAllChildren();
 	bmp.image.src = bg_url_nextMap;
+	bmp_1.image.src = bg_hitbox_nextMap;
 	var nextMap = getMap(nextMapName);
 	for(var iter = 0; iter < nextMap.map_Objects.length;iter++){
 		stage.addChild(nextMap.map_Objects[iter]);

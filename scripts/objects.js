@@ -46,11 +46,12 @@
 		var tempSpriteX = tempSpriteY = tempBackX = 0;
 		
 		var backPoint = getBackgroundPosition(sprite.x, sprite.y);
+		//console.log("backPointx: " + backPoint.x + " backPoint.y: " + backPoint.y);
 
 		if(sprite.x == 0){
 			console.log("left collision");
 			if(currentMapName == "beach"){
-				loadMap("beach", "city", "./assets/Background1.png");
+				loadMap("beach", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				bmp.x = -1600;
 				player.x = 750;
 				bmp_1.x = -1600;
@@ -58,7 +59,12 @@
 			return;
 		
 		}else if(sprite.x == 760){
-			console.log("right collision");
+			if(currentMapName == "city"){
+				loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
+				bmp.x = 0;
+				player.x = 10;
+				bmp_1.x = 0;
+			}
 			
 		}
 
