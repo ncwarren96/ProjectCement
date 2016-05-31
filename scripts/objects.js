@@ -225,7 +225,10 @@
 		this.y = y;									//y-position
 		this.width = width;							//width
 		this.height = height;						//height
-		this.clueInfo = null;
+		
+		this.clueInfo = new createjs.Sprite();
+		this.clueInfo.on("click", this.infoClick);
+		
 		this.secret = false;
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
@@ -233,6 +236,7 @@
 		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
 		clues.push(this);							//push the clue onto the array of clues
+		
 		
 		
 	};
@@ -263,6 +267,11 @@
 			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}
+	};
+	
+	p.infoClick = function(event){
+		console.log("fuck this shit");
+		this.clueInfo.visible = false;
 	};
 	
 	//function for sticking clue to the background
