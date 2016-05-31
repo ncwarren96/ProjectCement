@@ -97,8 +97,8 @@ function init() {
  	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
  	beachMap.map_Objects.push(clue1);
  	
- 	clue2 = new Clue(0, 500, 1, "./assets/photo.png", 24,24, "photo");
- 	clue2.clueInfo = makeInfoSprite("./assets/ID_sprite.png");
+ 	clue2 = new Clue(0, 500, 1, "./assets/ID_sprite.png", 24,24, "photo");
+ 	clue2.clueInfo = makeInfoSprite("./assets/ID.png");
  	beachMap.map_Objects.push(clue2);
  	
  	clue3 = new Clue(100, 500, 1, "./assets/drugs.png", 24,24, "drugs");
