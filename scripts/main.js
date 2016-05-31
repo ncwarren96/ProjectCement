@@ -105,6 +105,7 @@ function init() {
  	clue3.clueInfo = makeInfoSprite("./assets/Drugs_image.png");
  	beachMap.map_Objects.push(clue3);
  	
+ 	//ho
  	//Secret Clues
  	secretClue1 = new Clue(-800, 500, 1, "./assets/secret.png", 24, 24, "M");
  	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
@@ -131,7 +132,7 @@ function init() {
 	beachMap.map_Objects.push(cop);
 	
 	//Robert Boyce
-	boyce = new NPC(200, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
+	boyce = new NPC(250, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
 	beachMap.map_Objects.push(boyce);
 	
 	//Adding guy1
