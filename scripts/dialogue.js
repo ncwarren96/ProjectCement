@@ -91,23 +91,23 @@ function showDialogue(targetDialogue, state){
 
 	if(targetDialogue == "boyce"){
 		if(state == 0){
-			createDialougeBox(textContainer, "We already have this case taken care of, classic mob\n murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Need help?", "I have a\nquestion.");	
+			createDialougeBox(textContainer, "We already have this case taken care of, classic mob murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Need help?", "I have a\nquestion.");	
 		}else if(state == 1){
 			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "Not from you, Player,  why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued\nme.", "Leave");
+			createDialougeBox(textContainer, "Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "Leave");
 		}else if(state == 3 ){
-			createDialougeBox(textContainer, "Ask away.", 7, 8, 9, "Didn’t the mob stop\ndealing in drugs?", "What happened to the\nguys fingers?", "Did you know\nPetey?"); 
+			createDialougeBox(textContainer, "Ask away.", 7, 8, 9, "Didn’t the mob stop dealing in drugs?", "What happened to the guys fingers?", "Did you know Petey?"); 
 		}else if(state == 4 ){
 			createDialougeBox(textContainer, "That's stupid.", null, null, null, "Leave", "Leave", "Leave");				
 		}else if(state == 5 ){
 		}else if(state == 6 ){
 		}else if(state == 7 ){
-			createDialougeBox(textContainer, "Well I guess they’re back at it.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Well I guess they’re back at it.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 8 ){
-			createDialougeBox(textContainer, "Animal ate em.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Animal ate em.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 9 ){
-			createDialougeBox(textContainer, " All of NYPD knew Petey, he’s been doing gang and\ndrug work for years. Looks like someone else got him\nthough.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+			createDialougeBox(textContainer, "All of NYPD knew Petey, he’s been doing gang and drug work for years. Looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}
 
 
@@ -124,25 +124,25 @@ function showDialogue(targetDialogue, state){
 	//target3: target state taken to from text3
 	//text1-3: player responses to displayed NPC text
 	function createDialougeBox(container, text0, target1, target2, target3, text1, text2, text3){
-		var text0 = createText(text0, 20, 25, "20px Arial", "#FFFFFF");
+		var text0 = createText(text0, 20, 25, "20px Courier", "#FFFFFF");
 		textContainer.addChild(text0);
 		
 		var left_rect = new createjs.Shape();
 		left_rect.graphics.beginFill("#FF0000").drawRect(10, 100, 120, 50);
 		container.addChild(left_rect);
-		var left_rect_text = createText(text1, 20, 120, "16px Arial", "#FFFFFF");
+		var left_rect_text = createText(text1, 20, 100, "16px Courier", "#FFFFFF");
 		container.addChild(left_rect_text);
 		
 		var mid_rect = new createjs.Shape();
 		mid_rect.graphics.beginFill("#FF0000").drawRect(190, 100, 120, 50);
 		container.addChild(mid_rect);
-	    var mid_rect_text = createText(text2, 200, 120, "16px Arial", "#FFFFFF");
+	    var mid_rect_text = createText(text2, 20, 120, "16px Courier", "#FFFFFF");
 		container.addChild(mid_rect_text);
 		
 		var right_rect = new createjs.Shape();
 		right_rect.graphics.beginFill("#FF0000").drawRect(370, 100, 120, 50);
 		container.addChild(right_rect);
-	    var right_rect_text = createText(text3, 390, 120, "16px Arial", "#FFFFFF");
+	    var right_rect_text = createText(text3, 20, 140, "16px Courier", "#FFFFFF");
 		container.addChild(right_rect_text);
 		
 		var rects = {
@@ -180,6 +180,8 @@ function createText(string, x, y, font, color){
 	var text = new createjs.Text(string, font, color);
 	text.x = x;
 	text.y = y;
+	text.lineHeight = 20;
+	text.lineWidth = 475;
 	text.textBaseline = "alphabetic";
 	return text;
 }

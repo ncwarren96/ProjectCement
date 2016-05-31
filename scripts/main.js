@@ -134,6 +134,7 @@ function init() {
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
+		//cityMap.map_Objects.push(clues[i].clueInfo);
 		
 	}
 
@@ -141,6 +142,7 @@ function init() {
 	cityMap.map_Objects.push(container);
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
+	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		cityMap.map_Objects.push(clues[i].clueInfo);
