@@ -71,6 +71,22 @@ function showDialogue(targetDialogue, state){
 		}
 	}
 	
+	//Creepy cult info man
+	if(targetDialogue == "creep"){
+		if(secretPoints == 0){
+			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "Leave", "Leave");
+		}else if(secretPoints == 1){
+			createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, null, "Leave", "Leave", "Leave");
+			removeFromInventory(secretClue1);
+		}else if(secretPoints == 2){
+			createDialougeBox(textContainer, "Mando controls this city", null, null, null, "Leave", "Leave", "Leave");
+		}else if(secretPoints == 3){
+			createDialougeBox(textContainer, "Mando Imperium knows what you are up to. Stop.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(secretPoints == 4){
+			createDialougeBox(textContainer, "You found the forth clue", null, null, null, "Leave", "Leave", "Leave");
+		}
+	}
+	
 	if(textContainer.children.length > 0){
 		stage.addChild(textContainer);//adds textContainer to stage if it has children
 	}

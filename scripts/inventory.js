@@ -25,12 +25,16 @@ function drawClues(array){
 	}
 }
 function addToInventory(item){
-	console.log("added");
+	//console.log("added");
 	inventory.addChild(item);
 	found_clues.push(item);
 	drawClues(found_clues);
 }
 
 function removeFromInventory(item){
+	console.log("remove");
+	var index = found_clues.indexOf(item);
+	found_clues.splice(index, 1);
 	inventory.removeChild(item);
+	drawClues(found_clues);
 }

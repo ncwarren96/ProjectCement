@@ -226,7 +226,7 @@
 		this.width = width;							//width
 		this.height = height;						//height
 		this.clueInfo = null;
-
+		this.secret = false;
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.on("click", this.handleClick);			//event handler for clicking
@@ -246,17 +246,22 @@
 	p.handleClick = function (event) {
 		//console.log("clicked");
 		this.clueInfo.visible = !this.clueInfo.visible;    //show/hide clue info
+		
 		if(this.clueInfo.visible){
 			player.immobile = true;
 		}else{
 			player.immobile = false;
 		}
+		
 		if(!this.discovered){			//if the clue has not been discovered
 			this.discovered = true; 	//change it to discovered
-			points+=1;
-			console.log(points);
 			addToInventory(this);		//add the clue to the inventory
-			
+			if(this.secret){
+				secretPoints+=1;
+			}else{
+				points+=1;
+			}
+			console.log("points:" + points + "secrets:" + secretPoints);
 		}
 	};
 	
