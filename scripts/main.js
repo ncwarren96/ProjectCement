@@ -1,5 +1,6 @@
 var keys = new Array();
 var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, inventory;
+var secretClue1, secretClue2, secretClue3, secretClue4; 
 var points = 0;
 var secretPoints = 0;
 var clues = [];
@@ -69,21 +70,21 @@ function init() {
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
 	beachMap.map_Objects.push(container);
-	bmp.x = -800;
+	bmp.x = -1600;
 	bmp.y = 0;
 	
 	var image_1 = new Image();
 	image_1.src = "./assets/background - Copy.png";
 	bmp_1 = new createjs.Bitmap(image_1);
 	//container.addChild(bmp_1);
-	bmp_1.x = -800;
+	bmp_1.x = -1600;
 	bmp_1.y = 0;
 	
 	container.addChild(bmp);
 	
 	//Show point counter
 	var point_text = new createjs.Text("Points: "+ points, "16px Arial", "#FF0000");
-	point_text.x = 720;
+	point_text.x = -80;
 	point_text.y = 10;
 	beachMap.map_Objects.push(point_text);
 	
@@ -92,58 +93,58 @@ function init() {
 	player = new Player(400, 335, 2, "./assets/Character.png", 40, 135, "player");
 	
 	//Adding clues
- 	clue1 = new Clue(700, 500, 1, "./assets/wallet.png", 24,24, "wallet");
+ 	clue1 = new Clue(-100, 500, 1, "./assets/wallet.png", 24,24, "wallet");
  	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
  	beachMap.map_Objects.push(clue1);
  	
- 	clue2 = new Clue(800, 500, 1, "./assets/photo.png", 24,24, "photo");
+ 	clue2 = new Clue(0, 500, 1, "./assets/photo.png", 24,24, "photo");
  	clue2.clueInfo = makeInfoSprite("./assets/ID_sprite.png");
  	beachMap.map_Objects.push(clue2);
  	
- 	clue3 = new Clue(900, 500, 1, "./assets/drugs.png", 24,24, "drugs");
+ 	clue3 = new Clue(100, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	clue3.clueInfo = makeInfoSprite("./assets/Drugs_image.png");
  	beachMap.map_Objects.push(clue3);
  	
  	//Secret Clues
- 	secretClue1 = new Clue(0, 500, 1, "./assets/secret.png", 24, 24, "M");
+ 	secretClue1 = new Clue(-800, 500, 1, "./assets/secret.png", 24, 24, "M");
  	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
  	secretClue1.secret = true;
 	beachMap.map_Objects.push(secretClue1);
 	
- 	secretClue2 = new Clue(-100, 500, 1, "./assets/secret2.png", 24, 24, "A");
+ 	secretClue2 = new Clue(-900, 500, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");
  	secretClue2.secret = true;
  	beachMap.map_Objects.push(secretClue2);
  	
- 	secretClue3 = new Clue(-200, 500, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3 = new Clue(-1000, 500, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret_info.png");
  	secretClue3.secret = true;
  	beachMap.map_Objects.push(secretClue3);
  	
- 	secretClue4 = new Clue(-300, 500, 1, "./assets/secret4.png", 24, 24, "D");
+ 	secretClue4 = new Clue(-1100, 500, 1, "./assets/secret4.png", 24, 24, "D");
  	secretClue4.clueInfo = makeInfoSprite("./assets/secret_info.png");
 	secretClue4.secret = true;
 	beachMap.map_Objects.push(secretClue4);
 	
 	//Adding Cop (NPC object instance)
-	cop = new NPC(100, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
+	cop = new NPC(-700, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	beachMap.map_Objects.push(cop);
 	
 	/**how do I do it**/
 	//Robert Boyce
-	boyce = new NPC(1000, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
+	boyce = new NPC(200, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
 	beachMap.map_Objects.push(boyce);
 	
 	//Adding guy1
-	guy1 = new NPC(-530, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
+	guy1 = new NPC(-1330, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
 	beachMap.map_Objects.push(guy1);
 	
 	//Adding guy2
-	guy2 = new NPC(100, 450, 1, "./assets/guy2.png",56,141, "creep");
+	guy2 = new NPC(-700, 450, 1, "./assets/guy2.png",56,141, "creep");
 	beachMap.map_Objects.push(guy2);
 	
 	//Adding Petey (NPC object instance)
-	petey = new NPC(1200, 450, 1, "./assets/petey.png", 170, 47, "petey");
+	petey = new NPC(400, 450, 1, "./assets/petey.png", 170, 47, "petey");
 	beachMap.map_Objects.push(petey);
 
 	beachMap.map_Objects.push(inventory);
@@ -153,7 +154,7 @@ function init() {
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
-		/**This should work but it doesnt help**/
+		/**This should work but it doesn't help**/
 		//clues[i].clueInfo.on("click", function() {clues[i].clueInfo.visible = false;} );
 	}
 

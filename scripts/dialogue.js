@@ -77,6 +77,7 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "Leave", "Leave");
 		}else if(secretPoints == 1){
 			createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, null, "Leave", "Leave", "Leave");
+			removeFromInventory(secretClue1);
 		}else if(secretPoints == 2){
 			createDialougeBox(textContainer, "Mando controls this city", null, null, null, "Leave", "Leave", "Leave");
 		}else if(secretPoints == 3){
