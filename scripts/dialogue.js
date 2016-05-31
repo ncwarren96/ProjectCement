@@ -47,9 +47,8 @@ function showDialogue(targetDialogue, state){
 	// guy 1 Dialogue
 	if(targetDialogue == "petey"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Dead", 2, 1, 1, "inspect body", "Leave", "Leave");	
+			createDialougeBox(textContainer, "Dead", 2, null, null, "inspect body", "Leave", "Leave");	
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 2){
 			createDialougeBox(textContainer, "The subjects fingers have been removed", null, null, null, "Leave", "Leave", "Leave");
 		}
@@ -88,6 +87,30 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "You found the forth clue", null, null, null, "Leave", "Leave", "Leave");
 			//removeFromInventory(secretClue4);
 		}
+	}
+
+	if(targetDialogue == "boyce"){
+		if(state == 0){
+			createDialougeBox(textContainer, "We already have this case taken care of, classic mob\n murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Need help?", "I have a\nquestion.");	
+		}else if(state == 1){
+			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(state == 2){
+			createDialougeBox(textContainer, "Not from you, Player,  why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued\nme.", "Leave");
+		}else if(state == 3 ){
+			createDialougeBox(textContainer, "Ask away.", 7, 8, 9, "Didn’t the mob stop\ndealing in drugs?", "What happened to the\nguys fingers?", "Did you know\nPetey?"); 
+		}else if(state == 4 ){
+			createDialougeBox(textContainer, "That's stupid.", null, null, null, "Leave", "Leave", "Leave");				
+		}else if(state == 5 ){
+		}else if(state == 6 ){
+		}else if(state == 7 ){
+			createDialougeBox(textContainer, "Well I guess they’re back at it.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+		}else if(state == 8 ){
+			createDialougeBox(textContainer, "Animal ate em.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+		}else if(state == 9 ){
+			createDialougeBox(textContainer, " All of NYPD knew Petey, he’s been doing gang and\ndrug work for years. Looks like someone else got him\nthough.", 3, null, null, "I have another\nquestion.", "Leave", "Leave");
+		}
+
+
 	}
 	
 	if(textContainer.children.length > 0){
