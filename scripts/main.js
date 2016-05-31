@@ -1,5 +1,5 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, inventory;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, inventory, points_text;
 var secretClue1, secretClue2, secretClue3, secretClue4; 
 var points = 0;
 var secretPoints = 0;
@@ -83,8 +83,8 @@ function init() {
 	container.addChild(bmp);
 	
 	//Show point counter
-	var point_text = new createjs.Text("Points: "+ points, "16px Arial", "#FF0000");
-	point_text.x = -80;
+	point_text = new createjs.Text("Points: "+ points, "16px Arial", "#FF0000");
+	point_text.x = 700;
 	point_text.y = 10;
 	beachMap.map_Objects.push(point_text);
 	
@@ -134,7 +134,7 @@ function init() {
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
-		/**This should work but it doesn't help**/
+		
 	}
 
 	/**************************************CITY MAP*********************************/
@@ -194,7 +194,7 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		
+		point_text.text = "Points: "+ points;
 		cop.stickNPCtoBack();
 		boyce.stickNPCtoBack();
 		petey.stickNPCtoBack();

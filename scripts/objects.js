@@ -264,6 +264,7 @@
 				secretPoints+=1;
 			}else{
 				points+=1;
+				//beachMap.map_Objects.push(point_text);
 			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}
