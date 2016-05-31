@@ -130,7 +130,6 @@ function init() {
 	cop = new NPC(-700, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	beachMap.map_Objects.push(cop);
 	
-	/**how do I do it**/
 	//Robert Boyce
 	boyce = new NPC(200, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
 	beachMap.map_Objects.push(boyce);
