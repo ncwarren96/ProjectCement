@@ -79,13 +79,13 @@ function showDialogue(targetDialogue, state){
 			removeFromInventory(secretClue1);
 		}else if(secretPoints == 2){
 			createDialougeBox(textContainer, "Mando controls this city", null, null, null, "Leave", "Leave", "Leave");
-			//removeFromInventory(secretClue2);
+			removeFromInventory(secretClue2);
 		}else if(secretPoints == 3){
 			createDialougeBox(textContainer, "Mando Imperium knows what you are up to. Stop.", null, null, null, "Leave", "Leave", "Leave");
-			//removeFromInventory(secretClue3);
+			removeFromInventory(secretClue3);
 		}else if(secretPoints == 4){
 			createDialougeBox(textContainer, "You found the forth clue", null, null, null, "Leave", "Leave", "Leave");
-			//removeFromInventory(secretClue4);
+			removeFromInventory(secretClue4);
 		}
 	}
 

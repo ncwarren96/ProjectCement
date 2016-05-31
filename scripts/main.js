@@ -106,26 +106,7 @@ function init() {
  	beachMap.map_Objects.push(clue3);
  	
  	//ho
- 	//Secret Clues
- 	secretClue1 = new Clue(-800, 500, 1, "./assets/secret.png", 24, 24, "M");
- 	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
- 	secretClue1.secret = true;
-	beachMap.map_Objects.push(secretClue1);
-	
- 	secretClue2 = new Clue(-900, 500, 1, "./assets/secret2.png", 24, 24, "A");
- 	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");
- 	secretClue2.secret = true;
- 	beachMap.map_Objects.push(secretClue2);
- 	
- 	secretClue3 = new Clue(-1000, 500, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret_info.png");
- 	secretClue3.secret = true;
- 	beachMap.map_Objects.push(secretClue3);
- 	
- 	secretClue4 = new Clue(-1100, 500, 1, "./assets/secret4.png", 24, 24, "D");
- 	secretClue4.clueInfo = makeInfoSprite("./assets/secret_info.png");
-	secretClue4.secret = true;
-	beachMap.map_Objects.push(secretClue4);
+
 	
 	//Adding Cop (NPC object instance)
 	cop = new NPC(-700, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
@@ -136,12 +117,11 @@ function init() {
 	beachMap.map_Objects.push(boyce);
 	
 	//Adding guy1
-	guy1 = new NPC(-1330, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
+	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
 	beachMap.map_Objects.push(guy1);
 	
 	//Adding guy2
-	guy2 = new NPC(-700, 450, 1, "./assets/guy2.png",56,141, "creep");
-	beachMap.map_Objects.push(guy2);
+
 	
 	//Adding Petey (NPC object instance)
 	petey = new NPC(400, 450, 1, "./assets/petey.png", 170, 47, "petey");
@@ -155,7 +135,6 @@ function init() {
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
 		/**This should work but it doesn't help**/
-		//clues[i].clueInfo.on("click", function() {clues[i].clueInfo.visible = false;} );
 	}
 
 	/**************************************CITY MAP*********************************/
@@ -166,8 +145,32 @@ function init() {
 	for(var i = 0; i<clues.length; i++){
 		cityMap.map_Objects.push(clues[i].clueInfo);
 	}
-
-
+	
+	//Adding creep guy
+	guy2 = new NPC(-350, 450, 1, "./assets/guy2.png",56,141, "creep");
+	cityMap.map_Objects.push(guy2);
+	
+	//Secret Clues
+ 	secretClue1 = new Clue(100, 500, 1, "./assets/secret.png", 24, 24, "M");
+ 	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue1.secret = true;
+	cityMap.map_Objects.push(secretClue1);
+	
+ 	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
+ 	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue2.secret = true;
+ 	cityMap.map_Objects.push(secretClue2);
+ 	
+ 	secretClue3 = new Clue(-100, 500, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue3.secret = true;
+ 	cityMap.map_Objects.push(secretClue3);
+ 	
+ 	secretClue4 = new Clue(-200, 500, 1, "./assets/secret4.png", 24, 24, "D");
+ 	secretClue4.clueInfo = makeInfoSprite("./assets/secret_info.png");
+	secretClue4.secret = true;
+	cityMap.map_Objects.push(secretClue4);
+	
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
 }
@@ -196,12 +199,21 @@ function update(){
 		boyce.stickNPCtoBack();
 		petey.stickNPCtoBack();
 		guy1.stickNPCtoBack();
-		guy2.stickNPCtoBack();
+		
 	}
 
 	if(currentMapName == "city"){
 		moveInventory();
 		player.update();
+		
+		guy2.stickNPCtoBack();
+		
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
+		}
 	}
 	
 	
@@ -230,6 +242,10 @@ function getBackgroundPosition(x, y){
 		y: backY
 	};
 	return back;
+}
+
+function infoClick(){
+	
 }
 
 
