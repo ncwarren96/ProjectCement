@@ -155,7 +155,7 @@ function showDialogue(targetDialogue, state){
 		rects.right_rect.rect.on("click", handleClick_right, null, true);
 		
 		//rects.left_rect.rect.on("mouseover", function(event){ console.log("in"); });
-		//if (rects.left_rect.rect.on(stage.mouseX, stage.mouseY)) { console.log("in"); }
+		if (rects.left_rect.rect.on(stage.mouseX, stage.mouseY)) { console.log("in"); }
 		function handleClick_left(evt) {
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
