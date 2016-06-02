@@ -69,6 +69,44 @@
 			
 		}
 
+		if(currentMapName == "city"){
+			if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275){
+				loadMap("city", "barber", "./assets/testRoom.png", "./assets/testRoom-hitbox.png");
+				bmp.x = 0;
+				bmp_1.x = 0;
+				player.x = 300;
+				player.y = 400;
+			}
+
+			if(backPoint.x > 740 && backPoint.x < 790 && backPoint.y <= 275){
+				loadMap("city", "nypd", "./assets/testRoom.png", "./assets/testRoom-hitbox.png");
+				bmp.x = 0;
+				bmp_1.x = 0;
+				player.x = 300;
+				player.y = 400;
+			}
+		}
+
+		if(currentMapName == "barber"){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				bmp.x = -1600;
+				bmp_1.x = -1600;
+				player.x = 400;
+				player.y = 290;
+			}
+		}
+
+		if(currentMapName == "nypd"){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+				loadMap("nypd", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				bmp.x = -300;
+				bmp_1.x = -300;
+				player.x = 400;
+				player.y = 290;
+			}
+		}
+
 		
 		//Directional Movement
 		//Left

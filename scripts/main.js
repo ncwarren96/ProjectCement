@@ -11,9 +11,13 @@ inventory = new createjs.Container();
 var beachMap = new map("beach");
 var startMap = new map("start");
 var cityMap = new map("city");
+var barberMap = new map("barber");
+var nypdMap = new map("nypd");
 map_array.push(beachMap);
 map_array.push(startMap);
 map_array.push(cityMap);
+map_array.push(barberMap);
+map_array.push(nypdMap);
 var currentMapName = "start";
 var startMapCounter = 0;
 var startMapText;
@@ -175,6 +179,26 @@ function init() {
 	
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
+
+	/**************************************Barber MAP*********************************/
+	barberMap.map_Objects.push(container);
+	barberMap.map_Objects.push(inventory);
+	barberMap.map_Objects.push(player);
+	
+	//add clueInfos
+	for(var i = 0; i<clues.length; i++){
+		barberMap.map_Objects.push(clues[i].clueInfo);
+	}
+
+	/**************************************nypd MAP*********************************/
+	nypdMap.map_Objects.push(container);
+	nypdMap.map_Objects.push(inventory);
+	nypdMap.map_Objects.push(player);
+	
+	//add clueInfos
+	for(var i = 0; i<clues.length; i++){
+		nypdMap.map_Objects.push(clues[i].clueInfo);
+	}
 }
 
 
@@ -216,6 +240,34 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
+	}
+	
+	if(currentMapName == "barber"){
+		moveInventory();
+		player.update();
+		
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
+		}
+		point_text.text = "Points: "+ points;
+	
+	}
+
+	if(currentMapName == "nypd"){
+		moveInventory();
+		player.update();
+		
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
+		}
+		point_text.text = "Points: "+ points;
+	
 	}
 	
 	
