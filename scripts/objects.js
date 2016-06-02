@@ -57,11 +57,11 @@
 				player.x = 750;
 				bmp_1.x = -1600;
 			}
-			return;
+			
 		
 		}else if(sprite.x == 760){
 			if(currentMapName == "city"){
-				loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
+				loadMap("city", "beach", "./assets/background.png", "./assets/background - Copy.png");
 				bmp.x = 0;
 				player.x = 10;
 				bmp_1.x = 0;
@@ -124,6 +124,7 @@
 		if(keys[KEYCODE_W] === true){
 			tempSpriteY -= moveAmount;
 			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				console.log("bmp_1 hit test is true");
 				tempSpriteY = 0;
 			}
 		}
@@ -131,6 +132,7 @@
 		if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 			tempSpriteY += moveAmount;
 			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
+				console.log("bmp_1 hit test is true");
 					tempSpriteY = 0;
 				}
 		}
