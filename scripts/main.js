@@ -70,7 +70,7 @@ function init() {
 
 	/**********************************BEACH MAP*******************************/
 
-	var image = new Image();				 // image object for background 
+	var image = new Image();				  // image object for background 
 	image.src = "./assets/background.png";	  // image source 
 	bmp = new createjs.Bitmap(image);
 	var container = new createjs.Container();
@@ -109,8 +109,6 @@ function init() {
  	clue3 = new Clue(100, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	clue3.clueInfo = makeInfoSprite("./assets/Drugs_image.png");
  	beachMap.map_Objects.push(clue3);
- 	
- 	//ho
 
 	
 	//Adding Cop (NPC object instance)
