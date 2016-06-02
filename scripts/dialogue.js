@@ -1,5 +1,7 @@
 
 function showDialogue(targetDialogue, state){
+	var clickSound = new Audio("./sounds/click.mp3");
+	var overSound = new Audio("./sounds/boop.mp3");
 	player.immobile = true;
 	if(state == null){
 		player.immobile = false;
@@ -154,8 +156,13 @@ function showDialogue(targetDialogue, state){
 		rects.mid_rect.rect.on("click", handleClick_mid, null, true);
 		rects.right_rect.rect.on("click", handleClick_right, null, true);
 		
-		//rects.left_rect.rect.on("mouseover", function(event){ console.log("in"); });
-		if (rects.left_rect.rect.on(stage.mouseX, stage.mouseY)) { console.log("in"); }
+		rects.left_rect.rect.on("mouseover", handleOver);
+		rects.mid_rect.rect.on("mouseover", handleOver);
+		rects.right_rect.rect.on("mouseover", handleOver);
+		
+		rects.left_rect.rect.on("mouseout", handleOut);
+		rects.mid_rect.rect.on("mouseout", handleOut);
+		rects.right_rect.rect.on("mouseout", handleOut);
 		function handleClick_left(evt) {
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
@@ -172,6 +179,15 @@ function showDialogue(targetDialogue, state){
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 		    showDialogue(targetDialogue, rects.right_rect.target);
+		}
+		
+		function handleOver(evt){
+			this.alpha = .8;
+			overSound.play();
+		}
+		
+		function handleOut(evt){
+			this.alpha = 1;
 		}
 	}
 	

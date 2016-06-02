@@ -29,6 +29,7 @@ function init() {
 	/************************************START MAP*******************************/
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
+	stage.enableMouseOver(20); 
 	stage.addChild(bg_rect);
 
 	bg_rect.on("click", handleClick_bg, null,false);

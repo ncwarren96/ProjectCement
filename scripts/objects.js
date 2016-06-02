@@ -266,6 +266,8 @@
 		this.width = width;							//width
 		this.height = height;						//height
 		
+		this.clickSound = new Audio("./sounds/click.mp3");
+		
 		this.clueInfo = new createjs.Sprite();
 		this.clueInfo.on("click", this.infoClick);
 		
@@ -273,6 +275,8 @@
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.on("click", this.handleClick);			//event handler for clicking
+		this.on("mouseover", p.handleOver);
+		this.on("mouseout", p.handleOut);
 		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
 		clues.push(this);							//push the clue onto the array of clues
@@ -308,6 +312,16 @@
 			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}
+	};
+	
+	p.handleOver = function(){
+		if(!this.clueInfo.visible){
+			this.alpha = .6;
+		}
+	};
+	
+	p.handleOut = function(){
+		this.alpha = 1;
 	};
 	
 	p.infoClick = function(event){
