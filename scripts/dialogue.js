@@ -76,6 +76,7 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "creep" && secretPoints == 0){
 		if(state == 0){
 			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
+			//player.fixPosition();
 		}
 	}
 	if(targetDialogue == "creep" && secretPoints == 1){	

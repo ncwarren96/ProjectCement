@@ -55,8 +55,8 @@
 				loadMap("beach", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				bmp.x = -1600;
 				player.x = 750;
-				player.y = 400;
 				bmp_1.x = -1600;
+				return;
 			}
 			
 		
@@ -66,6 +66,7 @@
 				bmp.x = 0;
 				player.x = 10;
 				bmp_1.x = 0;
+				return;
 			}
 			
 		}
@@ -76,7 +77,7 @@
 				bmp.x = 0;
 				bmp_1.x = 0;
 				this.x = 300;
-				this.y = 400;
+				this.y = 600;
 				return;
 			}
 
