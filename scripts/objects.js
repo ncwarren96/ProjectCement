@@ -73,7 +73,7 @@
 
 		if(currentMapName == "city"){
 			if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275){
-				loadMap("city", "barber", "./assets/testRoom.png", "./assets/testRoom-hitbox.png");
+				loadMap("city", "barber", "./assets/barbershop.png", "./assets/testRoom-hitbox.png");
 				bmp.x = 0;
 				bmp_1.x = 0;
 				this.x = 300;
