@@ -1,6 +1,7 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text, exit;
 var secretClue1, secretClue2, secretClue3, secretClue4;
+var stageClickCount = 0;
 
 var points = 0;
 var secretPoints = 0;
@@ -30,7 +31,13 @@ var startMapText;
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
 	
+	stage.on("click", stageClick);
 	createInventory();
+	
+	exit = new createjs.Shape();
+	exit.graphics.beginFill("red").drawRect(600, 200, 20, 20);
+	exit.visible = false;
+	
 	
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
@@ -139,14 +146,14 @@ function init() {
 	//Adding Petey (NPC object instance)
 	petey = new NPC(400, 450, 1, "./assets/petey.png", 170, 47, "petey");
 	beachMap.map_Objects.push(petey);
-
+	
 	beachMap.map_Objects.push(inventory);
 	beachMap.map_Objects.push(player);
 
-	
+	beachMap.map_Objects.push(exit);
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
-		beachMap.map_Objects.push(clues[i].clueInfo);	
+		beachMap.map_Objects.push(clues[i].clueInfo);
 	}
 
 	/**************************************CITY MAP*********************************/
@@ -281,6 +288,7 @@ function update(){
 		moveInventory();
 		player.update();
 		
+		
 		for(var i = 0; i<clues.length; i++){
 			the_clue = clues[i];
 			if(!the_clue.discovered){
@@ -334,6 +342,20 @@ function getBackgroundPosition(x, y){
 	};
 	return back;
 }
-
+function stageClick(){
+	console.log("clicked");
+	for(var i = 0; i<clues.length; i++){
+		the_clue = clues[i];
+		if(the_clue.clueInfo.visible){
+			stageClickCount++;
+			console.log(stageClickCount);
+			if(stageClickCount == 2){ 
+				the_clue.clueInfo.visible = false; 
+				stageClickCount = 0;
+				player.immobile = false;
+				}
+		}
+	}
+}
 
 			

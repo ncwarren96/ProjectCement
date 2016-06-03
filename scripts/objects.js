@@ -275,7 +275,7 @@
 		this.clickSound = new Audio("./sounds/click.mp3");
 		
 		this.clueInfo = new createjs.Sprite();
-		this.clueInfo.on("click", p.infoClick);
+		
 		
 		this.secret = false;
 		this.label = label;							//label
@@ -283,6 +283,7 @@
 		this.on("click", this.handleClick);			//event handler for clicking
 		this.on("mouseover", p.handleOver);
 		this.on("mouseout", p.handleOut);
+		//this.clueInfo.on("click", p.infoClick);
 		this.back = getBackgroundPosition(x, y);	//the position on the background of the clue
 		
 		clues.push(this);							//push the clue onto the array of clues
@@ -299,7 +300,7 @@
 	//event handler for clue
 	p.handleClick = function (event) {
 		//console.log("clicked");
-		this.clueInfo.visible = !this.clueInfo.visible;    //show/hide clue info
+		this.clueInfo.visible = true;    //show/hide clue info
 		
 		if(this.clueInfo.visible){
 			player.immobile = true;
@@ -330,10 +331,6 @@
 		this.alpha = 1;
 	};
 	
-	p.infoClick = function(event){
-		console.log("fuck this shit");
-		this.clueInfo.visible = false;
-	};
 	
 	//function for sticking clue to the background
 	p.stickClueToBack = function(){
