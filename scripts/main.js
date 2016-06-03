@@ -95,24 +95,28 @@ function init() {
 	
 	
 	//Adding player	
-	player = new Player(400, 335, 2, "./assets/Character.png", 40, 135, "player");
+	player = new Player(300, 320, 2, "./assets/Character.png", 40, 135, "player");
 	
-	//Adding clues
- 	clue1 = new Clue(-100, 500, 1, "./assets/wallet.png", 24,24, "wallet");
- 	clue1.clueInfo = makeInfoSprite("./assets/wallet_Image.png");
- 	beachMap.map_Objects.push(clue1);
+	//Adding  beach clues
+ 	wallet = new Clue(400, 550, 1, "./assets/wallet.png", 24,24, "wallet");
+ 	wallet.clueInfo = makeInfoSprite("./assets/wallet_info.png");
+ 	beachMap.map_Objects.push(wallet);
  	
- 	clue2 = new Clue(0, 500, 1, "./assets/ID_sprite.png", 24,24, "photo");
- 	clue2.clueInfo = makeInfoSprite("./assets/ID.png");
- 	beachMap.map_Objects.push(clue2);
+ 	drugs = new Clue(150, 500, 1, "./assets/drugs.png", 24,24, "drugs");
+ 	drugs.clueInfo = makeInfoSprite("./assets/drugs_info.png");
+ 	beachMap.map_Objects.push(drugs);
  	
- 	clue3 = new Clue(100, 500, 1, "./assets/drugs.png", 24,24, "drugs");
- 	clue3.clueInfo = makeInfoSprite("./assets/Drugs_image.png");
- 	beachMap.map_Objects.push(clue3);
-
+ 	peteyClue = new Clue(400, -30, 1, "./assets/photo.png", 24, 24, "petey");
+	peteyClue.clueInfo = makeInfoSprite("./assets/petey_info.png");
+	beachMap.map_Objects.push(peteyClue);
+	
+	secretClue1 = new Clue(-1000, 500, 1, "./assets/secret.png", 24, 24, "M");
+ 	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue1.secret = true;
+	beachMap.map_Objects.push(secretClue1);
 	
 	//Adding Cop (NPC object instance)
-	cop = new NPC(-700, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
+	cop = new NPC(-200, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
 	beachMap.map_Objects.push(cop);
 	
 	//Robert Boyce
@@ -120,7 +124,7 @@ function init() {
 	beachMap.map_Objects.push(boyce);
 	
 	//Adding guy1
-	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy1");
+	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy2");
 	beachMap.map_Objects.push(guy1);
 	
 	//Adding guy2
@@ -156,10 +160,7 @@ function init() {
 	cityMap.map_Objects.push(guy2);
 	
 	//Secret Clues
- 	secretClue1 = new Clue(100, 500, 1, "./assets/secret.png", 24, 24, "M");
- 	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
- 	secretClue1.secret = true;
-	cityMap.map_Objects.push(secretClue1);
+
 	
  	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");

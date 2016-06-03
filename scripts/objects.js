@@ -233,7 +233,7 @@
 	
 	//function for handling clicks
 	p.handleClick_NPC = function(event){
-		if(getDistance(this.x, this.y, player.x, player.y) < 100){
+		if(getDistance(this.x, this.y, player.x, player.y) < 150){
 			showDialogue(this.label, 0);			//run the dialouge script
 		}
 	};

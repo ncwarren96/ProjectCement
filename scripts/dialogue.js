@@ -18,19 +18,19 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "cop_beach"){
 		if(state == 0){
 			
-			createDialougeBox(textContainer, "A private investigator huh? We have everything under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what\nI want.");
+			createDialougeBox(textContainer, "Cop: A private investigator huh? We have everything under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what I want.");
 			
 		}else if(state == 1){
 			
-			createDialougeBox(textContainer, "Bye.", null, null, null, "*Leave*", "*Leave*", "*Leave*");
+			createDialougeBox(textContainer, "Cop: Bye.", null, null, null, "*Leave*", "*Leave*", "*Leave*");
 			
 		}else if(state == 2){
 			
-			createDialougeBox(textContainer, "I already said we don't need help. Just go home.", null, null, null, "Ok, bye.", "I'll help anyways.", "I do what I want.");
+			createDialougeBox(textContainer, "Cop: I already said we don't need help. Just go home.", null, null, null, "Ok, bye.", "I'll help anyways.", "I do what I want.");
 						
 		}else if(state == 3){
 			
-			createDialougeBox(textContainer, "Just don't mess anything up and mind your own business.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
+			createDialougeBox(textContainer, "Cop: Just don't mess anything up and mind your own business.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
 			
 		}
 	}
@@ -46,10 +46,12 @@ function showDialogue(targetDialogue, state){
 			
 		}
 	}
-	// guy 1 Dialogue
+	//dead petey 'Dialogue'
 	if(targetDialogue == "petey"){
+		peteyClue.handleClick();
+		//state = null;
 		if(state == 0){
-			createDialougeBox(textContainer, "Dead", 2, null, null, "inspect body", "Leave", "Leave");
+			createDialougeBox(textContainer, "Dead", 2, null, null, "Inspect Body", "Leave", "Leave");
 		}else if(state == 1){
 		}else if(state == 2){
 			createDialougeBox(textContainer, "The subjects fingers have been removed", null, null, null, "Leave", "Leave", "Leave");
