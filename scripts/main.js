@@ -31,6 +31,7 @@ var startMapCounter = 0;
 var startMapText;
 
 function init() {
+	stage = new createjs.Stage("demoCanvas"); 	//stage object
 	stage.enableMouseOver(20); 					//allow mouseover and mouseout events to stage
 	
 	stage.on("click", stageClick);
