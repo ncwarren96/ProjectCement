@@ -151,17 +151,17 @@ function init() {
 	cityMap.map_Objects.push(player);
 	
 	//add clueInfos
-	for(var i = 0; i<clues.length; i++){
-		cityMap.map_Objects.push(clues[i].clueInfo);
-	}
-	
-	//Adding creep guy
-	guy2 = new NPC(-350, 450, 1, "./assets/guy2.png",56,141, "creep");
-	cityMap.map_Objects.push(guy2);
-	
-	//Secret Clues
 
 	
+	//Adding creep guy
+	guy2 = new NPC(400, 450, 1, "./assets/guy2.png",56,141, "creep");
+	cityMap.map_Objects.push(guy2);
+	
+	//Adding phone booth
+	phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
+	cityMap.map_Objects.push(phone);
+	
+	//Secret Clues
  	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");
  	secretClue2.secret = true;
@@ -177,6 +177,10 @@ function init() {
 	secretClue4.secret = true;
 	cityMap.map_Objects.push(secretClue4);
 	
+	//add clue infos
+	for(var i = 0; i<clues.length; i++){
+		cityMap.map_Objects.push(clues[i].clueInfo);
+	}
 	//Create ticker (game loop)
 	createjs.Ticker.on("tick", game_loop);
 
@@ -184,6 +188,9 @@ function init() {
 	barberMap.map_Objects.push(container);
 	barberMap.map_Objects.push(inventory);
 	barberMap.map_Objects.push(player);
+	
+	barber = new NPC(100, 100, 1, "./assets/barber.png", 28, 130, "barber");
+	barberMap.map_Objects.push(barber);
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
@@ -233,6 +240,7 @@ function update(){
 		player.update();
 		
 		guy2.stickNPCtoBack();
+		phone.stickNPCtoBack();
 		
 		for(var i = 0; i<clues.length; i++){
 			the_clue = clues[i];

@@ -55,6 +55,7 @@
 				loadMap("beach", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				bmp.x = -1600;
 				player.x = 750;
+				player.y = 400;
 				bmp_1.x = -1600;
 			}
 			
@@ -74,8 +75,9 @@
 				loadMap("city", "barber", "./assets/testRoom.png", "./assets/testRoom-hitbox.png");
 				bmp.x = 0;
 				bmp_1.x = 0;
-				player.x = 300;
-				player.y = 400;
+				this.x = 300;
+				this.y = 400;
+				return;
 			}
 
 			if(backPoint.x > 740 && backPoint.x < 790 && backPoint.y <= 275){
@@ -84,6 +86,7 @@
 				bmp_1.x = 0;
 				player.x = 300;
 				player.y = 400;
+				return;
 			}
 		}
 
@@ -94,6 +97,7 @@
 				bmp_1.x = -1600;
 				player.x = 400;
 				player.y = 290;
+				return;
 			}
 		}
 
@@ -104,6 +108,7 @@
 				bmp_1.x = -300;
 				player.x = 400;
 				player.y = 290;
+				return;
 			}
 		}
 

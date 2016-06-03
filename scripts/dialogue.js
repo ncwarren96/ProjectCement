@@ -49,13 +49,11 @@ function showDialogue(targetDialogue, state){
 	//dead petey 'Dialogue'
 	if(targetDialogue == "petey"){
 		peteyClue.handleClick();
-		//state = null;
-		if(state == 0){
-			createDialougeBox(textContainer, "Dead", 2, null, null, "Inspect Body", "Leave", "Leave");
-		}else if(state == 1){
-		}else if(state == 2){
-			createDialougeBox(textContainer, "The subjects fingers have been removed", null, null, null, "Leave", "Leave", "Leave");
-		}
+		state = null;
+		textContainer.removeAllChildren();
+		// if(state == 0){
+			// createDialougeBox(textContainer, "The dead body lies at your feet", null, null, null, "Leave", "Leave", "Leave");
+		// }
 	}
 	// guy 1 Dialogue
 	if(targetDialogue == "guy1"){
@@ -79,7 +77,7 @@ function showDialogue(targetDialogue, state){
 		if(secretPoints == 0){
 			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "Leave", "Leave");
 		}else if(secretPoints == 1){
-			createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, null, "What?", "Leave", "Leave");
 			removeFromInventory(secretClue1);
 		}else if(secretPoints == 2){
 			createDialougeBox(textContainer, "Mando controls this city", null, null, null, "Leave", "Leave", "Leave");
@@ -113,8 +111,19 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 9 ){
 			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he’s been doing gang and drug work for years. Looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}
-
-
+	
+	if(targetDialogue == "phone"){
+		if (state == 0){
+			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
+		}
+	}
+	
+	if(targetDialogue == "barber"){
+		if (state == 0){
+			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
+		}
+	}
+	
 	}
 	
 	if(textContainer.children.length > 0){
