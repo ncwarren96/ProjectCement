@@ -16,8 +16,8 @@ var barberDeathEvent = false;
 var beachMap = new map("beach");
 var startMap = new map("start");
 var cityMap = new map("city");
-var barberMap = new map("barber");
-var nypdMap = new map("nypd");
+var barberMap = new map("barber"); //barber
+var nypdMap = new map("nypd"); // nypdMap
 map_array.push(beachMap);
 map_array.push(startMap);
 map_array.push(cityMap);
@@ -193,7 +193,7 @@ function init() {
 	barberMap.map_Objects.push(inventory);
 	barberMap.map_Objects.push(player);
 	
-	barber = new NPC(100, 100, 1, "./assets/barber.png", 28, 130, "barber");
+	barber = new NPC(75, 100, 1, "./assets/barber.png", 28, 130, "barber");
 	barberMap.map_Objects.push(barber);
 	
 	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
@@ -215,6 +215,11 @@ function init() {
 	nypdMap.map_Objects.push(container);
 	nypdMap.map_Objects.push(inventory);
 	nypdMap.map_Objects.push(player);
+	
+	//Add deskCop
+	deskCop = new NPC(385, 160, 1, "./assets/deskCop.png", 55, 59, "deskCop");
+	nypdMap.map_Objects.push(deskCop);
+	
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
