@@ -48,7 +48,6 @@ function showDialogue(targetDialogue, state){
 	//dead petey 'Dialogue'
 	if(targetDialogue == "petey"){
 		peteyClue.handleClick();
-		state = null;
 		textContainer.removeAllChildren();
 		// if(state == 0){
 			// createDialougeBox(textContainer, "The dead body lies at your feet", null, null, null, "Leave", "Leave", "Leave");
@@ -138,7 +137,7 @@ function showDialogue(targetDialogue, state){
 	
 	if(targetDialogue == "phone"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Number?", 1, 5, 5, "555-1762", "555-9572", "555-0080");
+			createDialougeBox(textContainer, "Number?", 1, 9, 9, "555-1762", "555-9572", "555-0080");
 		}else if(state == 1){
 			createDialougeBox(textContainer, "This is Kristina, Petey's girlfriend", 2, null, 4, "-->", "", "How long have you known Petey?");
 		}else if(state == 2){
@@ -155,7 +154,8 @@ function showDialogue(targetDialogue, state){
 	
 	if(targetDialogue == "barber"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Need a new trim?", 1, 2, 5, "Not today. But does the name Peter Gonzalez ring a bell?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
+			createDialougeBox(textContainer, "Need a new trim?", 1, 2, 5, "Not today. Know the name Peter Gonzalez?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
+			barberDeathEvent = true;
 		}else if(state == 1){
 			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 3, 6, 6, "Cut the shit Vinny, cops are on to you.", "Leave", "Leave");
 		}else if(state == 2){
@@ -172,6 +172,12 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "Sure, let me see...", 8, null, null, "...", "Leave", "Leave");
 		}else if(state == 8){
 			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs", 6, null, null, "Thanks.", "Leave", "Leave");
+		}
+	}
+	
+	if(targetDialogue == "barber2"){
+		if(state == 0){
+			textContainer.removeAllChildren();
 		}
 	}
 	

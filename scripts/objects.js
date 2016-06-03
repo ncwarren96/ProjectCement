@@ -72,12 +72,21 @@
 		}
 
 		if(currentMapName == "city"){
-			if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275){
+			if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == false){
 				loadMap("city", "barber", "./assets/barbershop.png", "./assets/testRoom-hitbox.png");
 				bmp.x = 0;
 				bmp_1.x = 0;
-				this.x = 300;
-				this.y = 600;
+				player.x = 300;
+				player.y = 500;
+				console.log(stage.numChildren);
+				return;
+				
+			}else if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == true){
+				loadMap("city", "barber2", "./assets/barbershop.png", "./assets/testRoom-hitbox.png");
+				bmp.x = 0;
+				bmp_1.x = 0;
+				player.x = 300;
+				player.y = 500;
 				return;
 			}
 

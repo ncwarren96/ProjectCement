@@ -18,11 +18,13 @@ var beachMap = new map("beach");
 var startMap = new map("start");
 var cityMap = new map("city");
 var barberMap = new map("barber"); //barber
+var barberMap2 = new map("barber2"); //barber death map
 var nypdMap = new map("nypd"); // nypdMap
 map_array.push(beachMap);
 map_array.push(startMap);
 map_array.push(cityMap);
 map_array.push(barberMap);
+map_array.push(barberMap2);
 map_array.push(nypdMap);
 var currentMapName = "start";
 var startMapCounter = 0;
@@ -150,7 +152,6 @@ function init() {
 	beachMap.map_Objects.push(inventory);
 	beachMap.map_Objects.push(player);
 
-	beachMap.map_Objects.push(exit);
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
@@ -174,7 +175,7 @@ function init() {
 	phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
 	cityMap.map_Objects.push(phone);
 	
-	//receiptSprite // having problem with puting clue info on screen 
+	//receiptSprite
 	receipt = new Clue(-600, 450, 1, "./assets/receiptSprite.png", 20,32, "receipt");
  	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
  	cityMap.map_Objects.push(receipt);
@@ -184,7 +185,12 @@ function init() {
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
-	
+ 	
+ 	secretClue3 = new Clue(-200, 500, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
+ 	secretClue3.secret = true;
+ 	cityMap.map_Objects.push(secretClue3);
+ 
 	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
  	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
 	secretClue5.secret = true;
@@ -208,21 +214,27 @@ function init() {
 	haircut = new NPC(500, 500, 1, "./assets/guy3.png", 60, 160, "haircut");
 	barberMap.map_Objects.push(haircut);
 	
-	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
+	secretClue3 = new Clue(-1800, 200, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	barberMap.map_Objects.push(secretClue3);
  	
- 	secretClue4 = new Clue(200, 300, 1, "./assets/secret4.png", 24, 24, "D");
- 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
-	secretClue4.secret = true;
-	barberMap.map_Objects.push(secretClue4);
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		barberMap.map_Objects.push(clues[i].clueInfo);
 	}
-
+	
+	/**************************************Barber2 MAP*********************************/
+	barberMap2.map_Objects.push(container);
+	barberMap2.map_Objects.push(inventory);
+	barberMap2.map_Objects.push(player);
+	
+	
+	
+	barberDead = new NPC(75, 100, 1, "./assets/barberDead.png", 130, 28, "barberDead");
+	barberMap2.map_Objects.push(barberDead);
+	
 	/**************************************nypd MAP*********************************/
 	nypdMap.map_Objects.push(container);
 	nypdMap.map_Objects.push(inventory);
@@ -232,13 +244,17 @@ function init() {
 	deskCop = new NPC(385, 160, 1, "./assets/deskCop.png", 55, 59, "deskCop");
 	nypdMap.map_Objects.push(deskCop);
 	
+	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
+ 	secretClue3.secret = true;
+ 	nypdMap.map_Objects.push(secretClue3);
+	
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		nypdMap.map_Objects.push(clues[i].clueInfo);
 	}
 }
-
 
 function game_loop(event) {
 	update();
@@ -295,11 +311,23 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		
-		point_text.text = "Points: "+ points;
+		console.log(clues[0].x);
+		//point_text.text = "Points: "+ points;
 	
 	}
 	
+	if(currentMapName == "barber2"){
+		moveInventory();
+		player.update();
+		
+		
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
+		}
+	}
 	/**************************************NYPD MAP [update]*********************************/
 	if(currentMapName == "nypd"){
 		moveInventory();
