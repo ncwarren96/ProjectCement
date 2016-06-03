@@ -153,6 +153,7 @@ function init() {
 	}
 
 	/**************************************CITY MAP*********************************/
+	
 	cityMap.map_Objects.push(container);
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
@@ -174,11 +175,6 @@ function init() {
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
- 	
- 	secretClue4 = new Clue(-200, 500, 1, "./assets/secret4.png", 24, 24, "D");
- 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
-	secretClue4.secret = true;
-	cityMap.map_Objects.push(secretClue4);
 	
 	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
  	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
@@ -200,10 +196,15 @@ function init() {
 	barber = new NPC(100, 100, 1, "./assets/barber.png", 28, 130, "barber");
 	barberMap.map_Objects.push(barber);
 	
-	secretClue3 = new Clue(300, 500, 1, "./assets/secret3.png", 24, 24, "N");
+	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	barberMap.map_Objects.push(secretClue3);
+ 	
+ 	secretClue4 = new Clue(200, 300, 1, "./assets/secret4.png", 24, 24, "D");
+ 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
+	secretClue4.secret = true;
+	barberMap.map_Objects.push(secretClue4);
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
@@ -229,6 +230,7 @@ function game_loop(event) {
 
 
 function update(){
+	/**************************************Beach MAP [update]*********************************/
 	if(currentMapName == "beach"){
 		moveInventory();
 		player.update();
@@ -247,7 +249,7 @@ function update(){
 		guy1.stickNPCtoBack();
 		
 	}
-
+	/**************************************City MAP [update]*********************************/
 	if(currentMapName == "city"){
 		moveInventory();
 		player.update();
@@ -264,6 +266,7 @@ function update(){
 		}
 	}
 	
+	/**************************************Barber MAP [update]*********************************/
 	if(currentMapName == "barber"){
 		moveInventory();
 		player.update();
@@ -274,10 +277,12 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
+		
 		point_text.text = "Points: "+ points;
 	
 	}
-
+	
+	/**************************************NYPD MAP [update]*********************************/
 	if(currentMapName == "nypd"){
 		moveInventory();
 		player.update();
