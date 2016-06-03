@@ -1,5 +1,5 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, inventory, points_text;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text;
 var secretClue1, secretClue2, secretClue3, secretClue4; 
 var points = 0;
 var secretPoints = 0;
@@ -152,6 +152,9 @@ function init() {
 	
 	//add clueInfos
 
+	//burningBarrel
+	barrel = new NPC(-350, 310, 1, "./assets/burningBarrel.png",88, 119, "barrel");
+	cityMap.map_Objects.push(barrel);
 	
 	//Adding creep guy
 	guy2 = new NPC(400, 450, 1, "./assets/guy2.png",56,141, "creep");
@@ -241,6 +244,7 @@ function update(){
 		
 		guy2.stickNPCtoBack();
 		phone.stickNPCtoBack();
+		barrel.stickNPCtoBack();
 		
 		for(var i = 0; i<clues.length; i++){
 			the_clue = clues[i];
