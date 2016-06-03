@@ -166,19 +166,24 @@ function init() {
 	
 	//Secret Clues
  	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
- 	secretClue2.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
  	
  	secretClue3 = new Clue(-100, 500, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	cityMap.map_Objects.push(secretClue3);
  	
  	secretClue4 = new Clue(-200, 500, 1, "./assets/secret4.png", 24, 24, "D");
- 	secretClue4.clueInfo = makeInfoSprite("./assets/secret_info.png");
+ 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
 	secretClue4.secret = true;
 	cityMap.map_Objects.push(secretClue4);
+	
+	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
+ 	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
+	secretClue5.secret = true;
+	cityMap.map_Objects.push(secretClue5);
 	
 	//add clue infos
 	for(var i = 0; i<clues.length; i++){

@@ -113,13 +113,13 @@ function showDialogue(targetDialogue, state){
 		}
 	
 	if(targetDialogue == "phone"){
-		if (state == 0){
+		if(state == 0){
 			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
 		}
 	}
 	
 	if(targetDialogue == "barber"){
-		if (state == 0){
+		if(state == 0){
 			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
 		}
 	}
