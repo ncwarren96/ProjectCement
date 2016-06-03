@@ -10,8 +10,8 @@ function showDialogue(targetDialogue, state){
 	
 	//make text container
 	var textContainer = new createjs.Container();
-	textContainer.x = 200;
-	textContainer.y = 0;
+	textContainer.x = 150;
+	textContainer.y = 15;
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 500, 150);
 	textContainer.addChild(bg_rect);
@@ -31,7 +31,6 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 3){
 			
 			createDialougeBox(textContainer, "Cop: Just don't mess anything up and mind your own business.", null, null, null, "*Leave*", "*Leave*", "*Leave*");		
-			
 		}
 	}
 	
@@ -55,6 +54,7 @@ function showDialogue(targetDialogue, state){
 			// createDialougeBox(textContainer, "The dead body lies at your feet", null, null, null, "Leave", "Leave", "Leave");
 		// }
 	}
+	
 	// guy 1 Dialogue
 	if(targetDialogue == "guy1"){
 		if(state == 0){
@@ -73,23 +73,42 @@ function showDialogue(targetDialogue, state){
 	}
 	
 	//Creepy cult info man
-	if(targetDialogue == "creep"){
-		if(secretPoints == 0){
-			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "Leave", "Leave");
-		}else if(secretPoints == 1){
-			createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, null, "What?", "Leave", "Leave");
-			removeFromInventory(secretClue1);
-		}else if(secretPoints == 2){
-			createDialougeBox(textContainer, "Mando controls this city", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue2);
-		}else if(secretPoints == 3){
-			createDialougeBox(textContainer, "Mando Imperium knows what you are up to. Stop.", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue3);
-		}else if(secretPoints == 4){
-			createDialougeBox(textContainer, "You found the forth clue", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue4);
+	if(targetDialogue == "creep" && secretPoints == 0){
+		if(state == 0){
+			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
 		}
 	}
+	if(targetDialogue == "creep" && secretPoints == 1){	
+		if(state == 0){
+			createDialougeBox(textContainer, "Animals don't eat fingers.", 1, null, null, "What?", "", "");
+			removeFromInventory(secretClue1);
+		}else if(state == 1){
+			createDialougeBox(textContainer, "If you find any more of these, bring them to me.", null, null, null, "Ok", "", "");
+		}
+	}
+	if(targetDialogue == "creep" && secretPoints == 2){
+		if(state == 0){
+			createDialougeBox(textContainer, "Petey owed a lot more than money", 1, null, null, "To who?", "", "");
+			removeFromInventory(secretClue2);
+		}else if(state == 1){
+			createDialougeBox(textContainer, "Mando ", 1, null, null, "To who?", "", "");
+		}
+	}
+	if(targetDialogue == "creep" && secretPoints == 3){
+		if(state == 0){
+			createDialougeBox(textContainer, "The cops know what you're up to, be careful.", null, null, null, "Leave", "Leave", "Leave");
+			removeFromInventory(secretClue2);
+		}}
+	if(targetDialogue == "creep" && secretPoints == 4){
+		if(state == 0){
+			createDialougeBox(textContainer, "Mando controls this city, and everyone in it.", null, null, null, "Leave", "Leave", "Leave");
+			removeFromInventory(secretClue2);
+		}}
+	if(targetDialogue == "creep" && secretPoints == 5){
+		if(state == 0){
+			createDialougeBox(textContainer, "Mando Imperium knows.", null, null, null, "Leave", "Leave", "Leave");
+			removeFromInventory(secretClue2);
+		}}	
 
 	if(targetDialogue == "boyce"){
 		if(state == 0){
@@ -109,22 +128,39 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 8 ){
 			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 9 ){
-			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he’s been doing gang and drug work for years. Looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", "Leave", "Leave");
+		}else if(state == 10){
+			createDialougeBox(textContainer, "Boyd: We've been trying to get him locked up for good, looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}
+	}
 	
 	if(targetDialogue == "phone"){
 		if(state == 0){
-			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "This is Kristina, Petey's girlfriend", 2, null, 4, "-->", "", "How long have you known Petey?");
+		}else if(state == 1){
+		}else if(state == 2){
+			createDialougeBox(textContainer, "Last I saw Petey he said he was goin to the barber.", 3, null, null, "-->", "Leave", "Leave");
+		}else if(state == 3){
+			createDialougeBox(textContainer, "All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", null, null, null, "Thanks", "Leave", "Leave");
+		}else if(state ==4){
+			createDialougeBox(textContainer, "Been a few years, but he got me knocked up 4 months ago so now we livin' together", 2, null, null, "-->", "Leave", "Leave");
 		}
 	}
 	
 	if(targetDialogue == "barber"){
 		if(state == 0){
-			createDialougeBox(textContainer, "My dialogue hasn't been put in yet", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Need a trim?", 1, 2, 5, "Not today. But does the name Peter Gonzalez ring a bell?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
+		}else if(state == 1){
+			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+		}else if(state == 2){
+			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+		}else if(state == 3){
+			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+		}else if(state == 5){
+			createDialougeBox(textContainer, "It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", "", "");
 		}
 	}
 	
-	}
 	
 	if(textContainer.children.length > 0){
 		stage.addChild(textContainer);//adds textContainer to stage if it has children

@@ -1,12 +1,17 @@
 var keys = new Array();
 var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text;
-var secretClue1, secretClue2, secretClue3, secretClue4; 
+var secretClue1, secretClue2, secretClue3, secretClue4;
+
 var points = 0;
 var secretPoints = 0;
+
 var clues = [];
 var found_clues = [];
 var map_array = [];
+
 inventory = new createjs.Container();
+
+var barberDeathEvent = false;
 
 var beachMap = new map("beach");
 var startMap = new map("start");
@@ -24,7 +29,11 @@ var startMapText;
 
 function init() {
 	stage = new createjs.Stage("demoCanvas"); //stage object 
+	
 	createInventory();
+	
+	//Create ticker (game loop)
+	createjs.Ticker.on("tick", game_loop);
 	
 	/************************************START MAP*******************************/
 	var bg_rect = new createjs.Shape();
@@ -140,17 +149,13 @@ function init() {
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
-		beachMap.map_Objects.push(clues[i].clueInfo);
-		//cityMap.map_Objects.push(clues[i].clueInfo);
-		
+		beachMap.map_Objects.push(clues[i].clueInfo);	
 	}
 
 	/**************************************CITY MAP*********************************/
 	cityMap.map_Objects.push(container);
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
-	
-	//add clueInfos
 
 	//burningBarrel
 	barrel = new NPC(-350, 310, 1, "./assets/burningBarrel.png",88, 119, "barrel");
@@ -170,11 +175,6 @@ function init() {
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
  	
- 	secretClue3 = new Clue(-100, 500, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
- 	secretClue3.secret = true;
- 	cityMap.map_Objects.push(secretClue3);
- 	
  	secretClue4 = new Clue(-200, 500, 1, "./assets/secret4.png", 24, 24, "D");
  	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
 	secretClue4.secret = true;
@@ -189,8 +189,8 @@ function init() {
 	for(var i = 0; i<clues.length; i++){
 		cityMap.map_Objects.push(clues[i].clueInfo);
 	}
-	//Create ticker (game loop)
-	createjs.Ticker.on("tick", game_loop);
+	
+
 
 	/**************************************Barber MAP*********************************/
 	barberMap.map_Objects.push(container);
@@ -199,6 +199,11 @@ function init() {
 	
 	barber = new NPC(100, 100, 1, "./assets/barber.png", 28, 130, "barber");
 	barberMap.map_Objects.push(barber);
+	
+	secretClue3 = new Clue(300, 500, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
+ 	secretClue3.secret = true;
+ 	barberMap.map_Objects.push(secretClue3);
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
@@ -313,10 +318,6 @@ function getBackgroundPosition(x, y){
 		y: backY
 	};
 	return back;
-}
-
-function infoClick(){
-	
 }
 
 
