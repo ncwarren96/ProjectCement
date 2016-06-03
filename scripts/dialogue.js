@@ -152,14 +152,16 @@ function showDialogue(targetDialogue, state){
 		if(state == 0){
 			createDialougeBox(textContainer, "Need a trim?", 1, 2, 5, "Not today. But does the name Peter Gonzalez ring a bell?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 3, 6, 6, "Ask about involvement in organized crime ", "Leave", "Leave");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+			createDialougeBox(textContainer, "No, what would they need to know from me?", 6, 6, 6, "Leave", "Leave", "Leave");
 		}else if(state == 3){
-			createDialougeBox(textContainer, "My dialogue hasn't been fully implemented yet", null, null, null, "", "", "");
+			createDialougeBox(textContainer, "I ain't no snitch, get out of here!  ", 6, 6, 6,"Leave", "Leave", "Leave");
 		}else if(state == 5){
-			createDialougeBox(textContainer, "It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", "", "");
-		}
+			createDialougeBox(textContainer, "It will be 18$. Cash only.", 6, null, null, "Oh, I don't have any cash on me, sorry.", "", "");
+		}else if(state == 6){
+			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+	}
 	}
 	
 	if(targetDialogue == "deskCop"){

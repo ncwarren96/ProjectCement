@@ -110,7 +110,7 @@ function init() {
  	wallet = new Clue(400, 550, 1, "./assets/wallet.png", 24,24, "wallet");
  	wallet.clueInfo = makeInfoSprite("./assets/wallet_info.png");
  	beachMap.map_Objects.push(wallet);
- 	
+ 		
  	drugs = new Clue(150, 500, 1, "./assets/drugs.png", 24,24, "drugs");
  	drugs.clueInfo = makeInfoSprite("./assets/drugs_info.png");
  	beachMap.map_Objects.push(drugs);
@@ -135,10 +135,7 @@ function init() {
 	//Adding guy1
 	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy2");
 	beachMap.map_Objects.push(guy1);
-	
-	//Adding guy2
-
-	
+		
 	//Adding Petey (NPC object instance)
 	petey = new NPC(400, 450, 1, "./assets/petey.png", 170, 47, "petey");
 	beachMap.map_Objects.push(petey);
@@ -169,6 +166,11 @@ function init() {
 	//Adding phone booth
 	phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
 	cityMap.map_Objects.push(phone);
+	
+	//receiptSprite // having problem with puting clue info on screen 
+	receipt = new Clue(-600, 450, 1, "./assets/receiptSprite.png", 20,32, "receipt");
+ 	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
+ 	cityMap.map_Objects.push(receipt);
 	
 	//Secret Clues
  	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
