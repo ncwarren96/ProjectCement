@@ -175,14 +175,22 @@ function showDialogue(targetDialogue, state){
 		}
 	}
 	
-	if(targetDialogue == "barber2"){
+	if(targetDialogue == "barberDead"){
 		if(state == 0){
 			textContainer.removeAllChildren();
+			player.immobile = false;
 		}
 	}
 	
 	if(targetDialogue == "haircut"){
 		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "Leave", "Leave", "Leave");
+	}
+	
+	if(targetDialogue == "barrel"){
+		if(state==0){
+			textContainer.removeAllChildren();
+			player.immobile = false;
+		}
 	}
 	
 	if(targetDialogue == "deskCop"){

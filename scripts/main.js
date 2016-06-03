@@ -121,7 +121,7 @@ function init() {
  	beachMap.map_Objects.push(wallet);
  		
  	drugs = new Clue(150, 500, 1, "./assets/drugs.png", 24,24, "drugs");
- 	drugs.clueInfo = makeInfoSprite("./assets/drugs_info.png");
+ 	drugs.clueInfo = makeInfoSprite("./assets/Drugs_info.png");
  	beachMap.map_Objects.push(drugs);
  	
  	peteyClue = new Clue(400, -30, 1, "./assets/photo.png", 24, 24, "petey");
@@ -214,7 +214,7 @@ function init() {
 	haircut = new NPC(500, 500, 1, "./assets/guy3.png", 60, 160, "haircut");
 	barberMap.map_Objects.push(haircut);
 	
-	secretClue3 = new Clue(-1800, 200, 1, "./assets/secret3.png", 24, 24, "N");
+	secretClue3 = new Clue(-1400, 200, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	barberMap.map_Objects.push(secretClue3);
