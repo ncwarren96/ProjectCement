@@ -275,7 +275,7 @@
 		this.clickSound = new Audio("./sounds/click.mp3");
 		
 		this.clueInfo = new createjs.Sprite();
-		this.clueInfo.on("click", this.infoClick);
+		this.clueInfo.on("click", p.infoClick);
 		
 		this.secret = false;
 		this.label = label;							//label
