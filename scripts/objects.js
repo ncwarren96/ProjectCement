@@ -81,7 +81,7 @@
 			}
 
 			if(backPoint.x > 740 && backPoint.x < 790 && backPoint.y <= 275){
-				loadMap("city", "nypd", "./assets/testRoom.png", "./assets/testRoom-hitbox.png");
+				loadMap("city", "nypd", "./assets/NYPD.png", "./assets/testRoom-hitbox.png");
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
