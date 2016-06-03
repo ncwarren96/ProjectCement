@@ -198,6 +198,9 @@ function init() {
 	barber = new NPC(75, 100, 1, "./assets/barber.png", 28, 130, "barber");
 	barberMap.map_Objects.push(barber);
 	
+	haircut = new NPC(500, 500, 1, "./assets/guy3.png", 60, 160, "haircut");
+	barberMap.map_Objects.push(haircut);
+	
 	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;

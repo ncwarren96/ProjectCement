@@ -115,53 +115,68 @@ function showDialogue(targetDialogue, state){
 		if(state == 0){
 			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Sure you don't need anything else?", "I have a question.");	
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Boyd: Bye.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: Bye.", null, null, null, "*Leave", "Leave*", "*Leave*");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "Boyd: Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "Leave");
+			createDialougeBox(textContainer, "Boyd: Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "*Leave*");
 		}else if(state == 3 ){
-			createDialougeBox(textContainer, "Boyd: What.", 7, 8, 9, "Didn’t the mob stop dealing in drugs?", "What happened to the guys fingers?", "Did you know Petey?"); 
+			createDialougeBox(textContainer, "Boyd: What.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?"); 
 		}else if(state == 4 ){
 			createDialougeBox(textContainer, "Boyd: That's stupid.", null, null, null, "Leave", "Leave", "Leave");				
 		}else if(state == 5 ){
+			createDialougeBox(textContainer, "Boyd: The cement shoes! Y'know, from the stories?", 6, null, 3, "But Vinny and his gang stopped dealing in drugs.", "Sure.", "I have another question.");
 		}else if(state == 6 ){
+			createDialougeBox(textContainer, "Boyd: Well, I guess The Barber is back in business. We will be arresting him soon.", null, null, 3, "Ok.", "*Leave*", "I have another question.");
 		}else if(state == 7 ){
-			createDialougeBox(textContainer, "Boyd: Well I guess they’re back at it.", 3, null, null, "I have another question.", "Leave", "Leave");
 		}else if(state == 8 ){
-			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "*Leave*", "*Leave*");
 		}else if(state == 9 ){
-			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", "*Leave*", "*Leave*");
 		}else if(state == 10){
-			createDialougeBox(textContainer, "Boyd: We've been trying to get him locked up for good, looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Boyd: We've been trying to get him locked up for good, looks like someone else got him though.", 3, null, null, "I have another question.", "*Leave*", "*Leave*");
 		}
 	}
 	
 	if(targetDialogue == "phone"){
 		if(state == 0){
-			createDialougeBox(textContainer, "This is Kristina, Petey's girlfriend", 2, null, 4, "-->", "", "How long have you known Petey?");
+			createDialougeBox(textContainer, "Number?", 1, 5, 5, "555-1762", "555-9572", "555-0080");
 		}else if(state == 1){
+			createDialougeBox(textContainer, "This is Kristina, Petey's girlfriend", 2, null, 4, "-->", "", "How long have you known Petey?");
 		}else if(state == 2){
 			createDialougeBox(textContainer, "Last I saw Petey he said he was goin to the barber.", 3, null, null, "-->", "Leave", "Leave");
 		}else if(state == 3){
 			createDialougeBox(textContainer, "All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", null, null, null, "Thanks", "Leave", "Leave");
 		}else if(state ==4){
 			createDialougeBox(textContainer, "Been a few years, but he got me knocked up 4 months ago so now we livin' together", 2, null, null, "-->", "Leave", "Leave");
+		}else if(state == 9){
+			createDialougeBox(textContainer, "No Answer.", null, null, null, "Leave", "Leave", "Leave");
+
 		}
 	}
 	
 	if(targetDialogue == "barber"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Need a trim?", 1, 2, 5, "Not today. But does the name Peter Gonzalez ring a bell?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
+			createDialougeBox(textContainer, "Need a new trim?", 1, 2, 5, "Not today. But does the name Peter Gonzalez ring a bell?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 3, 6, 6, "Ask about involvement in organized crime ", "Leave", "Leave");
+			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 3, 6, 6, "Cut the shit Vinny, cops are on to you.", "Leave", "Leave");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "No, what would they need to know from me?", 6, 6, 6, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
 		}else if(state == 3){
-			createDialougeBox(textContainer, "I ain't no snitch, get out of here!  ", 6, 6, 6,"Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
+		}else if(state == 4){
+			createDialougeBox(textContainer, "Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 7, 6, "It looks like someone is trying to frame you.", "Can you look up Peter Gonzales in your recipts?", "Leave");
 		}else if(state == 5){
 			createDialougeBox(textContainer, "It will be 18$. Cash only.", 6, null, null, "Oh, I don't have any cash on me, sorry.", "", "");
 		}else if(state == 6){
-			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Good luck.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(state == 7){
+			createDialougeBox(textContainer, "Sure, let me see...", 8, null, null, "...", "Leave", "Leave");
+		}else if(state == 8){
+			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs", 6, null, null, "Thanks.", "Leave", "Leave");
+		}
 	}
+	
+	if(targetDialogue == "haircut"){
+		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "Leave", "Leave", "Leave");
 	}
 	
 	if(targetDialogue == "deskCop"){
