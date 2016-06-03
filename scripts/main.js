@@ -31,7 +31,7 @@ var startMapCounter = 0;
 var startMapText;
 
 function init() {
-	stage = new createjs.Stage("demoCanvas"); //stage object 
+	stage.enableMouseOver(20); 					//allow mouseover and mouseout events to stage
 	
 	stage.on("click", stageClick);
 	createInventory();
@@ -47,7 +47,6 @@ function init() {
 	/************************************START MAP*******************************/
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
-	stage.enableMouseOver(20); 
 	stage.addChild(bg_rect);
 
 	bg_rect.on("click", handleClick_bg, null,false);
@@ -357,10 +356,11 @@ function draw(event){
 
 //*********************************Helper Functions*************************
 
+//returns distance between the point (x, y) and (x2, y2)
 function getDistance(x, y, x2, y2){
 	return Math.sqrt(Math.pow((y2 - y), 2) + Math.pow((x2 - x), 2));
 }
-
+//returns the position (x, y) on the canvas relative to the origin of the background image
 function getBackgroundPosition(x, y){
 	var backX = bmp.x*(-1)+x;
 	var backY = y;
@@ -370,6 +370,7 @@ function getBackgroundPosition(x, y){
 	};
 	return back;
 }
+//????
 function stageClick(){
 	console.log("clicked");
 	for(var i = 0; i<clues.length; i++){
