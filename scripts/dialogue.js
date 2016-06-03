@@ -1,7 +1,7 @@
 
 function showDialogue(targetDialogue, state){
-	var clickSound = new Audio("./sounds/click.mp3");
-	var overSound = new Audio("./sounds/boop.mp3");
+	createjs.Sound.registerSound("./sounds/click.mp3", "clickSound");
+	createjs.Sound.registerSound("./sounds/boop.mp3", "overSound");
 	player.immobile = true;
 	if(state == null){
 		player.immobile = false;
@@ -259,18 +259,21 @@ function showDialogue(targetDialogue, state){
 		rects.mid_rect.rect.on("mouseout", handleOut);
 		rects.right_rect.rect.on("mouseout", handleOut);
 		function handleClick_left(evt) {
+			createjs.Sound.play("clickSound");
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 			showDialogue(targetDialogue, rects.left_rect.target);
 		}
 		      
 		function handleClick_mid(evt) {
+			createjs.Sound.play("clickSound");
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 		    showDialogue(targetDialogue, rects.mid_rect.target);
 		}
 		        
 		function handleClick_right(evt) {
+			createjs.Sound.play("clickSound");
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 		    showDialogue(targetDialogue, rects.right_rect.target);
@@ -278,7 +281,7 @@ function showDialogue(targetDialogue, state){
 		
 		function handleOver(evt){
 			this.alpha = .8;
-			overSound.play();
+			createjs.Sound.play("overSound");
 		}
 		
 		function handleOut(evt){
