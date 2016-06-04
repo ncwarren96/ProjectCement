@@ -30,10 +30,11 @@ var currentMapName = "start";
 var startMapCounter = 0;
 var startMapText;
 
-createjs.Sound.registerSound("./sounds/click.mp3", "clickSound");
-createjs.Sound.registerSound("./sounds/boop.mp3", "boopSound");
 
 function init() {
+	createjs.Sound.registerSound("./sounds/click.mp3", "clickSound");
+	createjs.Sound.registerSound("./sounds/boop.mp3", "boopSound");
+	
 	stage = new createjs.Stage("demoCanvas"); 	//stage object
 	stage.enableMouseOver(20); 					//allow mouseover and mouseout events to stage
 	

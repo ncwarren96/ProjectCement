@@ -279,7 +279,7 @@ function showDialogue(targetDialogue, state){
 		
 		function handleOver(evt){
 			this.alpha = .8;
-			createjs.Sound.play("overSound");
+			createjs.Sound.play("boopSound");
 		}
 		
 		function handleOut(evt){

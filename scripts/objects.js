@@ -283,7 +283,6 @@
 		
 		this.clueInfo = new createjs.Sprite();
 		
-		
 		this.secret = false;
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
@@ -306,6 +305,7 @@
 	
 	//event handler for clue
 	p.handleClick = function (event) {
+		createjs.Sound.play("clickSound");
 		//console.log("clicked");
 		this.clueInfo.visible = true;    //show/hide clue info
 		
@@ -330,6 +330,7 @@
 	
 	p.handleOver = function(){
 		if(!this.clueInfo.visible){
+			createjs.Sound.play("boopSound");
 			this.alpha = .6;
 		}
 	};
