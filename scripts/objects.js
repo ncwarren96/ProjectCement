@@ -110,6 +110,17 @@
 				return;
 			}
 		}
+		
+		if(currentMapName == "barber2"){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				bmp.x = -1600;
+				bmp_1.x = -1600;
+				player.x = 400;
+				player.y = 290;
+				return;
+			}
+		}
 
 		if(currentMapName == "nypd"){
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
