@@ -144,6 +144,8 @@ function init() {
 	//Robert Boyce
 	boyce = new NPC(250, 300, 1, "./assets/boyce_sprite.png", 40, 135, "boyce");
 	beachMap.map_Objects.push(boyce);
+	boyce.questions = false;
+	console.log(boyce.questions);
 	
 	//Adding guy1
 	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy2");
