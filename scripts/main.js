@@ -166,9 +166,7 @@ function init() {
 	/**************************************CITY MAP*********************************/
 	
 	cityMap.map_Objects.push(container);
-	cityMap.map_Objects.push(inventory);
-	cityMap.map_Objects.push(player);
-
+	
 	//burningBarrel
 	barrel = new NPC(-350, 310, 1, "./assets/burningBarrel.png",88, 119, "barrel");
 	cityMap.map_Objects.push(barrel);
@@ -201,6 +199,9 @@ function init() {
  	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
 	secretClue5.secret = true;
 	cityMap.map_Objects.push(secretClue5);
+
+	cityMap.map_Objects.push(inventory);
+	cityMap.map_Objects.push(player);
 	
 	//add clue infos
 	for(var i = 0; i<clues.length; i++){
@@ -211,8 +212,7 @@ function init() {
 
 	/**************************************Barber MAP*********************************/
 	barberMap.map_Objects.push(container);
-	barberMap.map_Objects.push(inventory);
-	barberMap.map_Objects.push(player);
+	
 	
 	barber = new NPC(75, 100, 1, "./assets/barber.png", 28, 130, "barber");
 	barberMap.map_Objects.push(barber);
@@ -224,6 +224,9 @@ function init() {
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	barberMap.map_Objects.push(secretClue3);
+
+ 	barberMap.map_Objects.push(inventory);
+	barberMap.map_Objects.push(player);
  	
 	
 	//add clueInfos
@@ -233,18 +236,16 @@ function init() {
 	
 	/**************************************Barber2 MAP*********************************/
 	barberMap2.map_Objects.push(container);
-	barberMap2.map_Objects.push(inventory);
-	barberMap2.map_Objects.push(player);
-	
-	
 	
 	barberDead = new NPC(75, 100, 1, "./assets/barberDead.png", 130, 28, "barberDead");
 	barberMap2.map_Objects.push(barberDead);
+
+	barberMap2.map_Objects.push(inventory);
+	barberMap2.map_Objects.push(player);
 	
 	/**************************************nypd MAP*********************************/
 	nypdMap.map_Objects.push(container);
-	nypdMap.map_Objects.push(inventory);
-	nypdMap.map_Objects.push(player);
+	
 	
 	//Add deskCop
 	deskCop = new NPC(385, 160, 1, "./assets/deskCop.png", 55, 59, "deskCop");
@@ -254,6 +255,9 @@ function init() {
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
  	nypdMap.map_Objects.push(secretClue3);
+
+ 	nypdMap.map_Objects.push(inventory);
+	nypdMap.map_Objects.push(player);
 	
 	
 	//add clueInfos
