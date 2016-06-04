@@ -1,7 +1,5 @@
 
 function showDialogue(targetDialogue, state){
-	createjs.Sound.registerSound("./sounds/click.mp3", "clickSound");
-	createjs.Sound.registerSound("./sounds/boop.mp3", "overSound");
 	player.immobile = true;
 	if(state == null){
 		player.immobile = false;

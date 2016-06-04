@@ -281,8 +281,6 @@
 		this.width = width;							//width
 		this.height = height;						//height
 		
-		this.clickSound = new Audio("./sounds/click.mp3");
-		
 		this.clueInfo = new createjs.Sprite();
 		
 		
