@@ -55,6 +55,7 @@
 				loadMap("beach", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				bmp.x = -1600;
 				player.x = 750;
+				player.y = 400;
 				bmp_1.x = -1600;
 				return;
 			}
