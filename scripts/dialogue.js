@@ -29,11 +29,11 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "cop_beach"){
 		if(state == 0){
 			
-			createDialougeBox(textContainer, "Cop: A private investigator huh? We have everything under control here, you can go home.", 1, 2, 3, "Ok, bye.", "Need help?", "I do what I want.");
+			createDialougeBox(textContainer, "Cop: A private investigator huh? We have everything under control here, you can go home.", 1, 2, 3, "Did you know Petey?", "Need help?", "I do what I want.");
 			
 		}else if(state == 1){
 			
-			createDialougeBox(textContainer, "Cop: Bye.", null, null, null, "*Leave*", "*Leave*", "*Leave*");
+			createDialougeBox(textContainer, "Cop: I've heard the others mention him, he was top member in the 100 Cloccs, an off-shoot of the G-Stone Crips, so a pretty dangerous guy.", null, null, null, null, null, "Thanks.");
 			
 		}else if(state == 2){
 			
@@ -95,7 +95,9 @@ function showDialogue(targetDialogue, state){
 	
 	//Creepy cult info man
 	if(targetDialogue == "creep"){
+		
 		var secret = secrets.pop();
+		
 		if(secret == null){
 			if(state == 0){
 				createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
@@ -104,16 +106,17 @@ function showDialogue(targetDialogue, state){
 				removeFromInventory(secretClue1);
 			}
 		}else{
+			
 			if(secret.label == "M"){
-				createDialougeBox(textContainer, "Animals don't eat fingers.", 1, null, null, "What?", "", "");
+				createDialougeBox(textContainer, "Animals don't eat fingers.", null, null, 1, null, null, "What?");
 			}else if(secret.label == "A"){
 				createDialougeBox(textContainer, "Petey owed a lot more than money. And to someone very important.", null, null, null, "To who?", "", "");
 				removeFromInventory(secretClue2);
 			}else if(secret.label == "N"){
-				createDialougeBox(textContainer, "The cops know what you're up to, be careful.", null, null, null, "Leave", "Leave", "Leave");
+				createDialougeBox(textContainer, "The mob stopped dealing in drugs long ago.", null, null, null, null, null, "Leave");
 				removeFromInventory(secretClue3);
 			}else if(secret.label == "D"){
-				createDialougeBox(textContainer, "Mando controls this city, and everyone in it.", null, null, null, "Leave", "Leave", "Leave");
+				createDialougeBox(textContainer, "Mando controls this city, and everyone in it. But if you complete this case, we could stop them", null, null, null, null, null, "Leave");
 				removeFromInventory(secretClue4);
 			}else if(secret.label == "O"){
 				createDialougeBox(textContainer, "Mando Imperium knows.", null, null, null, "Leave", "Leave", "Leave");
@@ -155,13 +158,26 @@ function showDialogue(targetDialogue, state){
 		if(state == 0){
 			createDialougeBox(textContainer, "Number?", 1, 9, 9, "555-1762", "555-9572", "555-0080");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "This is Kristina, Petey's girlfriend", 2, null, 4, "-->", "", "How long have you known Petey?");
+			createDialougeBox(textContainer, "Kristina: Hello?", 2, null, null, "Hello this is Private Investigator Clive Dixon.", "Sorry wrong number.", null);
 		}else if(state == 2){
-			createDialougeBox(textContainer, "Last I saw Petey he said he was goin to the barber.", 3, null, null, "-->", "Leave", "Leave");
+			createDialougeBox(textContainer, "Kristina: Did you find Petey?", 3, 4, 5, "Um... I'm working on it.", "Yes, he's in a lot of trouble'", "Yes. He's dead Kristina.");
+		
 		}else if(state == 3){
-			createDialougeBox(textContainer, "All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", 10, null, null, "Thank you for your cooperation.", "Leave", "Leave");
-		}else if(state ==4){
-			createDialougeBox(textContainer, "Been a few years, but he got me knocked up 4 months ago so now we livin' together", 2, null, null, "-->", "Leave", "Leave");
+			createDialougeBox(textContainer, "Kristina: Well what do you want?", 8, 7, 6, "Where did you say you last saw Petey?", "How long have you two known each other?", "Know any problems Petey was facing?");
+		}else if(state == 4){
+			createDialougeBox(textContainer, "Kristina: Typical. That's Petey, always gettin into trouble.", 8, 7, 6, "Where did you say you last saw Petey?", "How long have you two known each other?", "Know any problems Petey was facing?");
+		}else if(state == 5){
+			createDialougeBox(textContainer, "Kristina: That's what he gets for leaving me.", 8, 7, 6, "Where did you say you last saw Petey?", "How long have you two known each other?", "Know any problems Petey was facing?");
+		
+		}else if(state == 6){
+			createDialougeBox(textContainer, "Kristina: All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", 3, null, 10, "I have another question.", null, "Thank you for your cooperation. Goodbye.");
+		}else if(state ==7){
+			createDialougeBox(textContainer, "Kristina: Been a few years, but he got me knocked up 4 months ago so now we livin' together", 3, null, 10, "I have another question.", null, "Thank you for your cooperation. Goodbye.");
+		}else if(state ==8){
+			talkedToKristina = true;
+			createDialougeBox(textContainer, "Kristina: Last I saw Petey he said he was goin to the barber.", 3, null, 10, "I have another question.", null, "Thank you for your cooperation. Goodbye.");
+			
+			
 		}else if(state == 9){
 			createDialougeBox(textContainer, "No Answer.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 10){
@@ -172,25 +188,27 @@ function showDialogue(targetDialogue, state){
 	}
 	
 	if(targetDialogue == "barber"){
+		console.log(talkedToKristina);
 		if(state == 0){
-			createDialougeBox(textContainer, "Need a new trim?", 1, 2, 5, "Not today. Know the name Peter Gonzalez?", "No thanks. But has the NYPD spoken to you lately?", "Sure.");
-			barberDeathEvent = true;
+			createDialougeBox(textContainer, "Need a new trim?", 2, talkedToKristina? 1 : 6, 5, "No thanks. But has the NYPD spoken to you lately?",  talkedToKristina? "Not today. Know the name Peter Gonzalez?" : "Not today" , "Sure.");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 3, 6, 6, "Cut the shit Vinny, cops are on to you.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 7, 6, 6, "Could you try looking him up in your customer files?", "Leave", "Leave");
 		}else if(state == 2){
 			createDialougeBox(textContainer, "No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
 		}else if(state == 3){
 			createDialougeBox(textContainer, "I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
 		}else if(state == 4){
-			createDialougeBox(textContainer, "Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 7, 6, "It looks like someone is trying to frame you.", "Can you look up Peter Gonzales in your recipts?", "Leave");
+			createDialougeBox(textContainer, "Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 6, 6, "It looks like someone is trying to frame you.", "I belive you. I'll keep looking into it.", "Leave");
 		}else if(state == 5){
-			createDialougeBox(textContainer, "It will be 18$. Cash only.", 6, null, null, "Oh, I don't have any cash on me, sorry.", "", "");
+			createDialougeBox(textContainer, "It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", null, null);
 		}else if(state == 6){
 			createDialougeBox(textContainer, "Good luck.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 7){
 			createDialougeBox(textContainer, "Sure, let me see...", 8, null, null, "...", "Leave", "Leave");
 		}else if(state == 8){
-			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs", 6, null, null, "Thanks.", "Leave", "Leave");
+			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs."+
+											 " Then some guy came in here and said he had to go before I could finish.", null, null, 6, null, null, "Thanks.");
+			barberDeathEvent = true;
 		}
 	}
 	

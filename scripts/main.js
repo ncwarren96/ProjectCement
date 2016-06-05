@@ -8,12 +8,14 @@ var secretPoints = 0;
 
 var clues = [];
 var secrets = [];
+var secretsCollected = [];
 var found_clues = [];
 var map_array = [];
 
 inventory = new createjs.Container();
 
 var barberDeathEvent = false;
+var talkedToKristina = false;
 
 var beachMap = new map("beach");
 var startMap = new map("start");
@@ -191,10 +193,6 @@ function init() {
  	cityMap.map_Objects.push(secretClue2);
  	
  	//Secret clues
- 	secretClue3 = new Clue(-200, 500, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
- 	secretClue3.secret = true;
- 	cityMap.map_Objects.push(secretClue3);
  
 	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
  	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
@@ -334,7 +332,6 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		console.log(clues[0].x);
 		//point_text.text = "Points: "+ points;
 	
 	}
