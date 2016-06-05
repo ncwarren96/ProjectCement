@@ -304,7 +304,7 @@ function showDialogue(targetDialogue, state){
 		rects.right_rect.rect.on("mouseout", handleOut);*/
 		
 		function handleClick_top(evt) {
-			console.log("clicked ")
+			console.log("clicked ");
 			createjs.Sound.play("clickSound");
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
@@ -345,6 +345,9 @@ function createText(string, x, y, font, color){
 	text.lineHeight = 20;
 	text.lineWidth = 475;
 	text.textBaseline = "alphabetic";
+	var hit = new createjs.Shape();
+	hit.graphics.beginFill("#000").drawRect(0, 0, 1, 1);
+	text.hitArea = hit;
 	return text;
 }
 

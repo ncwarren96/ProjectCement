@@ -90,6 +90,9 @@ function init() {
 	startMapText.textAlign = "left";
 	startMapText.lineHeight = 25;
 	startMapText.textBaseline = "alphabetic";
+	var hit = new createjs.Shape();	
+	hit.graphics.beginFill("#000").drawRect(0, 0, 1, 1);
+	startMapText.hitArea = hit;
 	stage.addChild(startMapText);
 
 	/**********************************BEACH MAP*******************************/
