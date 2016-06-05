@@ -195,10 +195,7 @@ function showDialogue(targetDialogue, state){
 	}
 	
 	if(targetDialogue == "barberDead"){
-		if(state == 0){
-			textContainer.removeAllChildren();
-			player.immobile = false;
-		}
+		textContainer.removeAllChildren();
 	}
 	
 	if(targetDialogue == "haircut"){
@@ -207,8 +204,9 @@ function showDialogue(targetDialogue, state){
 	
 	if(targetDialogue == "barrel"){
 		if(state==0){
-			textContainer.removeAllChildren();
-			player.immobile = false;
+			createDialougeBox(textContainer, "*You pull this slip of paper from the ashes*", null, null, null, null, null, "Leave");
+			//player.immobile = false;
+			secretClue1.handleClick();
 		}
 	}
 	

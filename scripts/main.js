@@ -134,10 +134,14 @@ function init() {
 	peteyClue.clueInfo = makeInfoSprite("./assets/petey_info.png");
 	beachMap.map_Objects.push(peteyClue);
 	
-	secretClue1 = new Clue(-1000, 500, 1, "./assets/secret.png", 24, 24, "M");
+	secretClue1 = new Clue(-1000, -30, 1, "./assets/secret.png", 24, 24, "M");
  	secretClue1.clueInfo = makeInfoSprite("./assets/secret_info.png");
  	secretClue1.secret = true;
 	beachMap.map_Objects.push(secretClue1);
+	
+	//Burning Barrel (which contains secretClue1)
+	barrel = new NPC(-800, 310, 1, "./assets/burningBarrel.png",88, 119, "barrel");
+	beachMap.map_Objects.push(barrel);
 	
 	//Adding Cop (NPC object instance)
 	cop = new NPC(-200, 235, 1, "./assets/Copper.png", 35, 135, "cop_beach");
@@ -168,11 +172,7 @@ function init() {
 	/**************************************CITY MAP*********************************/
 	
 	cityMap.map_Objects.push(container);
-	
-	//burningBarrel
-	barrel = new NPC(-350, 310, 1, "./assets/burningBarrel.png",88, 119, "barrel");
-	cityMap.map_Objects.push(barrel);
-	
+
 	//Adding creep guy
 	guy2 = new NPC(400, 450, 1, "./assets/guy2.png",56,141, "creep");
 	cityMap.map_Objects.push(guy2);
@@ -181,17 +181,13 @@ function init() {
 	phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
 	cityMap.map_Objects.push(phone);
 	
-	//receiptSprite
-	receipt = new Clue(-600, 450, 1, "./assets/receiptSprite.png", 20,32, "receipt");
- 	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
- 	cityMap.map_Objects.push(receipt);
-	
-	//Secret Clues
+	//phone booth contains secretClue2
  	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
  	
+ 	//Secret clues
  	secretClue3 = new Clue(-200, 500, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
@@ -216,16 +212,13 @@ function init() {
 	barberMap.map_Objects.push(container);
 	
 	
-	barber = new NPC(75, 100, 1, "./assets/barber.png", 28, 130, "barber");
+	barber = new NPC(400, 150, 1, "./assets/barber.png", 40, 130, "barber");
 	barberMap.map_Objects.push(barber);
 	
 	haircut = new NPC(500, 500, 1, "./assets/guy3.png", 60, 160, "haircut");
 	barberMap.map_Objects.push(haircut);
 	
-	secretClue3 = new Clue(-1400, 200, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
- 	secretClue3.secret = true;
- 	barberMap.map_Objects.push(secretClue3);
+
 
  	barberMap.map_Objects.push(inventory);
 	barberMap.map_Objects.push(player);
@@ -239,11 +232,26 @@ function init() {
 	/**************************************Barber2 MAP*********************************/
 	barberMap2.map_Objects.push(container);
 	
-	barberDead = new NPC(75, 100, 1, "./assets/barberDead.png", 130, 28, "barberDead");
+	barberDead = new NPC(400, 250, 1, "./assets/barberDead.png", 132, 42, "barberDead");
 	barberMap2.map_Objects.push(barberDead);
+	
+	secretClue3 = new Clue(-1200, 300, 1, "./assets/secret3.png", 24, 24, "N");
+ 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");	
+ 	secretClue3.secret = true;
+ 	barberMap2.map_Objects.push(secretClue3);
+ 	
+ 	//receiptSprite
+	receipt = new Clue(-1200, 400, 1, "./assets/receiptSprite.png", 20,32, "receipt");
+ 	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
+ 	barberMap2.map_Objects.push(receipt);
 
 	barberMap2.map_Objects.push(inventory);
 	barberMap2.map_Objects.push(player);
+	
+		//add clueInfos
+	for(var i = 0; i<clues.length; i++){
+		barberMap2.map_Objects.push(clues[i].clueInfo);
+	}
 	
 	/**************************************nypd MAP*********************************/
 	nypdMap.map_Objects.push(container);
@@ -292,23 +300,23 @@ function update(){
 		boyce.stickNPCtoBack();
 		petey.stickNPCtoBack();
 		guy1.stickNPCtoBack();
+		barrel.stickNPCtoBack();
 		
 	}
 	/**************************************City MAP [update]*********************************/
 	if(currentMapName == "city"){
 		moveInventory();
 		player.update();
-		
-		guy2.stickNPCtoBack();
-		phone.stickNPCtoBack();
-		barrel.stickNPCtoBack();
-		
+	
 		for(var i = 0; i<clues.length; i++){
 			the_clue = clues[i];
 			if(!the_clue.discovered){
 				the_clue.stickClueToBack();
 			}
 		}
+		
+		guy2.stickNPCtoBack();
+		phone.stickNPCtoBack();
 	}
 	
 	/**************************************Barber MAP [update]*********************************/
