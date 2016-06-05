@@ -9,24 +9,20 @@ function showDialogue(targetDialogue, state){
 	//make text container
 	var textContainer = new createjs.Container();
 	textContainer.x = 150;
-	textContainer.y = 15;
+	textContainer.y = 35;
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 500, 150);
 	textContainer.addChild(bg_rect);
 	
 	if(targetDialogue == "intro"){
 		if(state == 0){
-			
-			createDialougeBox(textContainer, "Boyce: We already have this case taken care of, classic mob murder, drug incident.", 1, 1, 1, "Sure you don’t need anything else?", "Sure you don’t need anything else?", "Sure you don’t need anything else?");
-		
+			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 1, 1, 1, "Sure you don’t need anything else?", null, null);
 		}else if(state == 1){
-			
-			createDialougeBox(textContainer, "Boyce: Not from you, Player,  why are you here anyways?", 2, 2, 2, "Wouldn't you like to know.", "I'm intrigued by the case.", "It sounded interesting.");
-			
+			createDialougeBox(textContainer, "Boyd: Not from you, Dixson. Why are you here anyways?", 2, 3, 3, "Wouldn't you like to know.", "The case intruiged me", "It sounded cool.");
 		}else if(state == 2){
-			
-			createDialougeBox(textContainer, "Boyce: That's stupid.", null, null, null, "Leave", "Leave", "Leave");
-			
+			createDialougeBox(textContainer, "Boyd: Shut up.", null, null, null, "Leave", null, null);
+		}else if(state == 3){
+			createDialougeBox(textContainer, "Boyd: That's stupid.", null, null, null, "Leave", null, null);
 		}
 	}
 	
@@ -98,66 +94,40 @@ function showDialogue(targetDialogue, state){
 	}
 	
 	//Creepy cult info man
-	if(targetDialogue == "creep" && secretPoints == 0){
-		if(state == 0){
-			createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
-			//player.fixPosition();
-		}
+	if(targetDialogue == "creep"){
+		var secret = secrets.pop();
+		if(secret == null){
+			if(state == 0){
+				createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
+			}else if(state == 1){
+				createDialougeBox(textContainer, "If you find any more of these, bring them to me.", null, null, null, "Ok...", null, null);
+				removeFromInventory(secretClue1);
+			}
+		}else{
+			if(secret.label == "M"){
+				createDialougeBox(textContainer, "Animals don't eat fingers.", 1, null, null, "What?", "", "");
+			}else if(secret.label == "A"){
+				createDialougeBox(textContainer, "Petey owed a lot more than money. And to someone very important.", null, null, null, "To who?", "", "");
+				removeFromInventory(secretClue2);
+			}else if(secret.label == "N"){
+				createDialougeBox(textContainer, "The cops know what you're up to, be careful.", null, null, null, "Leave", "Leave", "Leave");
+				removeFromInventory(secretClue3);
+			}else if(secret.label == "D"){
+				createDialougeBox(textContainer, "Mando controls this city, and everyone in it.", null, null, null, "Leave", "Leave", "Leave");
+				removeFromInventory(secretClue4);
+			}else if(secret.label == "O"){
+				createDialougeBox(textContainer, "Mando Imperium knows.", null, null, null, "Leave", "Leave", "Leave");
+				removeFromInventory(secretClue5);
+			}
+		}	
 	}
-	if(targetDialogue == "creep" && secretPoints == 1){	
-		if(state == 0){
-			createDialougeBox(textContainer, "Animals don't eat fingers.", 1, null, null, "What?", "", "");
-			removeFromInventory(secretClue1);
-		}else if(state == 1){
-			createDialougeBox(textContainer, "If you find any more of these, bring them to me.", null, null, null, "Ok", "", "");
-		}
-	}
-	if(targetDialogue == "creep" && secretPoints == 2){
-		if(state == 0){
-			createDialougeBox(textContainer, "Petey owed a lot more than money", 1, null, null, "To who?", "", "");
-			removeFromInventory(secretClue2);
-		}else if(state == 1){
-			createDialougeBox(textContainer, "Mando ", 1, null, null, "To who?", "", "");
-		}
-	}
-	if(targetDialogue == "creep" && secretPoints == 3){
-		if(state == 0){
-			createDialougeBox(textContainer, "The cops know what you're up to, be careful.", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue2);
-		}}
-	if(targetDialogue == "creep" && secretPoints == 4){
-		if(state == 0){
-			createDialougeBox(textContainer, "Mando controls this city, and everyone in it.", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue2);
-		}}
-	if(targetDialogue == "creep" && secretPoints == 5){
-		if(state == 0){
-			createDialougeBox(textContainer, "Mando Imperium knows.", null, null, null, "Leave", "Leave", "Leave");
-			removeFromInventory(secretClue2);
-		}}	
-	
+
 	//Boyce Dialouge
 	if(targetDialogue == "boyce"){
 		if(state == 0){
-			
-			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 1, 2, 3, "Ok. Bye.", "Sure you don't need anything else?", "I have a question.");	
-			
-		}else if(state == 1){
-			
-			createDialougeBox(textContainer, "Boyd: Bye.", null, null, null, "Leave", null, null);
-			
-		}else if(state == 2){
-			
-			createDialougeBox(textContainer, "Boyd: Not from you, Player, why are you here anyways?", 4, 4, 1, "That’s private.", "It intrigued me.", "Leave");
-			
-		}else if(state == 3 ){
-			
-			createDialougeBox(textContainer, "Boyd: What.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?"); 
-			
-		}else if(state == 4 ){
-			
-			createDialougeBox(textContainer, "Boyd: That's stupid.", null, null, null, "Leave", null, null);
-							
+			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");	
+		}else if(state == 3){
+			createDialougeBox(textContainer, "Boyd: What.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");					
 		}else if(state == 5 ){
 			
 			createDialougeBox(textContainer, "Boyd: The cement shoes! Y'know, from the stories?", 6, null, 3, "But Vinny and his gang stopped dealing in drugs.", "Sure.", "I have another question.");
@@ -165,16 +135,14 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 6 ){
 			
 			createDialougeBox(textContainer, "Boyd: Well, I guess The Barber is back in business. We will be arresting him soon.", null, null, 3, "Leave", null, "I have another question.");
-			
-		}else if(state == 7 ){
-			
+
 		}else if(state == 8 ){
 			
 			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", null);
 			
 		}else if(state == 9 ){
 			
-			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", "Leave", null);
+			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", null, null);
 			
 		}else if(state == 10){
 			
@@ -191,11 +159,14 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 2){
 			createDialougeBox(textContainer, "Last I saw Petey he said he was goin to the barber.", 3, null, null, "-->", "Leave", "Leave");
 		}else if(state == 3){
-			createDialougeBox(textContainer, "All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", null, null, null, "Thanks", "Leave", "Leave");
+			createDialougeBox(textContainer, "All I knew is he owed a lot of money to someone. Some ho named Madalin? Madison?", 10, null, null, "Thank you for your cooperation.", "Leave", "Leave");
 		}else if(state ==4){
 			createDialougeBox(textContainer, "Been a few years, but he got me knocked up 4 months ago so now we livin' together", 2, null, null, "-->", "Leave", "Leave");
 		}else if(state == 9){
 			createDialougeBox(textContainer, "No Answer.", null, null, null, "Leave", "Leave", "Leave");
+		}else if(state == 10){
+			createDialougeBox(textContainer, "*You hung up the phone and then noticed this slip of paper on the wall.*", null, null, null, "Leave", "Leave", "Leave");
+			secretClue2.handleClick();
 
 		}
 	}

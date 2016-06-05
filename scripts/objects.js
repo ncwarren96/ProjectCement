@@ -17,7 +17,7 @@
 		this.back = getBackgroundPosition(x, y);	//position on the background
 		this.objInFront = new Array();				//array of objects in front of the player
 		this.immobile = false;
-		this.IPoints = 0;
+		
 	};
 	
 	//update for player
@@ -295,6 +295,7 @@
 		this.clueInfo = new createjs.Sprite();
 		
 		this.secret = false;
+		this.secretNumber = 0;
 		this.label = label;							//label
 		this.discovered = false;					//has the clue been discovered
 		this.on("click", this.handleClick);			//event handler for clicking
@@ -330,10 +331,9 @@
 			this.discovered = true; 	//change it to discovered
 			addToInventory(this);		//add the clue to the inventory
 			if(this.secret){
-				secretPoints+=1;
+				secrets.push(this);
 			}else{
 				points+=1;
-				//beachMap.map_Objects.push(point_text);
 			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}

@@ -7,6 +7,7 @@ var points = 0;
 var secretPoints = 0;
 
 var clues = [];
+var secrets = [];
 var found_clues = [];
 var map_array = [];
 
@@ -72,6 +73,7 @@ function init() {
 								"              Rodger Boyd";
 		}else if(startMapCounter == 3){
 			loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
+			showDialogue("intro", 0);
 		}
 
     }
@@ -185,7 +187,7 @@ function init() {
  	cityMap.map_Objects.push(receipt);
 	
 	//Secret Clues
- 	secretClue2 = new Clue(0, 500, 1, "./assets/secret2.png", 24, 24, "A");
+ 	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
