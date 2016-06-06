@@ -1,5 +1,5 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text, exit;
+var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text, trashCan, trashCanNYPD, exit;
 var secretClue1, secretClue2, secretClue3, secretClue4;
 var stageClickCount = 0;
 
@@ -186,6 +186,11 @@ function init() {
 	phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
 	cityMap.map_Objects.push(phone);
 	
+	//Adding trashCan
+	trashCan = new NPC(-200, 450, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
+	cityMap.map_Objects.push(trashCan);
+	
+	
 	//phone booth contains secretClue2
  	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
@@ -262,6 +267,10 @@ function init() {
 	deskCop = new NPC(385, 160, 1, "./assets/deskCop.png", 55, 59, "deskCop");
 	nypdMap.map_Objects.push(deskCop);
 	
+	//Adding trashCan
+	trashCanNYPD = new NPC(125, 200, 1, "./assets/trashCan.png", 90, 121, "trashCanNYPD");
+	nypdMap.map_Objects.push(trashCanNYPD);
+	
 	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
  	secretClue3.secret = true;
@@ -317,7 +326,9 @@ function update(){
 		}
 		
 		guy2.stickNPCtoBack();
+		trashCan.stickNPCtoBack();
 		phone.stickNPCtoBack();
+		
 	}
 	
 	/**************************************Barber MAP [update]*********************************/
