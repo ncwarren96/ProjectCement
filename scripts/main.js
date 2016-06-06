@@ -190,6 +190,10 @@ function init() {
 	trashCan = new NPC(-200, 450, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
 	cityMap.map_Objects.push(trashCan);
 	
+	//Adding badge
+	badge = new Clue(-600, 420, 1, "./assets/badgeSprite.png", 24,28, "badge");
+ 	badge.clueInfo = makeInfoSprite("./assets/badge.png");
+ 	cityMap.map_Objects.push(badge);
 	
 	//phone booth contains secretClue2
  	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");

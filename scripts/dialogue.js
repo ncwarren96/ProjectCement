@@ -240,7 +240,7 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 4 ){
 			createDialougeBox(textContainer, " no!, now leave or will arrest you.", 1, 1, 1, "Leave", "Leave", "Leave");				
 		}else if(state == 5 ){
-			createDialougeBox(textContainer, "yeah that's viney, he does some of the best cuts in town, that where most of the boys get there trim. ", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "yeah that's viney, he does some of the best cuts in town. That's where the squad gets there trim. ", null, null, null, "Leave", "Leave", "Leave");
 		}
 	}
 	
