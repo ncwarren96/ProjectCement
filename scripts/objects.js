@@ -125,12 +125,22 @@
 
 		if(currentMapName == "nypd"){
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
-				loadMap("nypd", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
-				bmp.x = -300;
-				bmp_1.x = -300;
-				player.x = 400;
-				player.y = 290;
-				return;
+				if(endGameScenario){
+					loadMap("nypd", "city2", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+					bmp.x = -300;
+					bmp_1.x = -300;
+					player.x = 400;
+					player.y = 290;
+					return;
+				}else{
+					loadMap("nypd", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+					bmp.x = -300;
+					bmp_1.x = -300;
+					player.x = 400;
+					player.y = 290;
+					return;
+				}
+				
 			}
 		}
 

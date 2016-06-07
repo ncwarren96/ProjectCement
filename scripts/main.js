@@ -1,6 +1,7 @@
 var keys = new Array();
-var stage, player, circle, rect, bmp, bmp_1, cop, clue, boyce, petey, guy1, guy2, barrel, inventory, points_text, trashCan, trashCanNYPD, exit;
+var stage, player, circle, rect, bmp, bmp_1, cop, cop2, clue, boyce, petey, guy1, guy2, guy3, barrel, inventory, points_text, trashCan, trashCanNYPD, exit;
 var secretClue1, secretClue2, secretClue3, secretClue4;
+var endGameScenario = true;
 var stageClickCount = 0;
 
 var points = 0;
@@ -20,12 +21,14 @@ var talkedToKristina = false;
 var beachMap = new map("beach");
 var startMap = new map("start");
 var cityMap = new map("city");
+var cityMap2 = new map("city2");
 var barberMap = new map("barber"); //barber
 var barberMap2 = new map("barber2"); //barber death map
 var nypdMap = new map("nypd"); // nypdMap
 map_array.push(beachMap);
 map_array.push(startMap);
 map_array.push(cityMap);
+map_array.push(cityMap2);
 map_array.push(barberMap);
 map_array.push(barberMap2);
 map_array.push(nypdMap);
@@ -215,8 +218,35 @@ function init() {
 	for(var i = 0; i<clues.length; i++){
 		cityMap.map_Objects.push(clues[i].clueInfo);
 	}
-	
 
+	/**************************************CITY 2 MAP*********************************/
+	
+	cityMap2.map_Objects.push(container);
+
+	//Adding creep guy
+	guy3 = new NPC(-800, 450, 1, "./assets/guy2.png",56,141, "creep2");
+	cityMap2.map_Objects.push(guy3);
+	
+	//Adding Cop (NPC object instance)
+	cop2 = new NPC(-900, 450, 1, "./assets/Copper.png", 35, 135, "cop_city2");
+	cityMap2.map_Objects.push(cop2);
+
+	//Adding phone booth
+	//phone = new NPC(50, 275, 1, "./assets/PhoneBooth.png", 72, 150, "phone");
+	cityMap2.map_Objects.push(phone);
+	
+	//Adding trashCan
+	//trashCan = new NPC(-200, 450, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
+	cityMap2.map_Objects.push(trashCan);
+
+	cityMap2.map_Objects.push(inventory);
+	cityMap2.map_Objects.push(player);
+
+	//add clue infos
+	for(var i = 0; i<clues.length; i++){
+		cityMap2.map_Objects.push(clues[i].clueInfo);
+	}
+	
 
 	/**************************************Barber MAP*********************************/
 	barberMap.map_Objects.push(container);
@@ -330,6 +360,25 @@ function update(){
 		}
 		
 		guy2.stickNPCtoBack();
+		trashCan.stickNPCtoBack();
+		phone.stickNPCtoBack();
+		
+	}
+
+	/**************************************City2 MAP [update]*********************************/
+	if(currentMapName == "city2"){
+		moveInventory();
+		player.update();
+	
+		for(var i = 0; i<clues.length; i++){
+			the_clue = clues[i];
+			if(!the_clue.discovered){
+				the_clue.stickClueToBack();
+			}
+		}
+		
+		guy3.stickNPCtoBack();
+		cop2.stickNPCtoBack();
 		trashCan.stickNPCtoBack();
 		phone.stickNPCtoBack();
 		

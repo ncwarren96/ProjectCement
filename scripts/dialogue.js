@@ -100,9 +100,9 @@ function showDialogue(targetDialogue, state){
 		
 		if(secret == null){
 			if(state == 0){
-				createDialougeBox(textContainer, "Go away", null, null, null, "Leave", "", "");
+				createDialougeBox(textContainer, "Go away", null, null, null, "Leave", null, null);
 			}else if(state == 1){
-				createDialougeBox(textContainer, "If you find any more of these, bring them to me.", null, null, null, "Ok...", null, null);
+				createDialougeBox(textContainer, "If you find any more of these clues, bring them to me.", null, null, null, "Ok...", null, null);
 				removeFromInventory(secretClue1);
 			}
 		}else{
@@ -214,7 +214,13 @@ function showDialogue(targetDialogue, state){
 	
 	if(targetDialogue == "barberDead"){
 		textContainer.removeAllChildren();
+		player.immobile = false;
 	}
+	if(targetDialogue == "trashCan"){
+		textContainer.removeAllChildren();
+		player.immobile = false;
+	}
+	
 	
 	if(targetDialogue == "haircut"){
 		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "Leave", "Leave", "Leave");
@@ -230,7 +236,7 @@ function showDialogue(targetDialogue, state){
 	
 	if(targetDialogue == "deskCop"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Can I help You?", 2, 1, 1, "I need crinal files on peter gonzales", "ignore", "Ok, bye.");	
+			createDialougeBox(textContainer, "Can I help You?", 2, 1, 1, "I need criminal files on peter gonzales", "ignore", "Ok, bye.");	
 		}else if(state == 1){
 			createDialougeBox(textContainer, "Bye.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 2){
@@ -238,10 +244,20 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 3 ){
 			createDialougeBox(textContainer, "Do you know who owns the barber shop ? ", 5, 1, 1, "listen", "Leave", "Leave"); 
 		}else if(state == 4 ){
-			createDialougeBox(textContainer, " no!, now leave or will arrest you.", 1, 1, 1, "Leave", "Leave", "Leave");				
+			createDialougeBox(textContainer, "No!, now leave or will arrest you.", 1, 1, 1, "Leave", "Leave", "Leave");				
 		}else if(state == 5 ){
-			createDialougeBox(textContainer, "yeah that's viney, he does some of the best cuts in town. That's where the squad gets there trim. ", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Yeah that's viney, he does some of the best cuts in town. That's where the squad gets there trim. ", null, null, null, "Leave", "Leave", "Leave");
 		}
+	}
+
+	if(targetDialogue == "creep2"){
+		textContainer.removeAllChildren();
+		player.immobile = false;
+	}
+	
+	if(targetDialogue == "cop_city2"){
+		textContainer.removeAllChildren();
+		player.immobile = false;
 	}
 	
 	
