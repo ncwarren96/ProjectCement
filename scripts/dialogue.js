@@ -209,6 +209,7 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs."+
 											 " Then some guy came in here and said he had to go before I could finish.", null, null, 6, null, null, "Thanks.");
 			barberDeathEvent = true;
+			endGameScenario = true;
 		}
 	}
 	
@@ -254,10 +255,13 @@ function showDialogue(targetDialogue, state){
 		textContainer.removeAllChildren();
 		player.immobile = false;
 	}
-	
+
 	if(targetDialogue == "cop_city2"){
-		textContainer.removeAllChildren();
-		player.immobile = false;
+		if(state == 0){
+			createDialougeBox(textContainer, "GG WP?", 1, 1, 1, "GG", "GG", "GG");
+		}else if(state == 1){
+			loadMap("city2", "endStatsMap", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+		}
 	}
 	
 	

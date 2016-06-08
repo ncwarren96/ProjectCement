@@ -1,7 +1,7 @@
 var keys = new Array();
 var stage, player, circle, rect, bmp, bmp_1, cop, cop2, clue, boyce, petey, guy1, guy2, guy3, barrel, inventory, points_text, trashCan, trashCanNYPD, exit;
 var secretClue1, secretClue2, secretClue3, secretClue4;
-var endGameScenario = true;
+var endGameScenario = false;
 var stageClickCount = 0;
 
 var points = 0;
@@ -25,6 +25,7 @@ var cityMap2 = new map("city2");
 var barberMap = new map("barber"); //barber
 var barberMap2 = new map("barber2"); //barber death map
 var nypdMap = new map("nypd"); // nypdMap
+var endStatsMap = new map("endStatsMap");
 map_array.push(beachMap);
 map_array.push(startMap);
 map_array.push(cityMap);
@@ -32,6 +33,7 @@ map_array.push(cityMap2);
 map_array.push(barberMap);
 map_array.push(barberMap2);
 map_array.push(nypdMap);
+map_array.push(endStatsMap);
 var currentMapName = "start";
 var startMapCounter = 0;
 var startMapText;
@@ -318,6 +320,17 @@ function init() {
 	for(var i = 0; i<clues.length; i++){
 		nypdMap.map_Objects.push(clues[i].clueInfo);
 	}
+
+	/**************************************endStats MAP*********************************/
+	var bg_rect = new createjs.Shape();
+	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
+	endStatsMap.map_Objects.push(bg_rect);
+
+	//Show point counter
+	clue_stat_text = new createjs.Text("Number of clues found: " +  found_clues.length + "/" + clues.length, "16px Arial", "#FF0000");
+	clue_stat_text.x = 250;
+	clue_stat_text.y = 300;
+	endStatsMap.map_Objects.push(clue_stat_text);
 }
 
 function game_loop(event) {
