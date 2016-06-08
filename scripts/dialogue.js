@@ -218,10 +218,20 @@ function showDialogue(targetDialogue, state){
 		player.immobile = false;
 	}
 	if(targetDialogue == "trashCan"){
-		textContainer.removeAllChildren();
-		player.immobile = false;
+		if(state==0){
+			createDialougeBox(textContainer, "*You pull this slip of paper from the garbage*", null, null, null, null, null, "Leave");
+			//player.immobile = false;
+			secretClue4.handleClick();
+		}
 	}
 	
+	if(targetDialogue == "trashCanNYPD"){
+		if(state==0){
+			createDialougeBox(textContainer, "*You pull this slip of paper from the garbage*", null, null, null, null, null, "Leave");
+			//player.immobile = false;
+			secretClue5.handleClick();
+		}
+	}
 	
 	if(targetDialogue == "haircut"){
 		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "Leave", "Leave", "Leave");

@@ -207,11 +207,14 @@ function init() {
  	cityMap.map_Objects.push(secretClue2);
  	
  	//Secret clues
+
+ 	//phone booth contains secretClue2
+ 	secretClue4 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "D");
+ 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
+ 	secretClue4.secret = true;
+ 	cityMap.map_Objects.push(secretClue4);
  
-	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
- 	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
-	secretClue5.secret = true;
-	cityMap.map_Objects.push(secretClue5);
+	
 
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
@@ -306,11 +309,15 @@ function init() {
 	//Adding trashCan
 	trashCanNYPD = new NPC(125, 200, 1, "./assets/trashCan.png", 90, 121, "trashCanNYPD");
 	nypdMap.map_Objects.push(trashCanNYPD);
+
+	//inside trashcan
+	secretClue5 = new Clue(0, -30, 1, "./assets/secret5.png", 24, 24, "O");
+ 	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
+	secretClue5.secret = true;
+	nypdMap.map_Objects.push(secretClue5);
 	
-	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
- 	secretClue3.secret = true;
- 	nypdMap.map_Objects.push(secretClue3);
+	
+	
 
  	nypdMap.map_Objects.push(inventory);
 	nypdMap.map_Objects.push(player);
