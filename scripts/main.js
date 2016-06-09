@@ -121,13 +121,6 @@ function init() {
 	
 	container.addChild(bmp);
 	
-	//Show point counter
-	point_text = new createjs.Text("Points: "+ points, "16px Arial", "#FF0000");
-	point_text.x = 700;
-	point_text.y = 10;
-	beachMap.map_Objects.push(point_text);
-	
-	
 	//Adding player	
 	player = new Player(300, 320, 2, "./assets/Character.png", 40, 135, "player");
 	
@@ -174,13 +167,13 @@ function init() {
 	beachMap.map_Objects.push(inventory);
 	beachMap.map_Objects.push(player);
 
+
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
 		beachMap.map_Objects.push(clues[i].clueInfo);
 	}
 
 	/**************************************CITY MAP*********************************/
-	
 	cityMap.map_Objects.push(container);
 
 	//Adding creep guy
@@ -202,14 +195,14 @@ function init() {
  	cityMap.map_Objects.push(secretClue2);
  	
  	//trash can contains secretClue4
-	secretClue4 = new Clue(-300, -30, 1, "./assets/secret4.png", 24, 24, "D");
+	secretClue4 = new Clue(0, -40, 1, "./assets/secret4.png", 24, 24, "D");
  	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
 	secretClue4.secret = true;
 	cityMap.map_Objects.push(secretClue4);
- 	//Secret clues
  
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
+
 	
 	//add clue infos
 	for(var i = 0; i<clues.length; i++){
@@ -254,12 +247,10 @@ function init() {
 	
 	haircut = new NPC(500, 500, 1, "./assets/guy3.png", 60, 160, "haircut");
 	barberMap.map_Objects.push(haircut);
-	
-
 
  	barberMap.map_Objects.push(inventory);
 	barberMap.map_Objects.push(player);
- 	
+
 	
 	//add clueInfos
 	for(var i = 0; i<clues.length; i++){
@@ -284,12 +275,13 @@ function init() {
  	barberMap2.map_Objects.push(receipt);
  	
  	//badge clue
-	badge = new Clue(-1300, 550, 1, "./assets/badgeSprite.png", 24,28, "badge");
+	badge = new Clue(-1300, 500, 1, "./assets/badgeSprite.png", 24,28, "badge");
  	badge.clueInfo = makeInfoSprite("./assets/badge.png");
- 	cityMap.map_Objects.push(badge);
+ 	barberMap2.map_Objects.push(badge);
 
 	barberMap2.map_Objects.push(inventory);
 	barberMap2.map_Objects.push(player);
+
 	
 		//add clueInfos
 	for(var i = 0; i<clues.length; i++){
@@ -309,10 +301,10 @@ function init() {
 	nypdMap.map_Objects.push(trashCanNYPD);
  	
  	//Secret clues
-	secretClue5 = new Clue(100, 100, 1, "./assets/secret5.png", 24, 24, "D");
+	secretClue5 = new Clue(100, 100, 1, "./assets/secret5.png", 24, 24, "O");
  	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
 	secretClue5.secret = true;
-	cityMap.map_Objects.push(secretClue5);
+	nypdMap.map_Objects.push(secretClue5);
 
  	nypdMap.map_Objects.push(inventory);
 	nypdMap.map_Objects.push(player);
@@ -354,7 +346,6 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		point_text.text = "Points: "+ points;
 		cop.stickNPCtoBack();
 		boyce.stickNPCtoBack();
 		petey.stickNPCtoBack();
@@ -411,7 +402,7 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		//point_text.text = "Points: "+ points;
+
 	
 	}
 	
@@ -438,7 +429,7 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-		point_text.text = "Points: "+ points;
+
 	
 	}
 	

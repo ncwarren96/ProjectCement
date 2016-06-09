@@ -28,11 +28,15 @@ function addToInventory(item){
 	//console.log("added");
 	inventory.addChild(item);
 	found_clues.push(item);
+	if(item.secret == true){
+		secrets.push(item);
+		secretPoints+=1;
+	}
 	drawClues(found_clues);
 }
 
 function removeFromInventory(item){
-	console.log("remove");
+	//console.log("remove");
 	var index = found_clues.indexOf(item);
 	found_clues.splice(index, 1);
 	inventory.removeChild(item);

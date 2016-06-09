@@ -79,7 +79,6 @@
 				bmp_1.x = 0;
 				player.x = 300;
 				player.y = 500;
-				console.log(stage.numChildren);
 				return;
 				
 			}else if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == true){
@@ -342,10 +341,6 @@
 			this.discovered = true; 	//change it to discovered
 			addToInventory(this);		//add the clue to the inventory
 			points+=1;
-			if(this.secret){
-				secrets.push(this);
-				secretPoints+=1;
-			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}
 	};
