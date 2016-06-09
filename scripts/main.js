@@ -206,7 +206,8 @@ function init() {
  	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
 	secretClue4.secret = true;
 	cityMap.map_Objects.push(secretClue4);
-
+ 	//Secret clues
+ 
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
 	
