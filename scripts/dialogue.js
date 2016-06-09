@@ -219,6 +219,7 @@ function showDialogue(targetDialogue, state){
 	}
 	if(targetDialogue == "trashCan"){
 		textContainer.removeAllChildren();
+		secretClue4.handleClick();
 		player.immobile = false;
 	}
 	

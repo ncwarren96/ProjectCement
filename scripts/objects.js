@@ -341,10 +341,10 @@
 		if(!this.discovered){			//if the clue has not been discovered
 			this.discovered = true; 	//change it to discovered
 			addToInventory(this);		//add the clue to the inventory
+			points+=1;
 			if(this.secret){
 				secrets.push(this);
-			}else{
-				points+=1;
+				secretPoints+=1;
 			}
 			console.log("points:" + points + "secrets:" + secretPoints);
 		}

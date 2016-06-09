@@ -164,7 +164,7 @@ function init() {
 	console.log(boyce.questions);
 	
 	//Adding guy1
-	guy1 = new NPC(-1300, 200, 1, "./assets/guy1.png", 170, 169, "guy2");
+	guy1 = new NPC(-1300, 240, 1, "./assets/guy1.png", 131, 130, "guy2");
 	beachMap.map_Objects.push(guy1);
 		
 	//Adding Petey (NPC object instance)
@@ -184,7 +184,7 @@ function init() {
 	cityMap.map_Objects.push(container);
 
 	//Adding creep guy
-	guy2 = new NPC(400, 450, 1, "./assets/guy2.png",56,141, "creep");
+	guy2 = new NPC(400, 450, 1, "./assets/guy2.png",54,135, "creep");
 	cityMap.map_Objects.push(guy2);
 	
 	//Adding phone booth
@@ -194,24 +194,18 @@ function init() {
 	//Adding trashCan
 	trashCan = new NPC(-200, 450, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
 	cityMap.map_Objects.push(trashCan);
-	
-	//Adding badge
-	badge = new Clue(-600, 420, 1, "./assets/badgeSprite.png", 24,28, "badge");
- 	badge.clueInfo = makeInfoSprite("./assets/badge.png");
- 	cityMap.map_Objects.push(badge);
-	
+
 	//phone booth contains secretClue2
  	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
  	
- 	//Secret clues
- 
-	secretClue5 = new Clue(-300, 500, 1, "./assets/secret5.png", 24, 24, "D");
- 	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
-	secretClue5.secret = true;
-	cityMap.map_Objects.push(secretClue5);
+ 	//trash can contains secretClue4
+	secretClue4 = new Clue(-300, -30, 1, "./assets/secret4.png", 24, 24, "D");
+ 	secretClue4.clueInfo = makeInfoSprite("./assets/secret4_info.png");
+	secretClue4.secret = true;
+	cityMap.map_Objects.push(secretClue4);
 
 	cityMap.map_Objects.push(inventory);
 	cityMap.map_Objects.push(player);
@@ -226,11 +220,11 @@ function init() {
 	cityMap2.map_Objects.push(container);
 
 	//Adding creep guy
-	guy3 = new NPC(-800, 450, 1, "./assets/guy2.png",56,141, "creep2");
+	guy3 = new NPC(-800, 450, 1, "./assets/guy2.png",54,135, "creep2");
 	cityMap2.map_Objects.push(guy3);
 	
 	//Adding Cop (NPC object instance)
-	cop2 = new NPC(-900, 450, 1, "./assets/Copper.png", 35, 135, "cop_city2");
+	cop2 = new NPC(-900, 450, 1, "./assets/boyce_sprite.png", 40, 135, "cop_city2");
 	cityMap2.map_Objects.push(cop2);
 
 	//Adding phone booth
@@ -277,15 +271,21 @@ function init() {
 	barberDead = new NPC(400, 250, 1, "./assets/barberDead.png", 132, 42, "barberDead");
 	barberMap2.map_Objects.push(barberDead);
 	
+	//secret clue 3
 	secretClue3 = new Clue(-1200, 300, 1, "./assets/secret3.png", 24, 24, "N");
  	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");	
  	secretClue3.secret = true;
  	barberMap2.map_Objects.push(secretClue3);
  	
- 	//receiptSprite
+ 	//receipt clue
 	receipt = new Clue(-1200, 400, 1, "./assets/receiptSprite.png", 20,32, "receipt");
  	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
  	barberMap2.map_Objects.push(receipt);
+ 	
+ 	//badge clue
+	badge = new Clue(-1300, 550, 1, "./assets/badgeSprite.png", 24,28, "badge");
+ 	badge.clueInfo = makeInfoSprite("./assets/badge.png");
+ 	cityMap.map_Objects.push(badge);
 
 	barberMap2.map_Objects.push(inventory);
 	barberMap2.map_Objects.push(player);
@@ -306,11 +306,12 @@ function init() {
 	//Adding trashCan
 	trashCanNYPD = new NPC(125, 200, 1, "./assets/trashCan.png", 90, 121, "trashCanNYPD");
 	nypdMap.map_Objects.push(trashCanNYPD);
-	
-	secretClue3 = new Clue(200, 200, 1, "./assets/secret3.png", 24, 24, "N");
- 	secretClue3.clueInfo = makeInfoSprite("./assets/secret3_info.png");
- 	secretClue3.secret = true;
- 	nypdMap.map_Objects.push(secretClue3);
+ 	
+ 	//Secret clues
+	secretClue5 = new Clue(100, 100, 1, "./assets/secret5.png", 24, 24, "D");
+ 	secretClue5.clueInfo = makeInfoSprite("./assets/secret5_info.png");
+	secretClue5.secret = true;
+	cityMap.map_Objects.push(secretClue5);
 
  	nypdMap.map_Objects.push(inventory);
 	nypdMap.map_Objects.push(player);
@@ -327,7 +328,7 @@ function init() {
 	endStatsMap.map_Objects.push(bg_rect);
 
 	//Show point counter
-	clue_stat_text = new createjs.Text("Number of clues found: " +  found_clues.length + "/" + clues.length, "16px Arial", "#FF0000");
+	clue_stat_text = new createjs.Text("Number of clues found: " +  points + "/10", "16px Arial", "#FF0000");
 	clue_stat_text.x = 250;
 	clue_stat_text.y = 300;
 	endStatsMap.map_Objects.push(clue_stat_text);
