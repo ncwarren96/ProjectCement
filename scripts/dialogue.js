@@ -32,7 +32,7 @@ function showDialogue(targetDialogue, state){
 		
 		if(!boyce.questions){
 			
-			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", null, null, null, "Okay", null, null)
+			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", null, null, null, "Okay", null, null);
 		
 		}else{
 		
