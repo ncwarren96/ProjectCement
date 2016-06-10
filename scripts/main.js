@@ -319,9 +319,17 @@ function init() {
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
 	endStatsMap.map_Objects.push(bg_rect);
-
+	
+	end_text = new createjs.Text("CASE CLOSED", "50px Courier", "white");
+	end_text.x = 150;
+	end_text.y = 200;
+	if(secretPoints<5){
+		end_text.text = "CASE FAILED";
+	}
+	endStatsMap.map_Objects.push(end_text);
 	//Show point counter
-	clue_stat_text = new createjs.Text("Number of clues found: " +  points + "/10", "16px Arial", "#FF0000");
+	clue_stat_text = new createjs.Text("Number of clues found: " +  points + "/10/n" +
+									   "Number of secret clues found" + secretPoints + "/5" , "16px Courier", "white");
 	clue_stat_text.x = 250;
 	clue_stat_text.y = 300;
 	endStatsMap.map_Objects.push(clue_stat_text);
@@ -402,8 +410,6 @@ function update(){
 				the_clue.stickClueToBack();
 			}
 		}
-
-	
 	}
 	
 	if(currentMapName == "barber2"){

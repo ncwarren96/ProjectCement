@@ -152,28 +152,26 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "barber"){
 		console.log(talkedToKristina);
 		if(state == 0){
-			createDialougeBox(textContainer, "Need a new trim?", 2, talkedToKristina? 1 : 6, 5, "No thanks. But has the NYPD spoken to you lately?",  talkedToKristina? "Not today. Know the name Peter Gonzalez?" : "Not today" , "Sure.");
+			createDialougeBox(textContainer, "Vinny: Need a new trim?", 2, talkedToKristina? 1 : 6, 5, "No thanks. But has the NYPD spoken to you lately?",  talkedToKristina? "Not today. Know the name Peter Gonzalez?" : "Not today" , "Sure.");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Dont know, doesn't ring a bell", 7, 6, 6, "Could you try looking him up in your receipts?", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: Dont know, doesn't ring a bell", 7, 6, 6, "Could you try looking him up in your receipts?", "Leave", "Leave");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
 		}else if(state == 3){
-			createDialougeBox(textContainer, "I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
 		}else if(state == 4){
-			createDialougeBox(textContainer, "Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 6, 6, "It looks like someone is trying to frame you.", "I belive you. I'll keep looking into it.", "Leave");
+			createDialougeBox(textContainer, "Vinny: Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 6, 6, "It looks like someone is trying to frame you.", "I belive you. I'll keep looking into it.", "Leave");
 		}else if(state == 5){
-			createDialougeBox(textContainer, "It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", null, null);
+			createDialougeBox(textContainer, "Vinny: It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", null, null);
 		}else if(state == 6){
-			createDialougeBox(textContainer, "Good luck.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: Good luck.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 7){
-			createDialougeBox(textContainer, "Sure, let me see...", 8, null, null, "...", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: Sure, let me see...", 8, null, null, "...", "Leave", "Leave");
 		}else if(state == 8){
-			createDialougeBox(textContainer, "Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin? I assumed it was drugs.", 9, null, null, "-->", null, null);						 
-
+			createDialougeBox(textContainer, "Vinny: Here he is, was in here 2 weeks ago. I remember him now, weird fellow. Kept mumbling about a Mandolin?", 9, null, null, "-->", null, null);						 
 		}else if(state == 9){
-			createDialougeBox(textContainer, "Then some guy came in here and said he had to go before I could finish.", null, null, 6, null, null, "Thanks.");
+			createDialougeBox(textContainer, "Vinny: I assumed it was drugs. Then some guy came in here and said he had to go before I could finish.", null, null, 6, null, null, "Thanks.");
 			barberDeathEvent = true;
-			
 		}
 	}
 	
@@ -219,17 +217,17 @@ function showDialogue(targetDialogue, state){
 	//NYPD office front desk.
 	if(targetDialogue == "deskCop"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Can I help You?", 1, 2, 3, "I need you files on Peter Gonalez.", "Can I see Chief Boyd's files?", "Mando Imperium?");	
+			createDialougeBox(textContainer, "How can I help you?", 1, 3, 6, "I need your files on Peter Gonalez.", "Can I see Chief Boyd's files?", "Mando Imperium?");	
 		}else if(state == 1){
-			createDialougeBox(textContainer, "We don't just give people criminal files.", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "We don't just give people criminal files.", 2, 2, null, "Now!", "Not even for me?", "Fine.");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "we dont give out that kind of information", 3, 4, 1, "ask question", "SHOW ME THOSE FILES!", "Leave");
-		}else if(state == 3 ){
-			createDialougeBox(textContainer, "Do you know who owns the barber shop ? ", 5, 1, 1, "listen", "Leave", "Leave"); 
-		}else if(state == 4 ){
-			createDialougeBox(textContainer, "No!, now leave or will arrest you.", 1, 1, 1, "Leave", "Leave", "Leave");				
-		}else if(state == 5 ){
-			createDialougeBox(textContainer, "Yeah that's viney, he does some of the best cuts in town. That's where the squad gets there trim. ", null, null, null, "Leave", "Leave", "Leave");
+			createDialougeBox(textContainer, "No.", 0, null, null, "I need something else.", "*Leave*", null);
+		}else if(state == 3){
+			createDialougeBox(textContainer, "Chief doesn't have any open files, he likes to keep to himself.", 4, 4, 1, "What else do you know about Boyd?", "Hm. Thanks.", null);
+		}else if(state == 4){
+			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 5, 1, 1, "I need something else.", "Thanks.", null); 
+		}else if(state == 6){
+			createDialougeBox(textContainer, "Last guy that said that around here dissapeared.", null, null, null, "Good to know.", null, null);
 		}
 	}
 
@@ -239,10 +237,35 @@ function showDialogue(targetDialogue, state){
 	}
 
 	if(targetDialogue == "cop_city2"){
-		if(state == 0){
-			createDialougeBox(textContainer, "Stop right there Dixon. You are under arrest for the murder of Vinny Aldready.", 1, 1, 1, "What?", "You can't be serious.", "GG");
-		}else if(state == 1){
-			loadMap("city2", "endStatsMap", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+		//FAIL STATE
+		if(secretPoints<5){
+			if(state == 0){
+				createDialougeBox(textContainer, "Boyd: Stop right there Dixon. You are under arrest for the murder of Vinny Aldready.", 1, 1, 5, "What?", "You can't be serious.", "Not so fast.");
+			}else if(state == 1){
+				createDialougeBox(textContainer, "Boyd: Yep, we're locking you up for a long time.", 2, 5, 7, "I didn't do it!", "", "");
+			}else if(state == 2){
+				createDialougeBox(textContainer, "Boyd: Mando Imperium knows. And there is nothing you can do to stop us.", 10, 10, 10, null, null, "*Leave*");
+			}
+		//WIN STATE
+		}else{
+			if(state == 0){
+				createDialougeBox(textContainer, "Boyd: Stop right there Dixon. You are under arrest for the murder of Vinny Aldready.", 1, 1, 5, "What?", "You can't be serious.", "Not so fast.");
+			}else if(state == 1){
+				createDialougeBox(textContainer, "Boyd: Yep, we're locking you up for a long time.", 5, null, null, "Oh no you don't, I know your secret.", null, null);
+			}else if(state == 5){
+				createDialougeBox(textContainer, "Chayce: That's right, we have enough evidence to take you and Mando Imperium down.", 6, null, null, "-->", null, null);
+			}else if(state == 6){
+				createDialougeBox(textContainer, "Boyd: I have no idea what you're talking about.", 7, 7, 7, "Oh yes you do.", "", "");
+			}else if(state == 7){
+				createDialougeBox(textContainer, "Chayce: You and your men murdered Vinny and Peter Gonzales. This is the end of your little cult.", 8, null, null, "And we got all the evidence.", null, null);
+			}else if(state == 8){
+				createDialougeBox(textContainer, "Boyd: HA HA HA! Yout think you can take us take us down like that? Mando is rooted in this city, more than you ever know.", 9, null, null, null, null, "This isn't the end Boyd. We will stop this.");
+			}else if(state == 9){
+				createDialougeBox(textContainer, "Chayce: We better run Dixon.", 10, 10, 10, "Let's go.", null , null);
+		//END GAME	
+			}else if(state == 10){
+				loadMap("city2", "endStatsMap", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+			}
 		}
 	}
 	
