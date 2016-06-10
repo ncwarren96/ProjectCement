@@ -185,7 +185,7 @@ function init() {
 	cityMap.map_Objects.push(phone);
 	
 	//Adding trashCan
-	trashCan = new NPC(-200, 450, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
+	trashCan = new NPC(-500, 350, 1, "./assets/trashCan2.png", 90, 98, "trashCan");
 	cityMap.map_Objects.push(trashCan);
 
 	//phone booth contains secretClue2
@@ -296,9 +296,9 @@ function init() {
 	deskCop = new NPC(385, 160, 1, "./assets/deskCop.png", 55, 59, "deskCop");
 	nypdMap.map_Objects.push(deskCop);
 	
-	//Adding trashCan
-	trashCanNYPD = new NPC(125, 200, 1, "./assets/trashCan.png", 90, 121, "trashCanNYPD");
-	nypdMap.map_Objects.push(trashCanNYPD);
+	//Adding files
+	fileCabinet = new NPC(100, 100, 1, "./assets/files.png", 30, 60, "files");
+	nypdMap.map_Objects.push(fileCabinet);
  	
  	//Secret clues
 	secretClue5 = new Clue(100, 100, 1, "./assets/secret5.png", 24, 24, "O");

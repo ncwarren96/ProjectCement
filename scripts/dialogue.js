@@ -236,7 +236,7 @@ function showDialogue(targetDialogue, state){
 		player.immobile = false;
 	}
 
-	if(targetDialogue == "cop_city2"){
+	if(targetDialogue == "end"){
 		//FAIL STATE
 		if(secretPoints<5){
 			if(state == 0){

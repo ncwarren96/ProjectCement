@@ -130,6 +130,7 @@
 					bmp_1.x = -300;
 					player.x = 400;
 					player.y = 290;
+					showDialogue("end", 0);
 					return;
 				}else{
 					loadMap("nypd", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
