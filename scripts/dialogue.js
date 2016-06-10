@@ -201,7 +201,7 @@ function showDialogue(targetDialogue, state){
 		}else if(state==1){
 			createDialougeBox(textContainer, "*You managed to quickly grab this slip of paper.*", null, null, null, null, null, "*Leave*");
 			secretClue5.handleClick();
-			endGameScenario = true;
+			if(barberDeathEvent){ endGameScenario = true; }
 		}
 	}
 
@@ -245,6 +245,8 @@ function showDialogue(targetDialogue, state){
 				createDialougeBox(textContainer, "Boyd: Yep, we're locking you up for a long time.", 2, 5, 7, "I didn't do it!", "", "");
 			}else if(state == 2){
 				createDialougeBox(textContainer, "Boyd: Mando Imperium knows. And there is nothing you can do to stop us.", 10, 10, 10, null, null, "*Leave*");
+			}else if(state == 10){
+				loadMap("city2", "endStatsMap", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 			}
 		//WIN STATE
 		}else{
