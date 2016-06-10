@@ -338,7 +338,7 @@ function init() {
 	}
 	endStatsMap.map_Objects.push(end_text);
 	//Show point counter
-	clue_stat_text = new createjs.Text("Number of clues found: " +  points + "/10/n" +
+	clue_stat_text = new createjs.Text("Number of clues found: " + points + "/10\n" +
 									   "Number of secret clues found" + secretPoints + "/5" , "16px Courier", "white");
 	clue_stat_text.x = 250;
 	clue_stat_text.y = 300;
