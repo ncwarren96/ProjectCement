@@ -115,7 +115,10 @@
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 465){
 				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				BarberMusic.reset();
-				gunSound.play();
+				if(barberDeathEvent){
+					gunSound.play();
+					showDialogue("gunshot", 0);
+				}
 				CityMusic.play();
 				bmp.x = -1600;
 				bmp_1.x = -1600;
@@ -297,7 +300,7 @@
 		if(player.immobile){
 			return;
 		}
-		if(getDistance(this.x, this.y, player.x, player.y) < 150){
+		if(getDistance(this.x, this.y, player.x, player.y) < 200){
 			showDialogue(this.label, 0);			//run the dialouge script
 		}
 	};
@@ -415,7 +418,7 @@ function AudioObj(src, loop, vol){
 	this.reset = function(){
 		this.audio.pause();
 		this.audio.currentTime = 0;
-	}
+	};
 }
 
 //helper functoin for creating spritesheets

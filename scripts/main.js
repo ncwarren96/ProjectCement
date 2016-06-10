@@ -3,7 +3,7 @@ var stage, player, circle, rect, bmp, bmp_1, cop, cop2, clue, boyce, petey, guy1
 var secretClue1, secretClue2, secretClue3, secretClue4;
 var endGameScenario = false;
 var stageClickCount = 0;
-
+var clue_stat_text;
 var points = 0;
 var secretPoints = 0;
 
@@ -280,12 +280,12 @@ function init() {
  	barberMap2.map_Objects.push(secretClue3);
  	
  	//receipt clue
-	receipt = new Clue(-1200, 400, 1, "./assets/receiptSprite.png", 20,32, "receipt");
+	receipt = new Clue(-1100, 400, 1, "./assets/receiptSprite.png", 20,32, "receipt");
  	receipt.clueInfo = makeInfoSprite("./assets/Receipt.png");
  	barberMap2.map_Objects.push(receipt);
  	
  	//badge clue
-	badge = new Clue(-1300, 500, 1, "./assets/badgeSprite.png", 24,28, "badge");
+	badge = new Clue(-1100, 500, 1, "./assets/badgeSprite.png", 24,28, "badge");
  	badge.clueInfo = makeInfoSprite("./assets/badge.png");
  	barberMap2.map_Objects.push(badge);
 
@@ -329,9 +329,9 @@ function init() {
 	var bg_rect = new createjs.Shape();
 	bg_rect.graphics.beginFill("#000").drawRect(0, 0, 800, 600);
 	endStatsMap.map_Objects.push(bg_rect);
-	
+
 	end_text = new createjs.Text("CASE CLOSED", "50px Courier", "white");
-	end_text.x = 150;
+	end_text.x = 200;
 	end_text.y = 200;
 	if(secretPoints<5){
 		end_text.text = "CASE FAILED";
@@ -339,7 +339,7 @@ function init() {
 	endStatsMap.map_Objects.push(end_text);
 	//Show point counter
 	clue_stat_text = new createjs.Text("Number of clues found: " + points + "/10\n" +
-									   "Number of secret clues found" + secretPoints + "/5" , "16px Courier", "white");
+									   "Number of secret clues found: " + secretPoints + "/5" , "16px Courier", "white");
 	clue_stat_text.x = 250;
 	clue_stat_text.y = 300;
 	endStatsMap.map_Objects.push(clue_stat_text);
@@ -449,11 +449,14 @@ function update(){
 	
 	}
 	
+	if(currentMapName == 'endStatsMap'){
+		clue_stat_text.text = "Number of clues found: " + points + "/10\n" + "Number of secret clues found: " + secretPoints + "/5";
+	}
 	
 	//Display background mouse position in console
 	var mouse = getBackgroundPosition(stage.mouseX, stage.mouseY);
 	//console.log("x: " + mouse.x + " y: " + mouse.y);
-
+	
 }
 
 function draw(event){

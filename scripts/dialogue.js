@@ -115,13 +115,13 @@ function showDialogue(targetDialogue, state){
 				createDialougeBox(textContainer, "Chayce: Petey owed a lot more than money. And to someone very important.", null, null, null, "To who?", null, null);
 				removeFromInventory(secretClue2);
 			}else if(secret.label == "N"){
-				createDialougeBox(textContainer, "Chayce: The mob stopped dealing in drugs long ago.", null, null, null, null, null, "So someone else is...");
+				createDialougeBox(textContainer, "Chayce: You were right. The mob stopped dealing in drugs long ago.", null, null, null, null, null, "So someone else is...");
 				removeFromInventory(secretClue3);
 			}else if(secret.label == "D"){
-				createDialougeBox(textContainer, "Chayce: Mando controls this city, and everyone in it. But if you complete this case, we could stop them", null, null, null, null, null, "Leave");
+				createDialougeBox(textContainer, "Chayce: Mando Imperium controls this city, and everyone in it. But if you complete this case, we could stop them", null, null, null, null, null, "Leave");
 				removeFromInventory(secretClue4);
 			}else if(secret.label == "O"){
-				createDialougeBox(textContainer, "Chayce: Mando Imperium knows.", null, null, null, "Leave", "Leave", "Leave");
+				createDialougeBox(textContainer, "Chayce: Mando Imperium wants a lot of people dead, you are adding yourself to their list.", null, null, null, "Leave", "Leave", "Leave");
 				removeFromInventory(secretClue5);
 			}
 		}	
@@ -166,13 +166,13 @@ function showDialogue(targetDialogue, state){
 		if(state == 0){
 			createDialougeBox(textContainer, "Vinny: Need a new trim?", 2, talkedToKristina? 1 : 6, 5, "No thanks. But has the NYPD spoken to you lately?",  talkedToKristina? "Not today. Know the name Peter Gonzalez?" : "Not today" , "Sure.");
 		}else if(state == 1){
-			createDialougeBox(textContainer, "Vinny: Dont know, doesn't ring a bell", 7, 6, 6, "Could you try looking him up in your receipts?", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: Dont know, doesn't ring a bell", 7, 6, 6, "Could you try looking him up in your receipts?", null, null);
 		}else if(state == 2){
-			createDialougeBox(textContainer, "Vinny: No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: No, what would they need to know from me?", 4, 6, 6, "They said you murdered someone!", null, null);
 		}else if(state == 3){
-			createDialougeBox(textContainer, "Vinny: I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", "Leave", "Leave");
+			createDialougeBox(textContainer, "Vinny: I really have no idea what you're talking about.", 4, 6, 6, "They said you murdered someone!", null, null);
 		}else if(state == 4){
-			createDialougeBox(textContainer, "Vinny: Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 6, 6, "It looks like someone is trying to frame you.", "I belive you. I'll keep looking into it.", "Leave");
+			createDialougeBox(textContainer, "Vinny: Now I know the cops hate me for my past crimes, but I've been out of the game for years.", 6, 6, 6, "It looks like someone is trying to frame you.", "I belive you. I'll keep looking into it.", "*Leave*");
 		}else if(state == 5){
 			createDialougeBox(textContainer, "Vinny: It will be 18$. Cash only.", null, null, null, "Oh, I don't have any cash on me, sorry.", null, null);
 		}else if(state == 6){
@@ -189,9 +189,12 @@ function showDialogue(targetDialogue, state){
 	
 	//Man in haircut place
 	if(targetDialogue == "haircut"){
-		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "Leave", "Leave", "Leave");
+		createDialougeBox(textContainer, "I'm waiting for a haircut.", null, null, null, "*Leave*", null, null);
 	}
 	
+	if(targetDialogue == "gunshot"){
+		createDialougeBox(textContainer, "Was that from the barber shop?", null, null, null, "*Close*", null, null);
+	}
 	//Vinny's dead body
 	if(targetDialogue == "barberDead"){
 		createDialougeBox(textContainer, "A gunshot through the head...", null, null, null, null, null, "*Leave*");
@@ -214,7 +217,6 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "*You managed to quickly grab this slip of paper.*", null, null, null, null, null, "*Leave*");
 			player.immobile = false;
 			secretClue5.handleClick();
-			if(barberDeathEvent){ endGameScenario = true; }
 		}
 	}
 
@@ -230,7 +232,7 @@ function showDialogue(targetDialogue, state){
 	//NYPD office front desk.
 	if(targetDialogue == "deskCop"){
 		if(state == 0){
-			createDialougeBox(textContainer, "How can I help you?", 1, 3, 6, "I need your files on Peter Gonalez.", "Can I see Chief Boyd's files?", "Mando Imperium?");	
+			createDialougeBox(textContainer, "How can I help you?", 1, 3, 6, "I need your files on Peter Gonalez.", "Can I see Chief Boyd's files?", barberDeathEvent? "Mando Imperium?": null);	
 		}else if(state == 1){
 			createDialougeBox(textContainer, "We don't just give people criminal files.", 2, 2, null, "Now!", "Not even for me?", "Fine.");
 		}else if(state == 2){
@@ -241,6 +243,7 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 0, null, null, "I need something else.", "Thanks.", null); 
 		}else if(state == 6){
 			createDialougeBox(textContainer, "Last guy that said that around here dissapeared.", null, null, null, "Good to know.", null, null);
+			endGameScenario = true;
 		}
 	}
 
