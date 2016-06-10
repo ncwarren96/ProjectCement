@@ -86,7 +86,7 @@
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
-				player.y = 500;
+				player.y = 464;
 				return;
 				
 			}else if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == true){
@@ -96,7 +96,7 @@
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
-				player.y = 500;
+				player.y = 464;
 				return;
 			}
 
@@ -106,27 +106,27 @@
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
-				player.y = 400;
+				player.y = 464;
 				return;
 			}
 		}
 
 		if(currentMapName == "barber"){
-			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 465){
 				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				BarberMusic.reset();
 				gunSound.play();
 				CityMusic.play();
 				bmp.x = -1600;
 				bmp_1.x = -1600;
-				player.x = 400;
+				player.x = 430;
 				player.y = 290;
 				return;
 			}
 		}
 		
 		if(currentMapName == "barber2"){
-			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 465){
 				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 				BarberMusic.reset();
 				CityMusic.play();
@@ -139,7 +139,7 @@
 		}
 
 		if(currentMapName == "nypd"){
-			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
+			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 465){
 				if(endGameScenario){
 					loadMap("nypd", "city2", "./assets/Background1.png", "./assets/Background1-hitbox.png");
 					CityMusic.play();
@@ -224,10 +224,15 @@
 		//Down
 		if(keys[KEYCODE_S] === true && sprite.y < gHeight-sHeight){
 			tempSpriteY += moveAmount;
+			if(sprite.y+tempSpriteY+135 > 600){
+				tempSpriteY = 0;
+				sprite.y = 465;
+			}
 			if(bmp_1.hitTest(backPoint.x+18+tempSpriteX, backPoint.y+135+tempSpriteY)){
 				console.log("bmp_1 hit test is true");
-					tempSpriteY = 0;
-				}
+				tempSpriteY = 0;
+				console.log("in here");
+			}
 		}
 		
 		sprite.x += tempSpriteX;
