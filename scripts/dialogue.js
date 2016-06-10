@@ -1,5 +1,6 @@
 
 function showDialogue(targetDialogue, state){
+	
 	player.immobile = true;
 	if(state == null){
 		player.immobile = false;
@@ -28,30 +29,42 @@ function showDialogue(targetDialogue, state){
 	
 	//Boyce Dialouge
 	if(targetDialogue == "boyce"){
-		if(state == 0){
-			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");	
-		}else if(state == 3){
-			createDialougeBox(textContainer, "Boyd: What.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");					
-		}else if(state == 5 ){
+		
+		if(!boyce.questions){
 			
-			createDialougeBox(textContainer, "Boyd: The cement shoes! Y'know, from the stories?", 6, null, 3, "But Vinny and his gang stopped dealing in drugs.", "Sure.", "I have another question.");
+			createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", null, null, null, "Okay", null, null)
+		
+		}else{
+		
+			if(state == 0){
+				
+				createDialougeBox(textContainer, "Boyd: We already have this case taken care of, classic mob murder, drug incident.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");	
 			
-		}else if(state == 6 ){
+			}else if(state == 3){
+				
+				createDialougeBox(textContainer, "Boyd: What.", 5, 8, 9, "What makes you say it was the mob?", "What happened to the guys fingers?", "Did you know Petey?");					
 			
-			createDialougeBox(textContainer, "Boyd: Well, I guess The Barber is back in business. We will be arresting him soon.", null, null, 3, "Leave", null, "I have another question.");
-
-		}else if(state == 8 ){
-			
-			createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", null);
-			
-		}else if(state == 9 ){
-			
-			createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", null, null);
-			
-		}else if(state == 10){
-			
-			createDialougeBox(textContainer, "Boyd: We've been trying to get him locked up for good, looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", "null");
-			
+			}else if(state == 5 ){
+				
+				createDialougeBox(textContainer, "Boyd: The cement shoes! Y'know, from the stories?", 6, null, 3, "But Vinny and his gang stopped dealing in drugs.", "Sure.", "I have another question.");
+				
+			}else if(state == 6 ){
+				
+				createDialougeBox(textContainer, "Boyd: Well, I guess The Barber is back in business. We will be arresting him soon.", null, null, 3, "Leave", null, "I have another question.");
+	
+			}else if(state == 8 ){
+				
+				createDialougeBox(textContainer, "Boyd: Animal ate em.", 3, null, null, "I have another question.", "Leave", null);
+				
+			}else if(state == 9 ){
+				
+				createDialougeBox(textContainer, "Boyd: All of NYPD knew Petey, he's been arrested countless times for theft, drugs, you name it.", 10, null, null, "--->", null, null);
+				
+			}else if(state == 10){
+				
+				createDialougeBox(textContainer, "Boyd: We've been trying to get him locked up for good, looks like someone else got him though.", 3, null, null, "I have another question.", "Leave", null);
+				
+			}
 		}
 	}
 	
@@ -77,10 +90,10 @@ function showDialogue(targetDialogue, state){
 	
 	//dead petey 'Dialogue'
 	if(targetDialogue == "petey"){
+		player.immobile = false;
 		peteyClue.handleClick();
 		textContainer.removeAllChildren();
 		boyce.questions = true;
-		console.log(boyce.questions);
 	}
 	
 	//Creepy cult info man. Gives different responce depending on secret clue
@@ -150,7 +163,6 @@ function showDialogue(targetDialogue, state){
 	
 	//Vinny the barber dialogue
 	if(targetDialogue == "barber"){
-		console.log(talkedToKristina);
 		if(state == 0){
 			createDialougeBox(textContainer, "Vinny: Need a new trim?", 2, talkedToKristina? 1 : 6, 5, "No thanks. But has the NYPD spoken to you lately?",  talkedToKristina? "Not today. Know the name Peter Gonzalez?" : "Not today" , "Sure.");
 		}else if(state == 1){
@@ -189,7 +201,7 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "trashCan"){
 		if(state==0){
 			createDialougeBox(textContainer, "*You dig this slip of paper from the garbage. Gross.*", null, null, null, null, null, "Leave");
-			//player.immobile = false;
+			player.immobile = false;
 			secretClue4.handleClick();
 		}
 	}
@@ -200,6 +212,7 @@ function showDialogue(targetDialogue, state){
 			createDialougeBox(textContainer, "Get out of there! That's confindential!", null, null, 1, null, null, "Sorry.");			
 		}else if(state==1){
 			createDialougeBox(textContainer, "*You managed to quickly grab this slip of paper.*", null, null, null, null, null, "*Leave*");
+			player.immobile = false;
 			secretClue5.handleClick();
 			if(barberDeathEvent){ endGameScenario = true; }
 		}
@@ -209,7 +222,7 @@ function showDialogue(targetDialogue, state){
 	if(targetDialogue == "barrel"){
 		if(state==0){
 			createDialougeBox(textContainer, "*You pull this slip of paper from the ashes*", null, null, null, null, null, "Leave");
-			//player.immobile = false;
+			player.immobile = false;
 			secretClue1.handleClick();
 		}
 	}
@@ -221,15 +234,13 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 1){
 			createDialougeBox(textContainer, "We don't just give people criminal files.", 2, 2, null, "Now!", "Not even for me?", "Fine.");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "No.", 7, 7, null, "ok fine", "*Leave*", null);
+			createDialougeBox(textContainer, "No.", 0, null, null, "I need something else.", "*Leave*", null);
 		}else if(state == 3){
-			createDialougeBox(textContainer, "Chief doesn't have any open files, he likes to keep to himself.", 4, 4, 1, "What else do you know about Boyd?", "Hm. Thanks.", null);
+			createDialougeBox(textContainer, "Chief doesn't have any open files, he likes to keep to himself.", 4, null, null, "What else do you know about Boyd?", "Hm. Thanks.", null);
 		}else if(state == 4){
-			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 0, 1, 1, "I need something else.", "Thanks.", null); 
+			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 0, null, null, "I need something else.", "Thanks.", null); 
 		}else if(state == 6){
 			createDialougeBox(textContainer, "Last guy that said that around here dissapeared.", null, null, null, "Good to know.", null, null);
-		}else if(state == 7){
-			createDialougeBox(textContainer, "cop: ok Have a great day", null, null, null, "Leave", "Leave", "Leave");
 		}
 	}
 
@@ -285,7 +296,6 @@ function showDialogue(targetDialogue, state){
 	//target3: target state taken to from text3
 	//text1-3: player responses to displayed NPC text
 	function createDialougeBox(container, text0, target1, target2, target3, text1, text2, text3){
-		console.log(text0);
 		
 		var text0 = createText(text0, 20, 25, "20px Courier", "#FFFFFF");
 		textContainer.addChild(text0);
@@ -332,41 +342,22 @@ function showDialogue(targetDialogue, state){
 			bot_rect.on("mouseout", handleOut);
 		}
 		
-		/*var rects = {
-			left_rect: {rect: left_rect, target: target1},
-			mid_rect: {rect: mid_rect, target: target2},
-			right_rect: {rect: right_rect, target: target3}
-		};
-		
-		rects.left_rect.rect.on("click", handleClick_left, null, true);
-		rects.mid_rect.rect.on("click", handleClick_mid, null, true);
-		rects.right_rect.rect.on("click", handleClick_right, null, true);
-		
-		rects.left_rect.rect.on("mouseover", handleOver);
-		rects.mid_rect.rect.on("mouseover", handleOver);
-		rects.right_rect.rect.on("mouseover", handleOver);
-		
-		rects.left_rect.rect.on("mouseout", handleOut);
-		rects.mid_rect.rect.on("mouseout", handleOut);
-		rects.right_rect.rect.on("mouseout", handleOut);*/
-		
 		function handleClick_top(evt) {
-			console.log("clicked ");
-			createjs.Sound.play("clickSound");
+			clickSound.play();
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 			showDialogue(targetDialogue, top_rect.target);
 		}
 		      
 		function handleClick_mid(evt) {
-			createjs.Sound.play("clickSound");
+			clickSound.play();
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 		    showDialogue(targetDialogue, mid_rect.target);
 		}
 		        
 		function handleClick_bot(evt) {
-			createjs.Sound.play("clickSound");
+			clickSound.play();
 			textContainer.removeAllChildren();
 			stage.removeChild(textContainer);
 		    showDialogue(targetDialogue, bot_rect.target);
@@ -374,7 +365,7 @@ function showDialogue(targetDialogue, state){
 		
 		function handleOver(evt){
 			this.alpha = .8;
-			createjs.Sound.play("boopSound");
+			boopSound.play();
 		}
 		
 		function handleOut(evt){

@@ -53,6 +53,9 @@
 			console.log("left collision");
 			if(currentMapName == "beach"){
 				loadMap("beach", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				BeachMusic.reset();
+				oceanSound.reset();
+				CityMusic.play();
 				bmp.x = -1600;
 				player.x = 750;
 				player.y = 400;
@@ -64,6 +67,9 @@
 		}else if(sprite.x == 760){
 			if(currentMapName == "city"){
 				loadMap("city", "beach", "./assets/background.png", "./assets/background - Copy.png");
+				CityMusic.reset();
+				BeachMusic.play();
+				oceanSound.play();
 				bmp.x = 0;
 				player.x = 10;
 				bmp_1.x = 0;
@@ -75,6 +81,8 @@
 		if(currentMapName == "city"){
 			if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == false){
 				loadMap("city", "barber", "./assets/barbershop.png", "./assets/testRoom-hitbox.png");
+				CityMusic.reset();
+				BarberMusic.play();
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
@@ -83,6 +91,8 @@
 				
 			}else if(backPoint.x > 2040 && backPoint.x < 2090 && backPoint.y <= 275 && barberDeathEvent == true){
 				loadMap("city", "barber2", "./assets/barbershop.png", "./assets/testRoom-hitbox.png");
+				CityMusic.reset();
+				BarberMusic.play();
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
@@ -92,6 +102,7 @@
 
 			if(backPoint.x > 740 && backPoint.x < 790 && backPoint.y <= 275){
 				loadMap("city", "nypd", "./assets/NYPD.png", "./assets/testRoom-hitbox.png");
+				CityMusic.reset();
 				bmp.x = 0;
 				bmp_1.x = 0;
 				player.x = 300;
@@ -103,6 +114,9 @@
 		if(currentMapName == "barber"){
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
 				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				BarberMusic.reset();
+				gunSound.play();
+				CityMusic.play();
 				bmp.x = -1600;
 				bmp_1.x = -1600;
 				player.x = 400;
@@ -114,6 +128,8 @@
 		if(currentMapName == "barber2"){
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
 				loadMap("barber", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+				BarberMusic.reset();
+				CityMusic.play();
 				bmp.x = -1600;
 				bmp_1.x = -1600;
 				player.x = 400;
@@ -126,6 +142,7 @@
 			if(backPoint.x > 240 && backPoint.x < 290 && backPoint.y >= 470){
 				if(endGameScenario){
 					loadMap("nypd", "city2", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+					CityMusic.play();
 					bmp.x = -300;
 					bmp_1.x = -300;
 					player.x = 400;
@@ -134,6 +151,7 @@
 					return;
 				}else{
 					loadMap("nypd", "city", "./assets/Background1.png", "./assets/Background1-hitbox.png");
+					CityMusic.play();
 					bmp.x = -300;
 					bmp_1.x = -300;
 					player.x = 400;
@@ -270,6 +288,10 @@
 	
 	//function for handling clicks
 	p.handleClick_NPC = function(event){
+		console.log(player.immobile);
+		if(player.immobile){
+			return;
+		}
 		if(getDistance(this.x, this.y, player.x, player.y) < 150){
 			showDialogue(this.label, 0);			//run the dialouge script
 		}
@@ -328,8 +350,10 @@
 	
 	//event handler for clue
 	p.handleClick = function (event) {
-		createjs.Sound.play("clickSound");
-		//console.log("clicked");
+		if(player.immobile){
+			return;
+		}
+		clickSound.play();
 		this.clueInfo.visible = true;    //show/hide clue info
 		
 		if(this.clueInfo.visible){
@@ -348,7 +372,7 @@
 	
 	p.handleOver = function(){
 		if(!this.clueInfo.visible){
-			createjs.Sound.play("boopSound");
+			boopSound.play();
 			this.alpha = .6;
 		}
 	};
@@ -367,6 +391,27 @@
 	
 	window.Clue = createjs.promote(Clue, "Sprite");	//Declare that all changed Sprite functions get the prefix "Sprite_"
 }());
+
+function AudioObj(src, loop, vol){
+	this.audio = new Audio("./sounds/"+src);
+	this.audio.volume = vol;
+	
+	if(loop){
+		this.audio.addEventListener("ended", function(){
+			this.currentTime = 0;
+			this.play();
+		}, false);
+	}
+	
+	this.play = function(){
+		this.audio.play();
+	};
+	
+	this.reset = function(){
+		this.audio.pause();
+		this.audio.currentTime = 0;
+	}
+}
 
 //helper functoin for creating spritesheets
 function makeSheet(url, numframes, width, height){

@@ -38,10 +38,19 @@ var currentMapName = "start";
 var startMapCounter = 0;
 var startMapText;
 
+var clickSound, boopSound, oceanSound, gunSound, BeachMusic, CityMusic, BarberMusic;
 
 function init() {
-	createjs.Sound.registerSound("./sounds/click.mp3", "clickSound");
-	createjs.Sound.registerSound("./sounds/boop.mp3", "boopSound");
+	
+	clickSound = new AudioObj("click.mp3", false, 1.0);
+	boopSound = new AudioObj("boop.mp3", false, 1.0);
+	oceanSound = new AudioObj("ocean.mp3", false, 0.8);
+	gunSound = new AudioObj("rifleShot.mp3", false, 1.0);
+	BeachMusic = new AudioObj("Beach.mp3", true, 1.0);
+	CityMusic = new AudioObj("City.mp3", true, 1.0);
+	BarberMusic = new AudioObj("Barber.mp3", true, 1.0);
+	
+	oceanSound.play();
 	
 	stage = new createjs.Stage("demoCanvas"); 	//stage object
 	stage.enableMouseOver(20); 					//allow mouseover and mouseout events to stage
@@ -81,6 +90,7 @@ function init() {
 		}else if(startMapCounter == 3){
 			loadMap("start", "beach", "./assets/background.png", "./assets/background - Copy.png");
 			showDialogue("intro", 0);
+			BeachMusic.play();
 		}
 
     }
