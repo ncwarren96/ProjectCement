@@ -221,13 +221,15 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 1){
 			createDialougeBox(textContainer, "We don't just give people criminal files.", 2, 2, null, "Now!", "Not even for me?", "Fine.");
 		}else if(state == 2){
-			createDialougeBox(textContainer, "No.", 0, null, null, "I need something else.", "*Leave*", null);
+			createDialougeBox(textContainer, "No.", 7, 7, null, "ok fine", "*Leave*", null);
 		}else if(state == 3){
 			createDialougeBox(textContainer, "Chief doesn't have any open files, he likes to keep to himself.", 4, 4, 1, "What else do you know about Boyd?", "Hm. Thanks.", null);
 		}else if(state == 4){
-			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 5, 1, 1, "I need something else.", "Thanks.", null); 
+			createDialougeBox(textContainer, "Well, like I said he's pretty private. I'm not supposed to say anyhing.", 0, 1, 1, "I need something else.", "Thanks.", null); 
 		}else if(state == 6){
 			createDialougeBox(textContainer, "Last guy that said that around here dissapeared.", null, null, null, "Good to know.", null, null);
+		}else if(state == 7){
+			createDialougeBox(textContainer, "cop: ok Have a great day", null, null, null, "Leave", "Leave", "Leave");
 		}
 	}
 
