@@ -297,7 +297,7 @@ function init() {
 	nypdMap.map_Objects.push(deskCop);
 	
 	//Adding files
-	fileCabinet = new NPC(100, 100, 1, "./assets/files.png", 30, 60, "files");
+	fileCabinet = new NPC(100, 100, 1, "./assets/files.png", 60, 120, "files");
 	nypdMap.map_Objects.push(fileCabinet);
  	
  	//Secret clues

@@ -195,7 +195,7 @@ function showDialogue(targetDialogue, state){
 	}
 	
 	//NYPD file cabinet with secret clue 5
-	if(targetDialogue == "trashCanNYPD"){
+	if(targetDialogue == "files"){
 		if(state==0){
 			createDialougeBox(textContainer, "Get out of there! That's confindential!", null, null, 1, null, null, "Sorry.");			
 		}else if(state==1){
