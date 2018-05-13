@@ -130,7 +130,7 @@ function showDialogue(targetDialogue, state){
 	//phone booth/ Kristina dialogue
 	if(targetDialogue == "phone"){
 		if(state == 0){
-			createDialougeBox(textContainer, "Number?", 1, 9, 9, "555-1762", "555-9572", "555-0080");
+			createDialougeBox(textContainer, "Number?", 1, 9, 9, "555-1761", "555-9572", "555-0080");
 		}else if(state == 1){
 			createDialougeBox(textContainer, "Kristina: Hello?", 2, null, null, "Hello this is Private Investigator Clive Dixon.", "Sorry wrong number.", null);
 		}else if(state == 2){
@@ -155,8 +155,9 @@ function showDialogue(targetDialogue, state){
 		}else if(state == 9){
 			createDialougeBox(textContainer, "No Answer.", null, null, null, "Leave", "Leave", "Leave");
 		}else if(state == 10){
+            secretClue2.handleClick();
 			createDialougeBox(textContainer, "*You hung up the phone and then noticed this slip of paper on the wall.*", null, null, null, "Leave", "Leave", "Leave");
-			secretClue2.handleClick();
+			
 
 		}
 	}

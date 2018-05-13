@@ -199,7 +199,7 @@ function init() {
 	cityMap.map_Objects.push(trashCan);
 
 	//phone booth contains secretClue2
- 	secretClue2 = new Clue(0, -30, 1, "./assets/secret2.png", 24, 24, "A");
+ 	secretClue2 = new Clue(100, 400, 1, "./assets/secret2.png", 24, 24, "A");
  	secretClue2.clueInfo = makeInfoSprite("./assets/secret2_info.png");
  	secretClue2.secret = true;
  	cityMap.map_Objects.push(secretClue2);
